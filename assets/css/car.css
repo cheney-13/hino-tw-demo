@@ -323,13 +323,27 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .news4 .news-card:not(:first-child) .img{flex:0 0 88px;aspect-ratio:1;border-radius:var(--r-s)}
   .news4 .news-card:not(:first-child) .tx{padding:0}
   .lead-faq{grid-template-columns:1fr}
-  .cmp-bar{padding:12px 20px;flex-direction:column;align-items:flex-start}
-  #m-cmp .modal-bd{padding:16px 20px 24px}
-  .cmp-cols,.cmp-row{grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:8px 12px}
+  /* Figma 抽屜/300 系 車型比較 (mobile bottom sheet) */
+  #m-cmp .modal-box{height:calc(100% - 64px);max-height:none;padding-top:10px}
+  #m-cmp .modal-box::before{content:"";width:40px;height:4px;border-radius:2px;background:#ececec;margin:0 auto}
+  #m-cmp .modal-hd{padding:14px 20px 0;border:0}
+  #m-cmp .modal-hd h3{font-size:20px;line-height:30px}
+  #m-cmp .modal-x{width:40px;height:40px}
+  .cmp-bar{padding:14px 20px 0;border:0}
+  .cmp-bar>div:first-child{display:none}
+  #m-cmp .modal-bd{padding:14px 20px 24px;gap:14px}
+  .cmp-cols{grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px}
   .cmp-cols .cmp-note{display:none}
-  .cmp-row{padding:12px}
-  .cmp-row .k{grid-column:1/-1}
-  .cmp-col .img{height:110px}.cmp-col .img img{width:140px;height:140px;margin-left:-70px;top:-10px}
+  .cmp-col{gap:8px}
+  .cmp-dd b{font-size:15px}
+  .cmp-col .img{height:110px;border-radius:8px}
+  .cmp-col .img img{width:130px;height:130px;margin-left:-65px;top:-10px}
+  .cmp-col .zoom{top:auto;bottom:6px;right:6px}
+  .cmp-col .btn{padding:0 7px 0 18px}
+  .cmp-grp h4 span{font-size:17px;line-height:24px}
+  .cmp-grp h4 em{flex:1;margin-left:10px;font-style:normal;font-size:14px;font-weight:500;color:var(--g3)}
+  .cmp-row{grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:4px 12px;padding:10px 16px 12px}
+  .cmp-row .k{grid-column:1/-1;font-size:14px;line-height:20px}
   .pcs-tabs{grid-template-columns:1fr}
 }
 .sel-row em{font-style:normal}
