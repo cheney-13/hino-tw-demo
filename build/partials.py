@@ -1,3 +1,5 @@
+import time
+VER = time.strftime("%Y%m%d%H%M")
 CAR = "300.html"
 LOGO = '<span class="logo"><img src="assets/img/hino-logo.svg" alt="HINO" width="195" height="32"><img class="tag" src="assets/img/logo-tagline.png" alt="HINO TRUST 驅動未來" width="219" height="32"></span>'
 
@@ -98,7 +100,7 @@ def footer():
     car_li = ""
     for n in cars:
         if n.startswith("300"):
-            car_li += f'<li><button class="ftr-car on" data-ftr-car>{n}{ic("minus","s16")}</button><div class="ftr-car-sub on"><a href="{CAR}">5/6.5/7.4/7.5/8噸</a><a href="{CAR}">5噸木床貨斗</a></div></li>'
+            car_li += f'<li><button class="ftr-car" data-ftr-car>{n}{ic("plus","s16")}</button><div class="ftr-car-sub"><a href="{CAR}">5/6.5/7.4/7.5/8噸</a><a href="{CAR}">5噸木床貨斗</a></div></li>'
         else:
             car_li += f'<li><button class="ftr-car" data-ftr-car>{n}{ic("plus","s16")}</button><div class="ftr-car-sub"><a href="{CAR}">查看{n}</a></div></li>'
     cols = {
@@ -226,8 +228,8 @@ def modals():
             + modal("m-calc", "購車試算", calc, calc_ft, "w960"))
 
 def page(title, desc, css, body, js):
-    links = "".join(f'<link rel="stylesheet" href="assets/css/{c}">' for c in css)
-    scripts = "".join(f'<script src="assets/js/{j}" defer></script>' for j in js)
+    links = "".join(f'<link rel="stylesheet" href="assets/css/{c}?v={VER}">' for c in css)
+    scripts = "".join(f'<script src="assets/js/{j}?v={VER}" defer></script>' for j in js)
     return f"""<!doctype html>
 <html lang="zh-Hant-TW">
 <head>
@@ -239,7 +241,7 @@ def page(title, desc, css, body, js):
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23E60012'/%3E%3Cpath d='M9 8v16M23 8v16M9 16h14' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">{links}
+<link rel="stylesheet" href="assets/css/style.css?v={VER}">{links}
 </head>
 <body>
 {SPRITE}
@@ -250,7 +252,7 @@ def page(title, desc, css, body, js):
 {footer()}
 {sidenav()}
 {modals()}
-<script src="assets/js/main.js" defer></script>{scripts}
+<script src="assets/js/main.js?v={VER}" defer></script>{scripts}
 </body>
 </html>
 """

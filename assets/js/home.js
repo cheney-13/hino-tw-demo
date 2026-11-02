@@ -29,10 +29,11 @@
   const brand = $('#brand'), plx = $('[data-parallax]');
   const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
   const onScroll = () => {
+    // logo rises slower than the page: it drifts down inside the panel as you scroll
     const r = brand.getBoundingClientRect();
     if (r.bottom < 0 || r.top > innerHeight) return;
-    const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight; // -1..1
-    plx.style.transform = `translate3d(0,${(p * 90).toFixed(1)}px,0)`;
+    const k = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height)));
+    plx.style.transform = `translate3d(0,${(k * 180).toFixed(1)}px,0)`;
   };
   if (!reduce) { addEventListener('scroll', onScroll, { passive: true }); onScroll(); }
 

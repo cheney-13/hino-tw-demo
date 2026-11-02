@@ -38,7 +38,7 @@ def home():
         ("6 年/20 萬公里延長保固服務商品 | 2026 年 12 月前加購享優惠價 15,000 元", "延長保固服務商品"),
     ]
     slides = "".join(
-        f'<div class="hero-slide{" on" if k == 0 else ""}" data-tick="{t}"><a href="{CAR}"><picture><source media="(max-width:767px)" srcset="assets/img/banner-m-{k+1}.jpg"><img src="assets/img/banner-{k+1}.jpg" alt="{alt}"{"" if k == 0 else " loading=lazy"}></picture></a></div>'
+        f'<div class="hero-slide{" on" if k == 0 else ""}" data-tick="{t}"><a href="{CAR}"><picture><source media="(max-width:767px)" srcset="assets/img/hero-m-{k+1}.jpg"><img src="assets/img/hero-{k+1}.jpg" alt="{alt}"{"" if k == 0 else " loading=lazy"}></picture></a></div>'
         for k, (t, alt) in enumerate(SLIDES))
     tick = SLIDES[0][0]
     def hot_pop(n, subs):
