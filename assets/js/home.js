@@ -35,7 +35,8 @@
     // logo sits at the panel top until the panel reaches the upper part of the screen, then drifts down (rises slower than the page)
     // 0 when the panel enters from the bottom → max when it leaves at the top (logo travels far slower than the page)
     // at page top the logo sits exactly where Figma places it; it then drifts down at 25% of scroll speed
-    const y = Math.min(innerWidth < 768 ? 60 : 150, Math.max(0, scrollY * 0.25));
+    if (innerWidth < 768) return;
+    const y = Math.min(150, Math.max(0, scrollY * 0.25));
     plx.style.transform = `translate3d(0,${y.toFixed(1)}px,0)`;
   };
   if (!reduce) { addEventListener('scroll', onScroll, { passive: true }); onScroll(); }
@@ -57,12 +58,29 @@
     nums.forEach(n => io.observe(n));
   }
 
+  /* hot models (mobile): bottom-sheet drawer with the series options */
+  const dr = $('#hotDrawer');
+  const openDrawer = c => {
+    const name = $('.hot-pop .t b', c).textContent;
+    $('#hdBrand').textContent = ($('.b', c) || {}).textContent || '';
+    $('#hdName').textContent = name;
+    $('#hdOpts').innerHTML = $$('.hot-pop a', c).map(a => `<a href="${a.getAttribute('href')}"><span>${a.textContent}</span><svg class="ico s16"><use href="#i-arrow"/></svg></a>`).join('');
+    dr.classList.add('open'); dr.setAttribute('aria-hidden', 'false'); document.body.classList.add('lock');
+    setTimeout(() => $('.hd-x', dr).focus(), 50);
+  };
+  const closeDrawer = () => { dr.classList.remove('open'); dr.setAttribute('aria-hidden', 'true'); document.body.classList.remove('lock'); };
+  $$('[data-hd-close]', dr).forEach(b => b.addEventListener('click', closeDrawer));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && dr.classList.contains('open')) closeDrawer(); });
+  let ty; $('.hd-sheet', dr).addEventListener('touchstart', e => ty = e.touches[0].clientY, { passive: true });
+  $('.hd-sheet', dr).addEventListener('touchend', e => { if (e.changedTouches[0].clientY - ty > 60) closeDrawer(); });
+
   /* hot models: every card opens its own model-option overlay */
   const cards = $$('[data-hot]');
   cards.forEach(c => {
     c.addEventListener('click', e => {
       if (e.target.closest('[data-hot-x]')) { e.stopPropagation(); c.classList.remove('open'); return; }
       if (e.target.closest('a')) return;
+      if (matchMedia('(max-width:767px)').matches) { openDrawer(c); return; }
       cards.forEach(x => x !== c && x.classList.remove('open'));
       c.classList.add('open');
     });

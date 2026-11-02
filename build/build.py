@@ -66,7 +66,7 @@ def home():
 </section>
 
 <section class="brand" id="brand">
-<div class="brand-bg" aria-hidden="true"><img src="assets/img/brand-logo.svg" alt="" data-parallax></div>
+<div class="brand-bg" aria-hidden="true"><div class="brand-track"><img src="assets/img/brand-logo.svg" alt="" data-parallax><img class="dup" src="assets/img/brand-logo.svg" alt=""></div></div>
 <div class="wrap">
 <div class="brand-hd rv"><p>HINO TRUST 驅動未來</p><h2>業界領導品牌<br class="m">您的最佳事業夥伴</h2></div>
 <div class="stats">
@@ -82,6 +82,12 @@ def home():
 {"".join(hot_small)}
 </div>
 </section>
+
+<div class="hot-drawer" id="hotDrawer" aria-hidden="true">
+<div class="hd-scrim" data-hd-close></div>
+<div class="hd-sheet" role="dialog" aria-modal="true" aria-labelledby="hdName"><div class="hd-grab"></div>
+<div class="hd-head"><div><span class="b" id="hdBrand"></span><b id="hdName"></b></div><button type="button" class="hd-x" data-hd-close aria-label="關閉">{ic("close","s20")}</button></div>
+<div class="hd-opts" id="hdOpts"></div></div></div>
 
 <section class="wrap sec">
 {sec_head("NEWS", "最新動態", right=f'<a class="btn btn-red news-head-btn" href="#">看更多消息{ic("arrow")}</a>')}
