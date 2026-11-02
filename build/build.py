@@ -52,7 +52,7 @@ def home():
         hot_small.append(f'<div class="hot-card" data-hot tabindex="0" role="button" aria-label="{n}，展開車型選項"><div class="img"><img src="assets/img/{img}" alt="" loading="lazy"></div><div class="tx"><span class="b">{b}</span><b>{n}</b></div>{hot_pop(n, subs)}</div>')
     stories = "".join(
         f'<a class="story" href="{CAR}#stories"><img src="assets/img/{i}" alt="" loading="lazy" style="object-position:{pos}"><span class="tag">{tg}</span><div class="tx"><h3>{t}</h3><p>{q}</p></div></a>'
-        for i, tg, t, q, pos in STORIES * 2)
+        for i, tg, t, q, pos in STORIES * 3)
     body = f"""
 <section class="wrap hero" aria-label="主視覺">
 <div class="hero-stage" id="hero">{slides}</div>
@@ -92,7 +92,7 @@ def home():
 
 <section class="wrap sec">
 {sec_head("STORIES", "車主故事", right=f'<a class="btn btn-red news-head-btn" href="{CAR}#stories">看更多故事{ic("arrow")}</a>')}
-<div class="stories" id="stories">{stories}</div>
+<div class="stories" id="stories"><div class="stories-track">{stories}<div class="stories-dup" aria-hidden="true">{stories}</div></div></div>
 <a class="btn btn-dark btn-block news-more-m" href="{CAR}#stories">看更多故事{ic("arrow")}</a>
 </section>
 

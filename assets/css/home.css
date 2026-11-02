@@ -76,8 +76,13 @@
 .news-more-m{display:none}
 
 /* ---------- stories ---------- */
-.stories{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
-.stories::-webkit-scrollbar{display:none}
+.stories{overflow:hidden;margin:0 calc(var(--gut)*-1);padding:0 var(--gut)}
+.stories-track{display:flex;width:max-content;animation:storyLoop 60s linear infinite}
+.stories:hover .stories-track{animation-play-state:paused}
+.stories-dup{display:flex}
+.stories .story{margin-right:12px}
+@keyframes storyLoop{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.stories{overflow-x:auto}.stories-track{animation:none}}
 .story{flex:0 0 300px;height:300px;border-radius:var(--r);overflow:hidden;position:relative;scroll-snap-align:start;color:#fff}
 .story img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
 .story:hover img{transform:scale(1.05)}
