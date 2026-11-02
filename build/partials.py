@@ -1,4 +1,5 @@
 CAR = "300.html"
+LOGO = '<span class="logo"><img src="assets/img/hino-logo.svg" alt="HINO" width="195" height="32"><img class="tag" src="assets/img/logo-tagline.png" alt="HINO TRUST 驅動未來" width="219" height="32"></span>'
 
 def alinks(v):
     return "".join('<a href="#">%s</a>' % x for x in v)
@@ -38,48 +39,62 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 </svg>"""
 
 CARS = [
-    ("日野", "小型貨車 200系列", "", "car-200.webp"),
-    ("日野", "300系中小型貨車", "5/6.5/7.4/7.5/8 噸・5 噸木床貨斗", "car-300.webp"),
-    ("日野", "500系中型貨車", "10.4/11・15.5/17 噸大貨車", "car-500.webp"),
-    ("日野", "700系大型貨車", "", "car-700.webp"),
-    ("日野", "大型巴士", "", "car-bus-l.webp"),
-    ("豐田", "中型巴士", "", "car-bus-m.webp"),
-    ("日野", "油電複合動力系列", "", "car-hybrid.webp"),
+    # brand, name, desc, img, big label, sub items
+    ("日野", "小型貨車 200系列", "3.49 噸", "car-200.webp", "200系", ["3.49噸"]),
+    ("日野", "300系中小型貨車", "5/6.5/7.4/7.5/8 噸・5 噸木床貨斗", "car-300.webp", "300系", ["5/6.5/7.4/7.5/8噸", "5噸木床貨斗"]),
+    ("日野", "500系中型貨車", "10.4/11・15.5/17 噸大貨車", "car-500.webp", "500系", ["10.4/11噸大貨車", "15.5/17噸大貨車", "17噸鋁合金鷗翼大貨車"]),
+    ("日野", "700系大型貨車", "6x2・4x2・6x4", "car-700.webp", "700系", ["6x2 大貨車", "4x2 曳引車", "6x4 大貨車/砂石車/混凝土攪拌車"]),
+    ("日野", "大型巴士", "RK・RM 360P", "car-bus-l.webp", "BUS", ["RK大客車", "RM 360P大客車"]),
+    ("豐田", "中型巴士", "COASTER", "car-bus-m.webp", "COASTER", ["COASTER"]),
+    ("日野", "油電複合動力系列", "6.5/8 噸", "car-hybrid.webp", "HYBRID", ["6.5/8噸"]),
 ]
 NAV = ["車款介紹", "據點查詢", "售後服務", "車主專區", "最新消息", "品牌介紹"]
+MENU = {
+    "據點查詢": ("menu-loc.jpg", "LOCATIONS", ["北部地區", "中部地區", "南部地區", "東部地區"]),
+    "售後服務": ("menu-svc.jpg", "SERVICE", ["保養維修", "保固服務", "微笑大使", "獎學金計畫", "優良駕駛", "FAQ"]),
+    "車主專區": ("menu-own.jpg", "OWNERS", ["車主登入", "車輛操作影片", "車主小幫手", "HINO 好集利", "和泰購", "FAQ"]),
+    "最新消息": ("menu-news.jpg", "NEWS", ["品牌新聞", "活動資訊", "中獎公告"]),
+    "品牌介紹": ("menu-brand.jpg", "ABOUT", ["品牌故事", "T 商旅車", "iTRAQ"]),
+}
+
+def sub_link(t, href="#"):
+    return f'<a class="mm-link" href="{href}"><span>{t}</span>{ic("right","s16")}</a>'
 
 def header():
-    mega = "".join(
-        f'<a class="mega-car" href="{CAR}"><img src="assets/img/{img}" alt="" loading="lazy"><div><span class="brand">{b}</span><b>{n}</b><span>{s}</span></div></a>'
-        for b, n, s, img in CARS)
-    nav = "".join(
-        f'<li class="has-mega"><a href="{CAR}">{n}</a><div class="mega"><div class="wrap"><div class="mega-in">{mega}<div class="mega-links"><a href="{CAR}">查看全車款 →</a><a href="#">5 噸木床貨斗</a></div></div></div></div></li>'
-        if i == 0 else f'<li><a href="#">{n}</a></li>' for i, n in enumerate(NAV))
-    msub = "".join(f'<a href="{CAR}"><img src="assets/img/{img}" alt=""><div>{n}<small>{s}</small></div></a>' for b, n, s, img in CARS)
-    others = {
-        "據點查詢": ["北部地區", "中部地區", "南部地區", "東部地區"],
-        "售後服務": ["保養維修", "保固服務", "微笑大使", "獎學金計畫", "優良駕駛", "FAQ"],
-        "車主專區": ["車主登入", "車輛操作影片", "車主小幫手", "HINO 好集利", "和泰購", "FAQ"],
-        "最新消息": ["品牌新聞", "活動資訊", "中獎公告"],
-        "品牌介紹": ["品牌故事", "T 商旅車", "iTRAQ"],
-    }
-    mnav = f'<details open><summary>車款介紹{ic("plus","pm")}</summary><div class="mnav-sub">{msub}</div></details>' + "".join(
-        f'<details><summary>{k}{ic("plus","pm")}</summary><div class="mnav-sub plain">{alinks(v)}</div></details>'
-        for k, v in others.items())
+    groups = "".join(
+        f'<div class="mm-grp{" on" if n.startswith("300") else ""}" data-big="{big}" data-img="{img}"><span class="b">{b}</span><a class="n" href="{CAR}">{n}</a>{"".join(sub_link(x, CAR) for x in subs)}</div>'
+        for b, n, d, img, big, subs in CARS)
+    car_mega = f'<div class="mega"><div class="mega-in"><div class="mega-l car"><span class="big" data-mm-big>300系</span><img src="assets/img/car-300.webp" alt="" data-mm-img></div><div class="mega-r"><h3>車款介紹</h3><div class="mm-cars">{groups}</div></div></div></div>'
+    items = ""
+    for i, n in enumerate(NAV):
+        if i == 0:
+            items += f'<li class="has-mega"><a class="nav-a" href="{CAR}">{n}</a>{car_mega}</li>'
+        else:
+            img, en, links = MENU[n]
+            items += f'<li class="has-mega"><a class="nav-a" href="#">{n}</a><div class="mega"><div class="mega-in"><div class="mega-l"><img src="assets/img/{img}" alt="" loading="lazy"><span class="en">{en}</span></div><div class="mega-r"><h3>{n}</h3><div class="mm-grid">{"".join(sub_link(x) for x in links)}</div></div></div></div></li>'
+    mcars = "".join(
+        f'<div class="mcar"><a class="mcar-h" href="{CAR}"><img src="assets/img/{img}" alt=""><div><span class="b">{b}</span><b>{n}</b></div></a>{"".join(sub_link(x, CAR) for x in subs)}</div>'
+        for b, n, d, img, big, subs in CARS)
+    macc = f'<details><summary>車款介紹{ic("plus","pm")}</summary><div class="mnav-sub">{mcars}</div></details>' + "".join(
+        f'<details><summary>{k}{ic("plus","pm")}</summary><div class="mnav-sub plain">{"".join(sub_link(x) for x in v[2])}</div></details>'
+        for k, v in MENU.items())
     return f"""<header class="hdr" id="top">
 <div class="wrap hdr-in">
-<a class="hdr-logo" href="index.html" aria-label="HINO 首頁"><span class="logo"><img src="assets/img/hino-logo.svg" alt="HINO" width="195" height="32"><img class="tag" src="assets/img/logo-tagline.png" alt="HINO TRUST 驅動未來" width="219" height="32"></span></a>
-<nav class="hdr-nav" aria-label="主選單"><ul>{nav}</ul>
+<a class="hdr-logo" href="index.html" aria-label="HINO 首頁">{LOGO}</a>
+<nav class="hdr-nav" aria-label="主選單"><ul>{items}</ul>
 <div class="hdr-icons"><a href="#" aria-label="聯絡我們">{ic("mail")}</a><a href="#" aria-label="Facebook">{ic("fb")}</a><a href="#" aria-label="LINE">{ic("line")}</a></div></nav>
 <button class="hdr-burger" data-open-menu aria-label="開啟選單">{ic("menu","s28")}</button>
 </div></header>
 <div class="mnav" id="mnav" aria-hidden="true">
-<div class="mnav-top"><span class="logo"><img src="assets/img/hino-logo.svg" alt="HINO" width="195" height="32"><img class="tag" src="assets/img/logo-tagline.png" alt="HINO TRUST 驅動未來" width="219" height="32"></span><button class="modal-x" data-close-menu aria-label="關閉選單">{ic("close")}</button></div>
-<div class="mnav-body">{mnav}<div class="mnav-icons"><a href="#" aria-label="聯絡我們">{ic("mail")}</a><a href="#" aria-label="Facebook">{ic("fb")}</a><a href="#" aria-label="LINE">{ic("line")}</a></div></div>
+<div class="mnav-top"><a href="index.html">{LOGO}</a><button class="mnav-x" data-close-menu aria-label="關閉選單">{ic("up","s28")}</button></div>
+<div class="mnav-body">{macc}
+<button class="btn btn-red btn-block mnav-cta" data-modal="m-drive" style="justify-content:center">預約試乘</button>
+<div class="mnav-links"><a href="#" data-modal="m-contact">聯絡我們</a><a href="#">Facebook</a><a href="#">LINE 加入好友</a></div>
+<p class="mnav-tel">客服專線<a href="tel:0800522567">0800-522-567</a></p></div>
 </div>"""
 
 def footer():
-    cars = [n for _, n, _, _ in CARS]
+    cars = [c[1] for c in CARS]
     car_li = ""
     for n in cars:
         if n.startswith("300"):
@@ -117,7 +132,6 @@ def sidenav():
 <a class="sn-act" href="#">{ic("pin","s28")}尋找據點</a>
 <button class="sn-act" data-modal="m-contact">{ic("phone","s28")}專人聯繫</button>
 <button class="sn-act" data-modal="m-drive">{ic("cal","s28")}預約試乘</button>
-<button class="sn-act" data-modal="m-calc">{ic("calc","s28")}購車試算</button>
 <button class="sn-close" data-sidenav aria-controls="snPanel">{ic("close","s28")}收合</button>
 </div>
 <div class="sn-fab-wrap"><button class="sn-fab" data-sidenav aria-controls="snPanel" aria-expanded="false">{ic("grid","s28")}快速服務</button></div>

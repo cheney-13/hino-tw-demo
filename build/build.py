@@ -30,48 +30,55 @@ def sec_head(wm, title, eyebrow="", sub="", right=""):
 
 # ------------------------------------------------------------------ home
 def home():
-    tick = "運轉不凡，跨界舞動 | HINO 300 系 拼勁全開 載運新動能"
+    SLIDES = [
+        ("運轉不凡，跨界舞動 | HINO 300 系 拚勁全開 載運新動能", "HINO 300系 拚勁全開 載運新動能"),
+        ("HINO 潮好拍 創意短影音挑戰賽 | 即日起至 9/30，總獎價值 30 萬", "HINO 潮好拍 創意短影音挑戰賽"),
+        ("HINO × 台灣韌性 | 品牌形象影片 現正熱映中", "HINO × 台灣韌性 品牌形象影片"),
+        ("2026 HINO GO潮派－安全節能新體驗 | 11/07–11/08 高雄駁二藝術特區 B4 館", "HINO GO潮派 安全節能新體驗"),
+        ("6 年/20 萬公里延長保固服務商品 | 2026 年 12 月前加購享優惠價 15,000 元", "延長保固服務商品"),
+    ]
+    slides = "".join(
+        f'<div class="hero-slide{" on" if k == 0 else ""}" data-tick="{t}"><a href="{CAR}"><picture><source media="(max-width:767px)" srcset="assets/img/banner-m-{k+1}.jpg"><img src="assets/img/banner-{k+1}.jpg" alt="{alt}"{"" if k == 0 else " loading=lazy"}></picture></a></div>'
+        for k, (t, alt) in enumerate(SLIDES))
+    tick = SLIDES[0][0]
+    def hot_pop(n, subs):
+        return f'<div class="hot-pop"><div class="t"><b>{n}</b><button type="button" data-hot-x aria-label="關閉">{ic("close")}</button></div>{"".join(f"<a href={chr(34)}{CAR}{chr(34)}>{x}{ic(chr(97)+chr(114)+chr(114)+chr(111)+chr(119),chr(115)+chr(50)+chr(48))}</a>" for x in subs)}</div>'
     hot_small = []
-    sub500 = ["10.4/11 噸大貨車", "15.5/17 噸大貨車", "17 噸鋁合金鷗翼大貨車"]
-    for b, n, s, img in CARS:
+    feat = None
+    for b, n, s, img, big, subs in CARS:
         if n.startswith("300"):
+            feat = (b, n, s, img, subs)
             continue
-        if n.startswith("500"):
-            pop = "".join(f'<a href="{CAR}">{x}{ic("arrow","s20")}</a>' for x in sub500)
-            hot_small.append(f'<div class="hot-card" data-hot tabindex="0" role="button" aria-label="{n}"><img src="assets/img/{img}" alt="" loading="lazy"><span class="b">{b}</span><b>{n}</b><div class="hot-pop"><div class="t">{n}<button data-hot-x aria-label="關閉">{ic("close")}</button></div>{pop}</div></div>')
-        else:
-            hot_small.append(f'<a class="hot-card" href="{CAR}"><img src="assets/img/{img}" alt="" loading="lazy"><span class="b">{b}</span><b>{n}</b></a>')
+        hot_small.append(f'<div class="hot-card" data-hot tabindex="0" role="button" aria-label="{n}，展開車型選項"><div class="img"><img src="assets/img/{img}" alt="" loading="lazy"></div><div class="tx"><span class="b">{b}</span><b>{n}</b></div>{hot_pop(n, subs)}</div>')
     stories = "".join(
         f'<a class="story" href="{CAR}#stories"><img src="assets/img/{i}" alt="" loading="lazy" style="object-position:{pos}"><span class="tag">{tg}</span><div class="tx"><h3>{t}</h3><p>{q}</p></div></a>'
         for i, tg, t, q, pos in STORIES * 2)
     body = f"""
 <section class="wrap hero" aria-label="主視覺">
-<div class="hero-stage" id="hero">
-<div class="hero-slide on"><a href="{CAR}"><picture><source media="(max-width:767px)" srcset="assets/img/banner-m-1.jpg"><img src="assets/img/banner-1.jpg" alt="HINO 300系 5–8噸 拼勁全開 載運新動能"></picture></a></div>
-<div class="hero-slide"><a href="{CAR}"><picture><source media="(max-width:767px)" srcset="assets/img/banner-m-2.jpg"><img src="assets/img/banner-2.jpg" alt="HINO 購車優惠" loading="lazy"></picture></a></div>
-</div>
+<div class="hero-stage" id="hero">{slides}</div>
 <div class="hero-bar" id="heroBar">
-<div class="ticker"><div class="ticker-track"><span>{tick}</span><span>{tick}</span><span>{tick}</span><span>{tick}</span></div></div>
+<div class="ticker"><div class="ticker-track" id="tickTrack"><span>{tick}</span><span>{tick}</span><span>{tick}</span><span>{tick}</span></div></div>
 <button class="icon-btn" data-hero="-1" aria-label="上一張">{ic("left")}</button>
 <button class="icon-btn" data-hero="1" aria-label="下一張">{ic("right")}</button>
-<div class="hero-count"><div><b data-hero-i>01</b> <span>/ 0<span data-hero-n>2</span></span></div></div>
+<div class="hero-count"><div><b data-hero-i>01</b> <span>/ 0<span data-hero-n>5</span></span></div></div>
 <button class="icon-btn" data-hero-pause aria-label="暫停輪播">{ic("pause")}</button>
 </div>
 </section>
 
-<section class="wrap brand">
-<div class="brand-wm" aria-hidden="true"><span>H</span><span>I</span><span>N</span><span>O</span></div>
+<section class="brand" id="brand">
+<div class="brand-bg" aria-hidden="true"><img src="assets/img/brand-logo.svg" alt="" data-parallax></div>
+<div class="wrap">
 <div class="brand-hd rv"><p>HINO TRUST 驅動未來</p><h2>業界領導品牌<br class="m">您的最佳事業夥伴</h2></div>
 <div class="stats">
-<div class="stat rv">{ic("truck")}<h3>延長保固<small>里程 20 萬公里內</small></h3><p class="num">最長<b>6</b>年</p></div>
-<div class="stat rv">{ic("trophy")}<h3>銷售冠軍<small>3.49 噸以上</small></h3><p class="num"><b>5</b>連霸</p></div>
-<div class="stat rv">{ic("sprout")}<h3>在台深耕<small>和泰汽車代理</small></h3><p class="num"><b>70</b>年以上</p></div>
-</div>
+<div class="stat rv">{ic("truck")}<h3>延長保固<small>里程 20 萬公里內</small></h3><p class="num">最長<b data-count="6">6</b>年</p></div>
+<div class="stat rv">{ic("trophy")}<h3>銷售冠軍<small>3.49 噸以上</small></h3><p class="num"><b data-count="5">5</b>連霸</p></div>
+<div class="stat rv">{ic("sprout")}<h3>在台深耕<small>和泰汽車代理</small></h3><p class="num"><b data-count="70">70</b>年以上</p></div>
+</div></div>
 </section>
 
 <section class="wrap sec" aria-labelledby="hot-t">
 <div class="hot">
-<a class="hot-main rv" href="{CAR}"><h2 id="hot-t">熱門車款</h2><img src="assets/img/car-300.webp" alt="HINO 300系"><div class="info"><span class="b">日野</span><b>300系中小型貨車</b><span>5/6.5/7.4/7.5/8 噸・5 噸木床貨斗</span></div></a>
+<div class="hot-main rv" data-hot tabindex="0" role="button" aria-label="300系中小型貨車，展開車型選項"><h2 id="hot-t">熱門車款</h2><div class="img"><img src="assets/img/car-300.webp" alt="HINO 300系"></div><div class="info"><span class="b">日野</span><b>300系中小型貨車</b><span>5/6.5/7.4/7.5/8 噸・5 噸木床貨斗</span></div>{hot_pop(feat[1], feat[4])}</div>
 {"".join(hot_small)}
 </div>
 </section>
@@ -184,7 +191,7 @@ def car():
 <div class="safety on-dark">
 {sec_head("SAFETY", "安全配備", "安全", "標配 PCS 預警式防護系統、LDWS 車道偏離警示系統、VSC 車輛穩定控制系統。")}
 <div class="grid3">
-{tile("safe-pcs.jpg", "PCS 預警式防護系統", "由車前方毫米波雷達及智能攝影機偵測前方行人或車輛，若系統判斷有碰撞危險時，將發出警報及支援煞車控制，降低碰撞車禍的傷害。", open_=True)}
+{tile("safe-pcs.jpg", "PCS 預警式防護系統", "由車前方毫米波雷達及智能攝影機偵測前方行人或車輛，若系統判斷有碰撞危險時，將發出警報及支援煞車控制，降低碰撞車禍的傷害。")}
 {tile("safe-ldws.jpg", "LDWS 車道偏離警示系統", "透過車輛前方所搭載的攝影機隨時偵測前方車道線，當行駛中車輛偏離車道線時，系統將會發出警示音以提醒駕駛者注意。")}
 {tile("safe-view.jpg", "視野輔助系統", "搭載螢幕內嵌視野輔助系統，以 4 分割畫面同時顯示前、後、左、右鏡頭畫面並儲存紀錄。")}
 </div>

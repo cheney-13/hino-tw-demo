@@ -9,13 +9,24 @@
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   /* mega menu (hover + keyboard) */
+  const syncHdr = () => hdr.classList.toggle('menu-open', !!$('.has-mega.open'));
   $$('.has-mega').forEach(li => {
     let t;
-    li.addEventListener('mouseenter', () => { clearTimeout(t); li.classList.add('open'); });
-    li.addEventListener('mouseleave', () => { t = setTimeout(() => li.classList.remove('open'), 120); });
-    li.addEventListener('focusin', () => li.classList.add('open'));
-    li.addEventListener('focusout', e => { if (!li.contains(e.relatedTarget)) li.classList.remove('open'); });
+    const open = () => { clearTimeout(t); $$('.has-mega.open').forEach(x => x !== li && x.classList.remove('open')); li.classList.add('open'); syncHdr(); };
+    const shut = () => { li.classList.remove('open'); syncHdr(); };
+    li.addEventListener('mouseenter', open);
+    li.addEventListener('mouseleave', () => { t = setTimeout(shut, 120); });
+    li.addEventListener('focusin', open);
+    li.addEventListener('focusout', e => { if (!li.contains(e.relatedTarget)) shut(); });
   });
+  /* car mega: hovering a series swaps the left visual */
+  const big = $('[data-mm-big]'), mimg = $('[data-mm-img]');
+  $$('.mm-grp').forEach(g => g.addEventListener('mouseenter', () => {
+    $$('.mm-grp').forEach(x => x.classList.toggle('on', x === g));
+    big.textContent = g.dataset.big;
+    mimg.style.opacity = 0;
+    setTimeout(() => { mimg.src = 'assets/img/' + g.dataset.img; mimg.style.opacity = 1; }, 120);
+  }));
 
   /* mobile menu */
   const mnav = $('#mnav');
@@ -54,7 +65,7 @@
   }
   document.addEventListener('click', e => {
     const o = e.target.closest('[data-modal]');
-    if (o) { e.preventDefault(); openModal(o.dataset.modal); return; }
+    if (o) { e.preventDefault(); if (mnav.classList.contains('open')) closeMenu(); openModal(o.dataset.modal); return; }
     const c = e.target.closest('[data-close]');
     if (c) {
       const m = c.closest('.modal'); close(m);
@@ -70,10 +81,11 @@
     g.dispatchEvent(new Event('change', { bubbles: true }));
   }));
 
-  /* expandable tiles: expand upward, card height fixed */
+  /* expandable tiles: whole card (incl. image) toggles; expand upward, card height fixed */
   $$('[data-tile]').forEach(t => {
     const h = $('.tile-h', t);
-    h.addEventListener('click', () => {
+    t.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
       const on = t.classList.toggle('open');
       h.setAttribute('aria-expanded', on);
       const u = h.querySelector('use'); if (u) u.setAttribute('href', on ? '#i-minus' : '#i-plus');
