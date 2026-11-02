@@ -33,11 +33,9 @@
 
   /* side nav */
   const sn = $('#sidenav');
-  if (innerWidth < 1600) { sn.classList.add('closed'); $('[data-sidenav] use').setAttribute('href', '#i-plus'); }
-  $('[data-sidenav]').addEventListener('click', () => {
-    sn.classList.toggle('closed');
-    $('[data-sidenav] use').setAttribute('href', sn.classList.contains('closed') ? '#i-plus' : '#i-close');
-  });
+  const setSn = closed => { sn.classList.toggle('closed', closed); $('.sn-fab', sn).setAttribute('aria-expanded', !closed); };
+  if (innerWidth < 1600) setSn(true);
+  $$('[data-sidenav]', sn).forEach(b => b.addEventListener('click', () => setSn(!sn.classList.contains('closed'))));
 
   /* modals */
   let lastFocus;

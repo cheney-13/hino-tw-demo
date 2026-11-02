@@ -33,6 +33,7 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 0 1-10 0z"/><path d="M7 5H3v2a4 4 0 0 0 4 4M17 5h4v2a4 4 0 0 1-4 4M12 14v4M7 21h10M9 18h6"/></symbol>
 <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 22V10M12 13c0-5 3-8 9-8 0 5-3 8-9 8zM12 15c0-4-3-7-8-7 0 4 3 7 8 7zM3 22l4-6M21 22l-4-6"/></symbol>
 <symbol id="i-bus" viewBox="0 0 24 24"><path d="M4 3h16v15H4z"/><path d="M4 9h16M2 7v4M22 7v4M7 18v3M17 18v3M7 14h2M15 14h2M9 6h6"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></symbol>
 <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></symbol>
 </svg>"""
 
@@ -111,12 +112,15 @@ def footer():
 <div class="demo-flag">DEMO・示意網頁</div>"""
 
 def sidenav():
-    return f"""<aside class="sidenav" id="sidenav" data-auto aria-label="快捷功能">
+    return f"""<aside class="sidenav" id="sidenav" aria-label="快速服務">
+<div class="sn-panel" id="snPanel">
 <a class="sn-act" href="#">{ic("pin","s28")}尋找據點</a>
 <button class="sn-act" data-modal="m-contact">{ic("phone","s28")}專人聯繫</button>
 <button class="sn-act" data-modal="m-drive">{ic("cal","s28")}預約試乘</button>
 <button class="sn-act" data-modal="m-calc">{ic("calc","s28")}購車試算</button>
-<button class="toggle" data-sidenav>{ic("close","s28")}<span class="lbl-close">收合</span><span class="lbl-open">快捷</span></button>
+<button class="sn-close" data-sidenav aria-controls="snPanel">{ic("close","s28")}收合</button>
+</div>
+<div class="sn-fab-wrap"><button class="sn-fab" data-sidenav aria-controls="snPanel" aria-expanded="false">{ic("grid","s28")}快速服務</button></div>
 </aside>"""
 
 def modal(mid, title, body, foot="", cls=""):

@@ -36,6 +36,7 @@
 <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 0 1-10 0z"/><path d="M7 5H3v2a4 4 0 0 0 4 4M17 5h4v2a4 4 0 0 1-4 4M12 14v4M7 21h10M9 18h6"/></symbol>
 <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 22V10M12 13c0-5 3-8 9-8 0 5-3 8-9 8zM12 15c0-4-3-7-8-7 0 4 3 7 8 7zM3 22l4-6M21 22l-4-6"/></symbol>
 <symbol id="i-bus" viewBox="0 0 24 24"><path d="M4 3h16v15H4z"/><path d="M4 9h16M2 7v4M22 7v4M7 18v3M17 18v3M7 14h2M15 14h2M9 6h6"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></symbol>
 <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></symbol>
 </svg>
 <header class="hdr" id="top">
@@ -118,12 +119,15 @@
 <div class="ftr-bot"><div class="wrap"><div class="l"><span>總代理：和泰汽車股份有限公司</span><div class="links" style="display:flex;gap:20px"><a href="#">契約書下載</a><a href="#">隱私權聲明</a><a href="tel:0800522567">客服專線 0800-522-567</a></div></div><div class="r">Copyright © Hotai Motor Co., Ltd. All rights reserved.</div></div></div>
 </footer>
 <div class="demo-flag">DEMO・示意網頁</div>
-<aside class="sidenav" id="sidenav" data-auto aria-label="快捷功能">
+<aside class="sidenav" id="sidenav" aria-label="快速服務">
+<div class="sn-panel" id="snPanel">
 <a class="sn-act" href="#"><svg class="ico s28" aria-hidden="true"><use href="#i-pin"/></svg>尋找據點</a>
 <button class="sn-act" data-modal="m-contact"><svg class="ico s28" aria-hidden="true"><use href="#i-phone"/></svg>專人聯繫</button>
 <button class="sn-act" data-modal="m-drive"><svg class="ico s28" aria-hidden="true"><use href="#i-cal"/></svg>預約試乘</button>
 <button class="sn-act" data-modal="m-calc"><svg class="ico s28" aria-hidden="true"><use href="#i-calc"/></svg>購車試算</button>
-<button class="toggle" data-sidenav><svg class="ico s28" aria-hidden="true"><use href="#i-close"/></svg><span class="lbl-close">收合</span><span class="lbl-open">快捷</span></button>
+<button class="sn-close" data-sidenav aria-controls="snPanel"><svg class="ico s28" aria-hidden="true"><use href="#i-close"/></svg>收合</button>
+</div>
+<div class="sn-fab-wrap"><button class="sn-fab" data-sidenav aria-controls="snPanel" aria-expanded="false"><svg class="ico s28" aria-hidden="true"><use href="#i-grid"/></svg>快速服務</button></div>
 </aside>
 <div class="modal" id="m-contact" role="dialog" aria-modal="true" aria-labelledby="m-contact-t" aria-hidden="true">
 <div class="modal-scrim" data-close></div>

@@ -25,7 +25,7 @@
 .num span{font-size:16px}
 
 /* tabs */
-.tabs{position:sticky;top:88px;z-index:40;margin:16px 10px 0;background:var(--black);border-radius:var(--r);box-shadow:0 8px 24px rgba(0,0,0,.18);display:flex;justify-content:center;gap:4px;padding:6px;overflow-x:auto;scrollbar-width:none}
+.tabs{position:sticky;top:88px;z-index:40;width:fit-content;max-width:calc(100% - var(--gut)*2);margin:16px auto 0;background:var(--black);border-radius:var(--r);box-shadow:0 8px 24px rgba(0,0,0,.18);display:flex;gap:4px;padding:6px 20px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tabs a{flex:none;height:42px;padding:0 16px;border-radius:var(--r-s);color:#fff;display:flex;align-items:center;font-size:16px;transition:background .2s}
 .tabs a:hover{background:rgba(255,255,255,.1)}
@@ -259,7 +259,7 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .feat b{font-size:19px}
   .num{min-height:100px;align-items:flex-start;padding:0 16px}
   .num b{font-size:32px}
-  .tabs{top:68px;margin:12px 4px 0;justify-content:flex-start}
+  .tabs{top:68px;margin:12px auto 0}
   .anchor{scroll-margin-top:140px}
   .bento-ctl{grid-template-columns:1fr 1fr}
   .bento-ctl .t1,.bento-ctl .t2{grid-column:1/-1;height:390px}
