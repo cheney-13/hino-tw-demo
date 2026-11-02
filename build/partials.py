@@ -1,5 +1,5 @@
 import time
-VER = time.strftime("%Y%m%d%H%M")
+VER = time.strftime("%Y%m%d%H%M%S")
 CAR = "300.html"
 LOGO = '<span class="logo"><img src="assets/img/hino-logo.svg" alt="HINO" width="195" height="32"><img class="tag" src="assets/img/logo-tagline.png" alt="HINO TRUST 驅動未來" width="219" height="32"></span>'
 
@@ -244,7 +244,7 @@ def page(title, desc, css, body, js):
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css?v={VER}">{links}
 </head>
-<body>
+<body class="pg-{js[0].split('.')[0] if js else 'x'}">
 {SPRITE}
 {header()}
 <main>

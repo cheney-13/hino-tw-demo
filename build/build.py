@@ -271,7 +271,7 @@ def car():
 
 <section class="wrap sec">
 {sec_head("NEWS", "相關資訊")}
-<div class="news4">{news_cards()}</div>
+<div class="news4">{news_cards(True)}</div>
 </section>
 
 <section class="wrap sec">
@@ -294,7 +294,7 @@ def car():
 <button><b>視野輔助系統</b><span>搭載螢幕內嵌視野輔助系統，以 4 分割畫面同時顯示前、後、左、右鏡頭畫面並儲存紀錄。</span></button>
 </div></div>"""
     cmp_ = f"""<div class="cmp-bar"><div><span class="pill" id="cmpPill"></span><button class="edit" data-close data-goto="#select">修改選擇</button></div>
-<div class="seg" id="cmpSeg"><button class="on" data-diff="1">只看差異</button><button data-diff="0">全部展開</button></div></div>
+<div class="seg" id="cmpSeg"><button data-diff="1">只看差異</button><button class="on" data-diff="0">全部展開</button></div></div>
 <div class="modal-bd" id="cmpBody"></div>"""
     full = f'<div class="modal-bd"><div class="tbl-wrap">{spec_table()}</div></div>'
     extra = (modal("m-pcs", "標配 PCS＋LDWS 主動安全", pcs, cls="w960")
@@ -303,7 +303,8 @@ def car():
     import json
     data = "<script>window.MODELS=" + json.dumps(MODELS, ensure_ascii=False) + ";window.GROUPS=" + json.dumps(GROUPS, ensure_ascii=False) + ";</script>"
     html = page("HINO 300 系 中小型貨車｜HINO 台灣（DEMO）", "HINO 300 系 中小型貨車 5–8 噸，標準座艙/寬座艙、手排/自排。", ["home.css", "car.css"], body, ["car.js"])
-    return html.replace("<script src=\"assets/js/main.js\"", extra + data + "<script src=\"assets/js/main.js\"", 1)
+    assert '<script src="assets/js/main.js' in html
+    return html.replace('<script src="assets/js/main.js', extra + data + '<script src="assets/js/main.js', 1)
 
 open(os.path.join(ROOT, "index.html"), "w").write(home())
 open(os.path.join(ROOT, "300.html"), "w").write(car())

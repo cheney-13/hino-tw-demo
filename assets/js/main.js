@@ -159,6 +159,17 @@
       $('[data-step="form"]', flow).hidden = true; $('[data-step="done"]', flow).hidden = false;
       submit.hidden = true; finish.hidden = false; flow.scrollTop = 0;
     });
+    /* demo: contact form opens pre-filled & verified so the submit flow can be shown right away */
+    if (flow.dataset.flow === 'contact') m.addEventListener('modal:open', () => {
+      if (!$('[data-step="done"]', flow).hidden || verified) return;
+      name.value = '王大明'; phone.value = '0912-345-678';
+      verified = true; send.hidden = true; ok.hidden = false; codeFld.hidden = true; phone.disabled = true;
+      pHint.textContent = '此號碼已完成驗證'; pHint.classList.add('ok');
+      city.value = '台北市'; city.dispatchEvent(new Event('change'));
+      branch.value = branch.options[1].value;
+      const t = $('[data-chips="when"] .chip', flow); if (t) t.click();
+      agree.checked = true; check();
+    });
     m.addEventListener('modal:close', () => {
       if ($('[data-step="done"]', flow).hidden) return;
       // reset after finishing

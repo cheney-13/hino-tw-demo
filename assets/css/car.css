@@ -75,7 +75,8 @@ body.hdr-hidden .tabs{top:8px}
 .feature>img{position:absolute;left:50%;top:24px;transform:translateX(-50%);height:380px;width:auto;max-width:90%;object-fit:contain}
 .feature .tile-b{padding:0 20px}
 .feature .tile-h{min-height:70px;font-size:20px;font-weight:700}
-.feature.open>img{opacity:.35;transition:opacity .3s}
+.feature.open>img{opacity:.35;transition:opacity .3s,transform .5s var(--ease)}
+[data-tile].feature:hover>img{transform:translateX(-50%) scale(1.03)}
 
 .bento-int{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .carousel{background:#fff;border-radius:var(--r);overflow:hidden;height:370px;display:flex;flex-direction:column}
@@ -319,3 +320,13 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 }
 .sel-row em{font-style:normal}
 .bento-int .tile.light{background:#dedede}.bento-int .tile.light>img{mix-blend-mode:multiply;background:none}
+
+/* car page desktop: Figma bento/SectionHeader (EN 100px on top, eyebrow overlaps its lower edge, title below) */
+@media (min-width:768px){
+  .pg-car .sec-head,.pg-car .sec-head.row{padding:56px 0 0;margin-bottom:24px}
+  .pg-car .sec-head .wm,.pg-car .sec-head.row .wm{top:-56px;bottom:auto;left:0;font-size:100px;line-height:71px;letter-spacing:-2px}
+  .pg-car .sec-head .eyebrow{margin-bottom:0}
+  .pg-car .sec-head h2{font-size:26px;line-height:38px;margin-top:8px}
+  .pg-car .sec-head h2 small{font-size:17px;line-height:30px}
+  .pg-car .sec-head.row>div{padding-bottom:0}
+}

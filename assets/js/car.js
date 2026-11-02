@@ -73,7 +73,7 @@
 
   /* ---------- compare modal ---------- */
   const cmp = $('#m-cmp');
-  let onlyDiff = true;
+  let onlyDiff = false; // demo: show every spec row by default
   const fields = G.map(([g, items]) => [g, items.map(([k, u, key]) => [k + (u ? `（${u}）` : ''), key])]);
   function renderCmp() {
     const ms = picked.map(id => M.find(m => m.id === id)); const n = ms.length;
