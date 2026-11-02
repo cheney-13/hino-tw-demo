@@ -131,10 +131,11 @@ GROUPS = [
     ("底盤", [("變速箱型式", "", "gear")]),
 ]
 
-def tile(img, title, desc, cls="light", extra="", open_=False, pos=""):
+def tile(img, title, desc, cls="light", extra="", open_=False, pos="", short=""):
     st = f' style="object-position:{pos}"' if pos else ""
     btn = ic("minus" if open_ else "plus") if desc else ""
-    d = f'<div class="tile-d"><div><p>{desc}</p></div></div>' if desc else ""
+    body = f'<span class="dl">{desc}</span><span class="ds">{short}</span>' if short else desc
+    d = f'<div class="tile-d"><div><p>{body}</p></div></div>' if desc else ""
     oc = " open" if open_ else ""
     attr = " data-tile" if desc else ""
     return f'<div class="tile {cls}{oc} {extra}"{attr}><img src="assets/img/{img}" alt="" loading="lazy"{st}><div class="tile-b"><button class="tile-h" {"aria-expanded=" + chr(34) + ("true" if open_ else "false") + chr(34) if desc else "tabindex=-1"}>{title}{btn}</button>{d}</div></div>'
@@ -210,17 +211,17 @@ def car():
 {sec_head("SAFETY", "安全配備", "安全", "標配 PCS 預警式防護系統、LDWS 車道偏離警示系統、VSC 車輛穩定控制系統。")}
 <div class="grid3">
 {tile("safe-pcs.jpg", "PCS 預警式防護系統", "由車前方毫米波雷達及智能攝影機偵測前方行人或車輛，若系統判斷有碰撞危險時，將發出警報及支援煞車控制，降低碰撞車禍的傷害。")}
-{tile("safe-ldws.jpg", "LDWS 車道偏離警示系統", "透過車輛前方所搭載的攝影機隨時偵測前方車道線，當行駛中車輛偏離車道線時，系統將會發出警示音以提醒駕駛者注意。")}
-{tile("safe-view.jpg", "視野輔助系統", "搭載螢幕內嵌視野輔助系統，以 4 分割畫面同時顯示前、後、左、右鏡頭畫面並儲存紀錄。")}
+{tile("safe-ldws.jpg", "LDWS 車道偏離警示系統", "透過車輛前方所搭載的攝影機隨時偵測前方車道線，當行駛中車輛偏離車道線時，系統將會發出警示音以提醒駕駛者注意。", short="偵測車道線，車輛偏離時發出警示音提醒駕駛。")}
+{tile("safe-view.jpg", "視野輔助系統", "搭載螢幕內嵌視野輔助系統，以 4 分割畫面同時顯示前、後、左、右鏡頭畫面並儲存紀錄。", short="4 分割畫面顯示前後左右鏡頭並儲存紀錄。")}
 </div>
 <h3>煞車與車身穩定控制</h3>
 <div class="grid3 sm">
-{tile("safe-abs.jpg", "ABS 防鎖定煞車系統", "主動防止車輪在緊急煞車時鎖死，避免車輛失控。", pos="50% 0")}
-{tile("safe-trc.jpg", "TRC 循跡防滑控制系統", "有效抑制車輛於濕滑路面起步或加速時，可能發生的輪胎打滑。", pos="50% 0")}
-{tile("safe-vsc.jpg", "VSC 車輛穩定控制系統", "車輛偏離路面、轉向過度或不足時，調整動力輸出，主動掌握行車安全。", pos="50% 0")}
-{tile("safe-ebd.jpg", "EBD 電子煞車力道分配系統", "因應不同行駛狀況，將前後煞車制動力做適當分配，保障駕駛者、乘客與貨物的最大安全。", pos="50% 0")}
-{tile("safe-bas.jpg", "BAS 煞車輔助系統", "根據踩煞車踏板力道及速度主動判斷情況緊急與否，提供最強大的制動力。", pos="50% 0")}
-{tile("safe-bos.jpg", "BOS 煞車優先系統", "油門作動時只要踩下煞車踏板，行車電腦會啟動煞車優先系統，自動降低動力輸出，使車輛減速。", pos="50% 0")}
+{tile("safe-abs.jpg", "ABS 防鎖定煞車系統", "主動防止車輪在緊急煞車時鎖死，避免車輛失控。", pos="50% 0", short="緊急煞車時防止車輪鎖死，避免失控。")}
+{tile("safe-trc.jpg", "TRC 循跡防滑控制系統", "有效抑制車輛於濕滑路面起步或加速時，可能發生的輪胎打滑。", pos="50% 0", short="抑制濕滑路面起步或加速時的輪胎打滑。")}
+{tile("safe-vsc.jpg", "VSC 車輛穩定控制系統", "車輛偏離路面、轉向過度或不足時，調整動力輸出，主動掌握行車安全。", pos="50% 0", short="轉向過度或不足時調整動力，維持行車穩定。")}
+{tile("safe-ebd.jpg", "EBD 電子煞車力道分配系統", "因應不同行駛狀況，將前後煞車制動力做適當分配，保障駕駛者、乘客與貨物的最大安全。", pos="50% 0", short="依行駛狀況分配前後煞車力，提升安全。")}
+{tile("safe-bas.jpg", "BAS 煞車輔助系統", "根據踩煞車踏板力道及速度主動判斷情況緊急與否，提供最強大的制動力。", pos="50% 0", short="判斷緊急煞車時，提供最強制動力。")}
+{tile("safe-bos.jpg", "BOS 煞車優先系統", "油門作動時只要踩下煞車踏板，行車電腦會啟動煞車優先系統，自動降低動力輸出，使車輛減速。", pos="50% 0", short="油門與煞車同時踩下時，優先降低動力減速。")}
 </div></div></section>
 
 <div class="wrap sec"><div class="pair">

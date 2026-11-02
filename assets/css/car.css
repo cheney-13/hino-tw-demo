@@ -394,3 +394,14 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .full-act{display:flex;gap:10px;flex:none;padding:12px 20px calc(24px + env(safe-area-inset-bottom));border-top:1px solid var(--g2);background:#fff}
   .full-act .btn{flex:1;height:56px;justify-content:center;padding:0 8px}
 }
+
+/* tile descriptions: full on desktop, short on mobile */
+.tile-d .ds{display:none}
+@media (max-width:767px){
+  .tile-d .ds{display:inline}.tile-d .dl{display:none}
+  .grid3 .tile .tile-h{font-size:15px;line-height:21px}
+  .grid3 .tile .tile-d>div{font-size:14px;line-height:20px}
+  .grid3 .tile .tile-d p{padding-bottom:12px}
+  .grid3 .tile:first-child.light>img{height:calc(100% - 56px)}
+}
+@media (max-width:767px){.btn.spec-m{display:flex;align-items:center}}
