@@ -294,4 +294,9 @@ select.inp{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns=
   .bnav>*{flex:1;height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:8px;font-size:14px;line-height:20px;font-weight:700;color:var(--black);transition:background .2s}
   .bnav>*:active{background:var(--g1)}
   .bnav .ico{color:var(--red)}
+}@media (max-width:767px){
+  /* Figma mobile: header 73px, 12px to content, 48px between sections */
+  .sec{margin-top:48px}
+  .sec-head,.sec-head.row{padding:27px 0 8px;margin-bottom:12px}
+  .sec-head.row>div{padding-bottom:0}
 }
