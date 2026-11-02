@@ -76,7 +76,7 @@
 .news-more-m{display:none}
 
 /* ---------- stories ---------- */
-.stories{overflow:hidden;margin:0 calc(var(--gut)*-1);padding:0 var(--gut)}
+.stories{overflow:hidden;border-radius:var(--r);transform:translateZ(0)}
 .stories-track{display:flex;width:max-content;animation:storyLoop 60s linear infinite}
 .stories:hover .stories-track{animation-play-state:paused}
 .stories-dup{display:flex}
