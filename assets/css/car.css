@@ -291,7 +291,6 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .anchor{scroll-margin-top:140px}
   .bento-ctl{grid-template-columns:1fr 1fr}
   .bento-ctl .t1,.bento-ctl .t2{grid-column:1/-1;height:390px}
-  .bento-ctl .t1{height:270px}
   .bento-ctl .t3,.bento-ctl .t4{height:200px}
   .tile.light>img{height:120px}
   .tile.light .tile-h{font-size:16px;align-items:flex-start;padding:12px 0}
