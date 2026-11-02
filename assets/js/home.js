@@ -34,8 +34,8 @@
     if (r.bottom < 0 || r.top > innerHeight) return;
     // logo sits at the panel top until the panel reaches the upper part of the screen, then drifts down (rises slower than the page)
     // 0 when the panel enters from the bottom → max when it leaves at the top (logo travels far slower than the page)
-    const k = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height)));
-    const y = k * (innerWidth < 768 ? 60 : 150);
+    // at page top the logo sits exactly where Figma places it; it then drifts down at 25% of scroll speed
+    const y = Math.min(innerWidth < 768 ? 60 : 150, Math.max(0, scrollY * 0.25));
     plx.style.transform = `translate3d(0,${y.toFixed(1)}px,0)`;
   };
   if (!reduce) { addEventListener('scroll', onScroll, { passive: true }); onScroll(); }
