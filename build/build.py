@@ -15,9 +15,10 @@ STORIES = [
     ("story-3.jpg", "搬家業 · 8 噸", "寬座艙載人又載貨，一次到位", "「三位師傅坐得下，貨台夠長，大型家具一趟就能搬完。」", "38% 50%"),
 ]
 
-def news_cards():
+def news_cards(noop=False):
+    na = " data-noop" if noop else ""
     return "".join(
-        f'<a class="news-card rv" href="#"><div class="img"><img src="assets/img/{i}" alt="" loading="lazy"></div><div class="tx"><time>{d}</time><h3>{t}</h3></div></a>'
+        f'<a class="news-card rv" href="#"{na}><div class="img"><img src="assets/img/{i}" alt="" loading="lazy"></div><div class="tx"><time>{d}</time><h3>{t}</h3></div></a>'
         for i, d, t in NEWS)
 
 def sec_head(wm, title, eyebrow="", sub="", right=""):
@@ -38,7 +39,7 @@ def home():
         ("6 年/20 萬公里延長保固服務商品 | 2026 年 12 月前加購享優惠價 15,000 元", "延長保固服務商品"),
     ]
     slides = "".join(
-        f'<div class="hero-slide{" on" if k == 0 else ""}" data-tick="{t}"><a href="{CAR}"><picture><source media="(max-width:767px)" srcset="assets/img/hero-m-{k+1}.jpg"><img src="assets/img/hero-{k+1}.jpg" alt="{alt}"{"" if k == 0 else " loading=lazy"}></picture></a></div>'
+        f'<div class="hero-slide{" on" if k == 0 else ""}" data-tick="{t}"><a href="#" data-noop><picture><source media="(max-width:767px)" srcset="assets/img/hero-m-{k+1}.jpg"><img src="assets/img/hero-{k+1}.jpg" alt="{alt}"{"" if k == 0 else " loading=lazy"}></picture></a></div>'
         for k, (t, alt) in enumerate(SLIDES))
     tick = SLIDES[0][0]
     def hot_pop(n, subs):
@@ -51,7 +52,7 @@ def home():
             continue
         hot_small.append(f'<div class="hot-card" data-hot tabindex="0" role="button" aria-label="{n}，展開車型選項"><div class="img"><img src="assets/img/{img}" alt="" loading="lazy"></div><div class="tx"><span class="b">{b}</span><b>{n}</b></div>{hot_pop(n, subs)}</div>')
     stories = "".join(
-        f'<a class="story" href="{CAR}#stories"><img src="assets/img/{i}" alt="" loading="lazy" style="object-position:{pos}"><span class="tag">{tg}</span><div class="tx"><h3>{t}</h3><p>{q}</p></div></a>'
+        f'<a class="story" href="#" data-noop><img src="assets/img/{i}" alt="" loading="lazy" style="object-position:{pos}"><span class="tag">{tg}</span><div class="tx"><h3>{t}</h3><p>{q}</p></div></a>'
         for i, tg, t, q, pos in STORIES * 3)
     body = f"""
 <section class="wrap hero" aria-label="主視覺">
@@ -90,23 +91,23 @@ def home():
 <div class="hd-opts" id="hdOpts"></div></div></div>
 
 <section class="wrap sec">
-{sec_head("NEWS", "最新動態", right=f'<a class="btn btn-red news-head-btn" href="#">看更多消息{ic("arrow")}</a>')}
-<div class="news">{news_cards()}</div>
+{sec_head("NEWS", "最新動態", right=f'<a class="btn btn-red news-head-btn" href="#" data-noop>看更多消息{ic("arrow")}</a>')}
+<div class="news">{news_cards(True)}</div>
 <div class="pager"><button class="icon-btn" aria-label="上一頁">{ic("left")}</button><button class="icon-btn" aria-label="下一頁">{ic("right")}</button><div class="cnt"><div><b>01</b> <span>/ 05</span></div></div></div>
-<a class="btn btn-dark btn-block news-more-m" href="#">看更多消息{ic("arrow")}</a>
+<a class="btn btn-dark btn-block news-more-m" href="#" data-noop>看更多消息{ic("arrow")}</a>
 </section>
 
 <section class="wrap sec">
-{sec_head("STORIES", "車主故事", right=f'<a class="btn btn-red news-head-btn" href="{CAR}#stories">看更多故事{ic("arrow")}</a>')}
+{sec_head("STORIES", "車主故事", right=f'<a class="btn btn-red news-head-btn" href="#" data-noop>看更多故事{ic("arrow")}</a>')}
 <div class="stories" id="stories"><div class="stories-track">{stories}<div class="stories-dup" aria-hidden="true">{stories}</div></div></div>
-<a class="btn btn-dark btn-block news-more-m" href="{CAR}#stories">看更多故事{ic("arrow")}</a>
+<a class="btn btn-dark btn-block news-more-m" href="#" data-noop>看更多故事{ic("arrow")}</a>
 </section>
 
 <section class="wrap sec">
 <div class="local rv">
 <div>{sec_head("LOCAL", "在地行動，和台灣一起向前行") if False else ""}<h2>在地行動，和台灣一起向前行</h2><p>秉持 HINO TRUST 精神，從優良駕駛表揚、車主照護到學子獎助，走進全台各地，與台灣一起守護每一段安全回家的路。</p></div>
-<a class="act" href="#"><img src="assets/img/action-1.jpg" alt="" loading="lazy"><b>優良駕駛招募計畫</b></a>
-<a class="act" href="#"><img src="assets/img/action-2.jpg" alt="" loading="lazy" style="object-position:50% 30%"><b>在學生獎學金計畫</b></a>
+<a class="act" href="#" data-noop><img src="assets/img/action-1.jpg" alt="" loading="lazy"><b>優良駕駛招募計畫</b></a>
+<a class="act" href="#" data-noop><img src="assets/img/action-2.jpg" alt="" loading="lazy" style="object-position:50% 30%"><b>在學生獎學金計畫</b></a>
 </div>
 </section>
 """

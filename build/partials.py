@@ -6,8 +6,8 @@ LOGO = '<span class="logo"><img src="assets/img/hino-logo.svg" alt="HINO" width=
 def alinks(v):
     return "".join('<a href="#">%s</a>' % x for x in v)
 
-def lilinks(v):
-    return "".join('<li><a href="#">%s</a></li>' % x for x in v)
+def lilinks(v, noop=False):
+    return "".join('<li><a href="#"%s>%s</a></li>' % (" data-noop" if noop else "", x) for x in v)
 
 def ic(name, cls=""):
     return f'<svg class="ico {cls}" aria-hidden="true"><use href="#i-{name}"/></svg>'
@@ -98,7 +98,7 @@ def header():
 
 def footer():
     car_li = "".join(
-        f'<li class="ser"><button type="button" class="ser-h" data-ftr-car aria-expanded="false"><span>{n}</span>{ic("plus","s16")}</button><div class="ser-links">{"".join(f"<a href={chr(34)}{CAR}{chr(34)}>{x}</a>" for x in subs)}</div></li>'
+        f'<li class="ser"><button type="button" class="ser-h" data-ftr-car aria-expanded="false"><span>{n}</span>{ic("plus","s16")}</button><div class="ser-links">{"".join(f"<a href={chr(34)}#{chr(34)} data-noop>{x}</a>" for x in subs)}</div></li>'
         for b, n, d, img, big, subs in CARS)
     cols = {
         "據點查詢": ["北部地區", "中部地區", "南部地區", "東部地區"],
@@ -107,11 +107,11 @@ def footer():
         "最新消息": ["品牌新聞", "活動資訊", "中獎公告"],
         "品牌介紹": ["品牌故事", "T 商旅車", "iTRAQ"],
     }
-    other = "".join(f'<div class="col"><h3>{k}</h3><ul>{lilinks(v)}</ul></div>' for k, v in cols.items())
-    rel = lambda xs: "".join(f'<a href="#">{x}</a>' for x in xs)
+    other = "".join(f'<div class="col"><h3>{k}</h3><ul>{lilinks(v, True)}</ul></div>' for k, v in cols.items())
+    rel = lambda xs: "".join(f'<a href="#" data-noop>{x}</a>' for x in xs)
     rel1 = rel(["大車友善地圖", "TOYOTA商旅車", "iTRAQ"])
     rel2 = rel(["和泰汽車新聞室", "長源汽車", "HINO Global", "日野自動車（日本）", "和泰產險", "和運租車", "和安保險", "和泰 GO"])
-    cbtn = lambda href, icon, label, extra="": f'<a class="cbtn" href="{href}"{extra}>{ic(icon,"s28")}<span>{label}</span>{ic("arrow","s20 arr")}</a>'
+    cbtn = lambda href, icon, label, extra="": f'<a class="cbtn" href="#" data-noop>{ic(icon,"s28")}<span>{label}</span>{ic("arrow","s20 arr")}</a>'
     return f"""<footer class="ftr">
 <section class="ftr-cta"><div class="fw">
 <div class="t"><h2>CONTACT</h2><p>需要協助嗎？歡迎與我們聯繫</p></div>
@@ -120,7 +120,7 @@ def footer():
 <div class="ftr-map"><div class="fw">{LOGO}
 <div class="ftr-cols"><div class="col"><h3>車款介紹</h3><ul>{car_li}</ul></div>{other}</div></div></div>
 <div class="ftr-rel"><div class="fw"><dl><dt>相關服務</dt><dd>{rel1}</dd></dl><dl><dt>相關網站</dt><dd>{rel2}</dd></dl></div></div>
-<div class="ftr-bot"><div class="fw"><div class="l"><span class="corp">總代理：和泰汽車股份有限公司</span><span class="links"><a href="#">契約書下載</a><a href="#">隱私權聲明</a><a href="tel:0800522567">客服專線 0800-522-567</a></span></div><div class="r">Copyright © Hotai Motor Co., Ltd. All rights reserved.</div></div></div>
+<div class="ftr-bot"><div class="fw"><div class="l"><span class="corp">總代理：和泰汽車股份有限公司</span><span class="links"><a href="#" data-noop>契約書下載</a><a href="#" data-noop>隱私權聲明</a><a href="#" data-noop>客服專線 0800-522-567</a></span></div><div class="r">Copyright © Hotai Motor Co., Ltd. All rights reserved.</div></div></div>
 </footer>
 <nav class="bnav" aria-label="快速服務">
 <a href="#">{ic("pin")}<span>尋找據點</span></a>

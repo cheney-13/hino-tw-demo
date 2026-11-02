@@ -5,6 +5,9 @@
 
   /* header shadow */
   const hdr = $('.hdr');
+  /* inert links: keep hover/click feel, no navigation (demo scope) */
+  document.addEventListener('click', e => { if (e.target.closest('[data-noop]')) { e.preventDefault(); e.stopPropagation(); } }, true);
+
   /* header hides on scroll down, slides back in on scroll up */
   let lastY = scrollY;
   const onScroll = () => {
