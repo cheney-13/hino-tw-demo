@@ -350,3 +350,5 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .pg-car .pair .sec{margin-top:0}
   .pg-car .ftr-cta{margin-top:60px}
 }
+
+.st td.wide{text-align:left;line-height:1.7;padding:14px 16px}

@@ -146,8 +146,19 @@ def spec_table():
         rows += f'<tr class="grp" data-grp="{g}"><td colspan="{len(MODELS)+1}">{g}{ic("up","s20")}</td></tr>'
         for k, u, key in items:
             rows += f'<tr data-in="{g}"><td class="k">{k}<u>{u}</u></td>{"".join("<td>%s</td>" % m[key] for m in MODELS)}</tr>'
-    for g in ["電氣", "選擇配備", "造型/配備"]:
-        rows += f'<tr class="grp closed" data-grp="{g}"><td colspan="{len(MODELS)+1}">{g}{ic("up","s20")}</td></tr><tr class="hide" data-in="{g}"><td colspan="{len(MODELS)+1}" style="color:var(--g3)">詳細配備資料待客戶提供</td></tr>'
+    # 官網 hino.com.tw/car.aspx?23（6.5 噸）規格內容
+    safety = "PCS 預警式防護系統（AEBS 緊急煞車輔助系統）、LDWS 車道偏離警示系統、VSC 車輛穩定控制系統、原廠晶片防盜鑰匙（Immobilizer）、數位行車紀錄器"
+    extra = [
+        ("電氣", [("電瓶", "V/Ah", ["12 / 65 × 2"] * 6), ("發電機", "V/A", ["24 / 80"] * 6)]),
+        ("選擇配備", [("PTO 動力輸出", "", ["選擇配備"] * 6)]),
+        ("造型/配備", [("安全配備", "", [safety] * 6)]),
+    ]
+    n = len(MODELS)
+    for g, items in extra:
+        rows += f'<tr class="grp closed" data-grp="{g}"><td colspan="{n+1}">{g}{ic("up","s20")}</td></tr>'
+        for k, u, vals in items:
+            cells = f'<td colspan="{n}" class="wide">{vals[0]}</td>' if len(set(vals)) == 1 and len(vals[0]) > 20 else "".join(f"<td>{v}</td>" for v in vals)
+            rows += f'<tr class="hide" data-in="{g}"><td class="k">{k}<u>{u}</u></td>{cells}</tr>'
     return f'<table class="st"><colgroup><col class="k"></colgroup><thead><tr><th>車型</th>{head}</tr></thead><tbody>{rows}</tbody></table>'
 
 def car():
