@@ -137,3 +137,16 @@
   };
   sel.addEventListener('change', draw); draw();
 })();
+
+/* tiles in the same row: equalise title-bar height so titles line up at the top (no fixed 2-line height) */
+(() => {
+  const heads = [...document.querySelectorAll('.tile .tile-h')];
+  const sync = () => {
+    heads.forEach(h => h.style.minHeight = '');
+    const rows = new Map();
+    heads.forEach(h => { const t = h.closest('.tile'); if (!t.offsetParent) return; const k = Math.round(t.getBoundingClientRect().top + scrollY); (rows.get(k) || rows.set(k, []).get(k)).push(h); });
+    rows.forEach(list => { if (list.length < 2) return; const m = Math.max(...list.map(h => h.offsetHeight)); list.forEach(h => h.style.minHeight = m + 'px'); });
+  };
+  let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(sync, 150); });
+  if (document.fonts) document.fonts.ready.then(sync); sync();
+})();

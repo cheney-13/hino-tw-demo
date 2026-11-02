@@ -411,5 +411,5 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 .lead-h b{font-size:19px;line-height:28px}
 .lead-h span{font-size:15px;line-height:23px}
 .lead-h i{width:auto;height:auto;aspect-ratio:1/1;min-width:53px}
-@media (max-width:767px){.tile.light .tile-h{min-height:66px;align-items:flex-start;padding:12px 0}.tile.light .tile-h .ico{margin-top:-1px}}
+@media (max-width:767px){.tile.light .tile-h{align-items:flex-start;padding:12px 0}.tile.light .tile-h .ico{margin-top:-1px}}
 @media (max-width:767px){#safety .grid3:not(.sm) .tile:first-child .tile-h{min-height:56px;align-items:center;padding:0}}
