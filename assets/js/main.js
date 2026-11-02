@@ -45,11 +45,11 @@
   function closeMenu() { mnav.classList.remove('open'); mnav.setAttribute('aria-hidden', 'true'); document.body.classList.remove('lock'); }
   $$('#mnav a').forEach(a => a.addEventListener('click', closeMenu));
 
-  /* footer car accordion */
+  /* footer series accordion (all collapsed by default) */
   $$('[data-ftr-car]').forEach(b => b.addEventListener('click', () => {
-    const on = !b.classList.contains('on');
-    $$('[data-ftr-car]').forEach(x => { x.classList.remove('on'); x.nextElementSibling.classList.remove('on'); x.querySelector('use').setAttribute('href', '#i-plus'); });
-    if (on) { b.classList.add('on'); b.nextElementSibling.classList.add('on'); b.querySelector('use').setAttribute('href', '#i-minus'); }
+    const li = b.parentNode, on = !li.classList.contains('on');
+    $$('.ser').forEach(x => { x.classList.remove('on'); $('[data-ftr-car]', x).setAttribute('aria-expanded', 'false'); $('use', x).setAttribute('href', '#i-plus'); });
+    if (on) { li.classList.add('on'); b.setAttribute('aria-expanded', 'true'); $('use', li).setAttribute('href', '#i-minus'); }
   }));
 
   /* side nav */

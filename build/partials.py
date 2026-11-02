@@ -85,11 +85,11 @@ def header():
 <a class="hdr-logo" href="index.html" aria-label="HINO 首頁">{LOGO}</a>
 <nav class="hdr-nav" aria-label="主選單"><ul>{items}</ul>
 <div class="hdr-icons"><a href="#" aria-label="聯絡我們">{ic("mail")}</a><a href="#" aria-label="Facebook">{ic("fb")}</a><a href="#" aria-label="LINE">{ic("line")}</a></div></nav>
-<button class="hdr-burger" data-open-menu aria-label="開啟選單">{ic("menu","s28")}</button>
+<button class="hdr-burger" data-open-menu aria-label="開啟選單"><img src="assets/img/icon-menu.svg" alt="" width="60" height="60"></button>
 </div></header>
 <div class="page-dim" aria-hidden="true"></div>
 <div class="mnav" id="mnav" aria-hidden="true">
-<div class="mnav-top"><a href="index.html">{LOGO}</a><button class="mnav-x" data-close-menu aria-label="關閉選單">{ic("up","s28")}</button></div>
+<div class="mnav-top"><a href="index.html">{LOGO}</a><button class="mnav-x" data-close-menu aria-label="關閉選單"><img src="assets/img/icon-menu-close.svg" alt="" width="60" height="60"></button></div>
 <div class="mnav-body">{macc}
 <button class="btn btn-red btn-block mnav-cta" data-modal="m-drive" style="justify-content:center">預約試乘</button>
 <div class="mnav-links"><a href="#" data-modal="m-contact">聯絡我們</a><a href="#">Facebook</a><a href="#">LINE 加入好友</a></div>
@@ -97,13 +97,9 @@ def header():
 </div>"""
 
 def footer():
-    cars = [c[1] for c in CARS]
-    car_li = ""
-    for n in cars:
-        if n.startswith("300"):
-            car_li += f'<li><button class="ftr-car" data-ftr-car>{n}{ic("plus","s16")}</button><div class="ftr-car-sub"><a href="{CAR}">5/6.5/7.4/7.5/8噸</a><a href="{CAR}">5噸木床貨斗</a></div></li>'
-        else:
-            car_li += f'<li><button class="ftr-car" data-ftr-car>{n}{ic("plus","s16")}</button><div class="ftr-car-sub"><a href="{CAR}">查看{n}</a></div></li>'
+    car_li = "".join(
+        f'<li class="ser"><button type="button" class="ser-h" data-ftr-car aria-expanded="false"><span>{n}</span>{ic("plus","s16")}</button><div class="ser-links">{"".join(f"<a href={chr(34)}{CAR}{chr(34)}>{x}</a>" for x in subs)}</div></li>'
+        for b, n, d, img, big, subs in CARS)
     cols = {
         "據點查詢": ["北部地區", "中部地區", "南部地區", "東部地區"],
         "售後服務": ["保養維修", "保固服務", "微笑大使", "獎學金計畫", "優良駕駛", "FAQ"],
@@ -111,22 +107,26 @@ def footer():
         "最新消息": ["品牌新聞", "活動資訊", "中獎公告"],
         "品牌介紹": ["品牌故事", "T 商旅車", "iTRAQ"],
     }
-    other = "".join(f'<div><h3>{k}</h3><ul>{lilinks(v)}</ul></div>' for k, v in cols.items())
-    rel1 = "".join(f'<dd><a href="#">{x}</a></dd>' for x in ["大車友善地圖", "TOYOTA商旅車", "iTRAQ"])
-    rel2 = "".join(f'<dd><a href="#">{x}</a></dd>' for x in ["和泰汽車新聞室", "長源汽車", "HINO Global", "日野自動車（日本）", "和泰產險", "和運租車", "和安保險", "和泰 GO"])
-    return f"""<footer>
-<section class="ftr-cta"><div class="wrap">
-<div><h2>CONTACT</h2><p>需要協助嗎？歡迎與我們聯繫</p></div>
-<div class="btns">
-<a class="btn btn-line" href="{CAR}"><span>{ic("truck","s28")}車款介紹</span>{ic("arrow")}</a>
-<a class="btn btn-line" href="#"><span>{ic("pin","s28")}據點查詢</span>{ic("arrow")}</a>
-<a class="btn btn-line" href="#" data-modal="m-contact"><span>{ic("mail","s28")}聯絡我們</span>{ic("arrow")}</a>
-</div></div></section>
-<div class="wrap ftr-map"><span class="logo"><img src="assets/img/hino-logo.svg" alt="HINO" width="195" height="32"><img class="tag" src="assets/img/logo-tagline.png" alt="HINO TRUST 驅動未來" width="219" height="32"></span>
-<div class="ftr-cols"><div><h3>車款介紹</h3><ul>{car_li}</ul></div>{other}</div></div>
-<div class="ftr-rel"><div class="wrap"><dl><dt>相關服務</dt>{rel1}</dl><dl><dt>相關網站</dt>{rel2}</dl></div></div>
-<div class="ftr-bot"><div class="wrap"><div class="l"><span>總代理：和泰汽車股份有限公司</span><div class="links" style="display:flex;gap:20px"><a href="#">契約書下載</a><a href="#">隱私權聲明</a><a href="tel:0800522567">客服專線 0800-522-567</a></div></div><div class="r">Copyright © Hotai Motor Co., Ltd. All rights reserved.</div></div></div>
+    other = "".join(f'<div class="col"><h3>{k}</h3><ul>{lilinks(v)}</ul></div>' for k, v in cols.items())
+    rel = lambda xs: "".join(f'<a href="#">{x}</a>' for x in xs)
+    rel1 = rel(["大車友善地圖", "TOYOTA商旅車", "iTRAQ"])
+    rel2 = rel(["和泰汽車新聞室", "長源汽車", "HINO Global", "日野自動車（日本）", "和泰產險", "和運租車", "和安保險", "和泰 GO"])
+    cbtn = lambda href, icon, label, extra="": f'<a class="cbtn" href="{href}"{extra}>{ic(icon,"s28")}<span>{label}</span>{ic("arrow","s20 arr")}</a>'
+    return f"""<footer class="ftr">
+<section class="ftr-cta"><div class="fw">
+<div class="t"><h2>CONTACT</h2><p>需要協助嗎？歡迎與我們聯繫</p></div>
+<div class="btns">{cbtn(CAR,"truck","車款介紹")}{cbtn("#","pin","據點查詢")}{cbtn("#","mail","聯絡我們",' data-modal="m-contact"')}</div>
+</div></section>
+<div class="ftr-map"><div class="fw">{LOGO}
+<div class="ftr-cols"><div class="col"><h3>車款介紹</h3><ul>{car_li}</ul></div>{other}</div></div></div>
+<div class="ftr-rel"><div class="fw"><dl><dt>相關服務</dt><dd>{rel1}</dd></dl><dl><dt>相關網站</dt><dd>{rel2}</dd></dl></div></div>
+<div class="ftr-bot"><div class="fw"><div class="l"><span class="corp">總代理：和泰汽車股份有限公司</span><span class="links"><a href="#">契約書下載</a><a href="#">隱私權聲明</a><a href="tel:0800522567">客服專線 0800-522-567</a></span></div><div class="r">Copyright © Hotai Motor Co., Ltd. All rights reserved.</div></div></div>
 </footer>
+<nav class="bnav" aria-label="快速服務">
+<a href="#">{ic("pin")}<span>尋找據點</span></a>
+<button type="button" data-modal="m-contact">{ic("phone")}<span>專人聯繫</span></button>
+<button type="button" data-modal="m-drive">{ic("cal")}<span>預約試乘</span></button>
+</nav>
 <div class="demo-flag">DEMO・示意網頁</div>"""
 
 def sidenav():
