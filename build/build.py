@@ -181,10 +181,10 @@ def car():
 <div class="specs"><span class="wm" aria-hidden="true">SPECS</span><h2>亮點配備與數據</h2>
 <button class="feat" data-modal="m-pcs"><div><b>標配 PCS＋LDWS主動安全</b><span>預警式防護＋車道偏離警示，全車型標準配備</span></div><i>{ic("arrow")}</i></button>
 <div class="nums">
-<div class="num"><b>5–8<small>噸</small></b><span>車輛總重</span></div>
-<div class="num"><b>18<small>款</small></b><span>可選車型</span></div>
-<div class="num"><b>180<small>PS</small></b><span>最大馬力</span></div>
-<div class="num"><b>6<small>年</small></b><span>或 20 萬公里保固</span></div>
+<div class="num"><b><span data-n="5">5</span>–<span data-n="8">8</span><small>噸</small></b><span>車輛總重</span></div>
+<div class="num"><b><span data-n="18">18</span><small>款</small></b><span>可選車型</span></div>
+<div class="num"><b><span data-n="180">180</span><small>PS</small></b><span>最大馬力</span></div>
+<div class="num"><b><span data-n="6">6</span><small>年</small></b><span>或 20 萬公里保固</span></div>
 </div></div>
 </div>
 </section>

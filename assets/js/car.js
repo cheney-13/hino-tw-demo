@@ -150,3 +150,17 @@
   let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(sync, 150); });
   if (document.fonts) document.fonts.ready.then(sync); sync();
 })();
+
+/* highlight numbers: count up when they scroll into view */
+(() => {
+  const ns = [...document.querySelectorAll('.nums [data-n]')];
+  if (!ns.length || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const run = el => {
+    const end = +el.dataset.n, t0 = performance.now(), dur = 1400;
+    const step = now => { const k = Math.min(1, (now - t0) / dur); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  ns.forEach(n => n.textContent = '0');
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { $$('[data-n]', e.target).forEach(run); io.unobserve(e.target); } }), { threshold: .6 });
+  document.querySelectorAll('.nums .num').forEach(n => io.observe(n));
+})();
