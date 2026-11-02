@@ -5,7 +5,18 @@
 
   /* header shadow */
   const hdr = $('.hdr');
-  const onScroll = () => hdr.classList.toggle('scrolled', scrollY > 4);
+  /* header hides on scroll down, slides back in on scroll up */
+  let lastY = scrollY;
+  const onScroll = () => {
+    const y = scrollY;
+    hdr.classList.toggle('scrolled', y > 4);
+    if (Math.abs(y - lastY) > 6) {
+      const hide = y > lastY && y > 120 && !hdr.classList.contains('menu-open');
+      hdr.classList.toggle('hide', hide);
+      document.body.classList.toggle('hdr-hidden', hide);
+      lastY = y;
+    }
+  };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   /* mega menu (hover + keyboard) */

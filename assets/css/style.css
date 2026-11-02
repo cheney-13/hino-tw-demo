@@ -47,7 +47,8 @@ ul{list-style:none}
 .on-dark .sec-head h2{color:#fff}.on-dark .sec-head h2 small{color:rgba(255,255,255,.85)}
 
 /* ---------- header ---------- */
-.hdr{position:sticky;top:0;z-index:60;background:var(--g1);transition:box-shadow .2s,background .2s}
+.hdr{position:sticky;top:0;z-index:60;background:var(--g1);transition:box-shadow .2s,background .2s,transform .35s var(--ease)}
+.hdr.hide{transform:translateY(-100%);box-shadow:none}
 .hdr.scrolled,.hdr.menu-open{background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.08)}
 .hdr-in{height:80px;display:flex;align-items:center;justify-content:space-between}
 .logo{display:inline-flex;align-items:center;gap:2px}.logo img{height:32px;width:auto}

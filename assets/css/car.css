@@ -31,6 +31,8 @@
 .tabs a:hover{background:rgba(255,255,255,.1)}
 .tabs a.on{background:var(--red);font-weight:700}
 .anchor{scroll-margin-top:170px}
+.tabs{transition:top .35s var(--ease)}
+body.hdr-hidden .tabs{top:8px}
 
 /* ---------- tiles (expand upward, height fixed) ---------- */
 .tile{position:relative;border-radius:var(--r);overflow:hidden;background:#fff;display:block}
