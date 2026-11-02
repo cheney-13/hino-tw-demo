@@ -312,7 +312,7 @@ def car():
     m_opts2 = "".join(f'<option value="{i}">{m["id"]}</option>' for i, m in enumerate(MODELS))
     full = f'''<div class="full-top"><div class="full-sel"><label class="cmp-dd"><small>噸數</small><b>6.5 噸</b>{ic("down","s16")}<select aria-label="噸數" disabled><option>6.5 噸</option></select></label><label class="cmp-dd wide"><small>型號</small><b id="fullModel">{MODELS[0]["id"]}</b>{ic("down","s16")}<select id="fullSel" aria-label="型號">{m_opts2}</select></label></div></div>
 <div class="modal-bd"><div class="tbl-wrap full-d">{spec_table()}</div><div class="full-m" id="fullM"></div></div>
-<div class="full-act"><a class="btn btn-dark" href="#" data-noop>型錄下載</a><button class="btn btn-red" data-modal="m-drive">預約試乘</button><button class="btn btn-red" data-modal="m-contact">聯絡專員</button></div>'''
+<div class="full-act"><a class="btn btn-red" href="#" data-noop>型錄下載{ic("arrow")}</a></div>'''
     extra = (modal("m-pcs", "標配 PCS＋LDWS 主動安全", pcs, cls="w960")
              + modal("m-cmp", "車型比較", cmp_, cls="w1080")
              + modal("m-full", "完整規格表", full, cls="w1080"))

@@ -392,7 +392,7 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .fs .r dt{font-size:15px;line-height:24px;color:var(--g3)}
   .fs .r dd{font-size:16px;line-height:24px;font-weight:500}
   .full-act{display:flex;gap:10px;flex:none;padding:12px 20px calc(24px + env(safe-area-inset-bottom));border-top:1px solid var(--g2);background:#fff}
-  .full-act .btn{flex:1;height:56px;justify-content:center;padding:0 8px}
+  .full-act .btn{flex:1;height:56px;justify-content:space-between;padding:0 16px}
 }
 
 /* tile descriptions: full on desktop, short on mobile */
@@ -413,3 +413,9 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 .lead-h i{width:auto;height:auto;aspect-ratio:1/1;min-width:53px}
 @media (max-width:767px){.tile.light .tile-h{align-items:flex-start;padding:12px 0}.tile.light .tile-h .ico{margin-top:-1px}}
 @media (max-width:767px){#safety .grid3:not(.sm) .tile:first-child .tile-h{min-height:56px;align-items:center;padding:0}}
+
+/* interior carousel: dark colourway */
+.carousel{background:var(--black);color:#fff}
+.carousel p{color:rgba(255,255,255,.8)}
+.car-dots button{background:#555}
+.car-dots button.on{background:var(--red)}
