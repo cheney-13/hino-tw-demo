@@ -272,7 +272,7 @@ def car():
 </div>
 <div class="spec-note" id="specNote" hidden>此噸數規格資料待客戶提供（DEMO 目前僅建置 6.5 噸）</div>
 <a class="btn btn-dark btn-block spec-m" href="#" data-modal="m-full" style="margin-top:16px;justify-content:space-between">查看完整規格表{ic("arrow")}</a>
-<a class="btn btn-red btn-block" href="#">型錄下載{ic("arrow")}</a>
+<a class="btn btn-red btn-block" href="#" data-noop>型錄下載{ic("arrow")}</a>
 </div></div></section>
 
 <section class="wrap sec anchor" id="stories">
