@@ -125,6 +125,10 @@
       code.disabled = false; code.focus();
       pHint.textContent = `驗證碼已發送至 ${phone.value}（DEMO：輸入任意 6 位數）`;
       cHint.textContent = '請輸入簡訊中的 6 位數驗證碼，10 分鐘內有效';
+      if (flow.dataset.flow === 'contact') { // demo: auto-type the SMS code
+        const demo = '482916'; let n = 0;
+        setTimeout(function typing() { code.value = demo.slice(0, ++n); code.dispatchEvent(new Event('input')); if (n < demo.length) setTimeout(typing, 120); }, 900);
+      }
       let s = 60; send.disabled = true; clearInterval(timer);
       timer = setInterval(() => { s--; send.textContent = s > 0 ? `重新發送 ${s}s` : '重新發送'; if (s <= 0) { clearInterval(timer); send.disabled = false; } }, 1000);
     });
@@ -159,12 +163,10 @@
       $('[data-step="form"]', flow).hidden = true; $('[data-step="done"]', flow).hidden = false;
       submit.hidden = true; finish.hidden = false; flow.scrollTop = 0;
     });
-    /* demo: contact form opens pre-filled & verified so the submit flow can be shown right away */
+    /* demo: contact form opens pre-filled; SMS verification step is kept (code auto-types after 取得驗證碼) */
     if (flow.dataset.flow === 'contact') m.addEventListener('modal:open', () => {
       if (!$('[data-step="done"]', flow).hidden || verified) return;
-      name.value = '王大明'; phone.value = '0912-345-678';
-      verified = true; send.hidden = true; ok.hidden = false; codeFld.hidden = true; phone.disabled = true;
-      pHint.textContent = '此號碼已完成驗證'; pHint.classList.add('ok');
+      name.value = '王大明'; phone.value = '0912-345-678'; send.disabled = false;
       city.value = '台北市'; city.dispatchEvent(new Event('change'));
       branch.value = branch.options[1].value;
       const t = $('[data-chips="when"] .chip', flow); if (t) t.click();
