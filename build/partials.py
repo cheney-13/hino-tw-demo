@@ -73,7 +73,7 @@ def header():
             items += f'<li class="has-mega"><a class="nav-a" href="{CAR}">{n}</a>{car_mega}</li>'
         else:
             img, en, links = MENU[n]
-            items += f'<li class="has-mega"><a class="nav-a" href="#">{n}</a><div class="mega"><div class="mega-in"><div class="mega-l"><img src="assets/img/{img}" alt="" loading="lazy"><span class="en">{en}</span></div><div class="mega-r"><h3>{n}</h3><div class="mm-grid">{"".join(sub_link(x) for x in links)}</div></div></div></div></li>'
+            items += f'<li class="has-mega"><a class="nav-a" href="#">{n}</a><div class="mega"><div class="mega-in sm"><div class="mega-l"><img src="assets/img/{img}" alt="" loading="lazy"><span class="en">{en}</span></div><div class="mega-r"><h3>{n}</h3><div class="mm-grid">{"".join(sub_link(x) for x in links)}</div></div></div></div></li>'
     mcars = "".join(
         f'<div class="mcar"><a class="mcar-h" href="{CAR}"><img src="assets/img/{img}" alt=""><div><span class="b">{b}</span><b>{n}</b></div></a>{"".join(sub_link(x, CAR) for x in subs)}</div>'
         for b, n, d, img, big, subs in CARS)
