@@ -405,3 +405,9 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .grid3 .tile:first-child.light>img{height:calc(100% - 56px)}
 }
 @media (max-width:767px){.btn.spec-m{display:flex;align-items:center}}
+/* lead card: icon box fills the height of the title block */
+.lead-h{align-items:stretch}
+.lead-h>div{display:flex;flex-direction:column;justify-content:center;gap:2px}
+.lead-h b{font-size:19px;line-height:28px}
+.lead-h span{font-size:15px;line-height:23px}
+.lead-h i{width:auto;height:auto;aspect-ratio:1/1;min-width:53px}
