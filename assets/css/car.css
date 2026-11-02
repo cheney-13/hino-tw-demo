@@ -30,7 +30,7 @@
 .num{border:1px solid rgba(255,255,255,.3);border-radius:var(--r-s);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:120px}
 .num b{font-family:var(--f-en);font-weight:900;font-size:34px;line-height:1;color:var(--red)}
 .num b small{font-size:14px;color:#fff;margin-left:6px;font-family:var(--f)}
-.num span{font-size:16px}
+.num>span{font-size:16px}
 
 /* tabs */
 .tabs{position:sticky;top:88px;z-index:40;width:calc(100% - var(--gut)*2);max-width:var(--max);margin:16px auto 0;background:var(--black);border-radius:var(--r);box-shadow:0 8px 24px rgba(0,0,0,.18);display:flex;justify-content:center;gap:4px;padding:6px 20px;overflow-x:auto;scrollbar-width:none}
