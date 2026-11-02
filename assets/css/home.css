@@ -138,7 +138,8 @@
   .hero-bar .icon-btn{width:60px}
   .hero-count{flex:1}
   /* Figma panel/02 mobile: logo 1261px, loops right → left */
-  .brand{padding:60px 0 20px}
+  .brand{padding:60px 0 20px;margin-top:20px}
+  .brand+.sec{margin-top:0}
   .brand .wrap{padding:0 12px}
   .brand-bg{top:0;height:201px}
   .brand-track{left:0;margin-left:0;display:flex;gap:120px;width:max-content;animation:brandLoop 26s linear infinite}
