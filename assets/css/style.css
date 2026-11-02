@@ -162,13 +162,13 @@ ul{list-style:none}
 /* ---------- side nav (flush right) ---------- */
 .sidenav{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:50}
 .sn-panel,.sn-fab-wrap{background:#fff;border-radius:var(--r) 0 0 var(--r);box-shadow:0 8px 32px rgba(0,0,0,.14)}
-.sn-panel{width:96px;padding:4px 8px}
+.sn-panel{width:96px;padding:8px}
 .sn-panel>*{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;padding:16px 0;font-size:15px;font-weight:700;border-radius:var(--r-s);transition:background .2s}
 .sn-panel>*+*{border-top:1px solid var(--g1)}
 .sn-panel .sn-act .ico{color:var(--red)}
 .sn-panel>*:hover{background:var(--g1)}
 .sn-close{font-weight:500}
-.sn-fab-wrap{padding:10px 10px 10px 12px;display:none}
+.sn-fab-wrap{padding:8px;display:none}
 .sn-fab{width:68px;height:68px;border-radius:var(--r-s);background:var(--red);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:13px;font-weight:700;transition:background .2s}
 .sn-fab:hover{background:var(--red-deep)}
 .sidenav.closed .sn-panel{display:none}
