@@ -87,6 +87,7 @@ def header():
 <div class="hdr-icons"><a href="#" aria-label="聯絡我們">{ic("mail")}</a><a href="#" aria-label="Facebook">{ic("fb")}</a><a href="#" aria-label="LINE">{ic("line")}</a></div></nav>
 <button class="hdr-burger" data-open-menu aria-label="開啟選單">{ic("menu","s28")}</button>
 </div></header>
+<div class="page-dim" aria-hidden="true"></div>
 <div class="mnav" id="mnav" aria-hidden="true">
 <div class="mnav-top"><a href="index.html">{LOGO}</a><button class="mnav-x" data-close-menu aria-label="關閉選單">{ic("up","s28")}</button></div>
 <div class="mnav-body">{macc}
