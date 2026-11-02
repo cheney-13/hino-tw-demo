@@ -176,7 +176,7 @@ def car():
 <div class="top-l">
 <div class="kv"><img src="assets/img/kv-300.jpg" alt="HINO 300系 多元選擇 成就多種精彩"></div>
 <div class="info"><div class="info-row"><h1>HINO 300 系 中小型貨車</h1><div class="tags"><span>5–8 噸</span><span>標準座艙/寬座艙</span><span>手排/自排</span></div></div>
-<a class="promo" href="#" data-modal="m-calc">至年底，最高 30 萬購車金{ic("arrow","s20")}</a></div>
+<a class="promo" href="#" data-modal="m-calc"><span class="promo-m"><span class="promo-t">{"".join("<span>至年底，最高 30 萬購車金</span>" for _ in range(6))}</span></span>{ic("arrow","s20")}</a></div>
 </div>
 <div class="specs"><span class="wm" aria-hidden="true">SPECS</span><h2>亮點配備與數據</h2>
 <button class="feat" data-modal="m-pcs"><div><b>標配 PCS＋LDWS主動安全</b><span>預警式防護＋車道偏離警示，全車型標準配備</span></div><i>{ic("arrow")}</i></button>
