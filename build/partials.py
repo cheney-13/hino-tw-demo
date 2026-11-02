@@ -64,9 +64,9 @@ def sub_link(t, href="#"):
 
 def header():
     groups = "".join(
-        f'<div class="mm-grp{" on" if n.startswith("300") else ""}" data-big="{big}" data-img="{img}"><span class="b">{b}</span><a class="n" href="{CAR}">{n}</a>{"".join(sub_link(x, CAR) for x in subs)}</div>'
+        f'<div class="mm-grp{" on" if n.startswith("300") else ""}" data-img="menu-{img}"><span class="b">{b}</span><a class="n" href="{CAR}">{n}</a>{"".join(sub_link(x, CAR) for x in subs)}</div>'
         for b, n, d, img, big, subs in CARS)
-    car_mega = f'<div class="mega"><div class="mega-in"><div class="mega-l car"><span class="big" data-mm-big>300系</span><img src="assets/img/car-300.webp" alt="" data-mm-img></div><div class="mega-r"><h3>車款介紹</h3><div class="mm-cars">{groups}</div></div></div></div>'
+    car_mega = f'<div class="mega"><div class="mega-in"><div class="mega-l car"><img src="assets/img/menu-car-300.webp" alt="" data-mm-img></div><div class="mega-r"><h3>車款介紹</h3><div class="mm-cars">{groups}</div></div></div></div>'
     items = ""
     for i, n in enumerate(NAV):
         if i == 0:

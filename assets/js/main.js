@@ -20,10 +20,9 @@
     li.addEventListener('focusout', e => { if (!li.contains(e.relatedTarget)) shut(); });
   });
   /* car mega: hovering a series swaps the left visual */
-  const big = $('[data-mm-big]'), mimg = $('[data-mm-img]');
+  const mimg = $('[data-mm-img]');
   $$('.mm-grp').forEach(g => g.addEventListener('mouseenter', () => {
     $$('.mm-grp').forEach(x => x.classList.toggle('on', x === g));
-    big.textContent = g.dataset.big;
     mimg.style.opacity = 0;
     setTimeout(() => { mimg.src = 'assets/img/' + g.dataset.img; mimg.style.opacity = 1; }, 120);
   }));
