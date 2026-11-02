@@ -115,7 +115,7 @@ def footer():
     return f"""<footer class="ftr">
 <section class="ftr-cta"><div class="fw">
 <div class="t"><h2>CONTACT</h2><p>需要協助嗎？歡迎與我們聯繫</p></div>
-<div class="btns">{cbtn(CAR,"truck","車款介紹")}{cbtn("#","pin","據點查詢")}{cbtn("#","mail","聯絡我們",' data-modal="m-contact"')}</div>
+<div class="btns">{cbtn("#","pin","尋找據點")}{cbtn("#","phone","專人聯繫")}{cbtn("#","mail","聯絡我們")}</div>
 </div></section>
 <div class="ftr-map"><div class="fw">{LOGO}
 <div class="ftr-cols"><div class="col"><h3>車款介紹</h3><ul>{car_li}</ul></div>{other}</div></div></div>
