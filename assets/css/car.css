@@ -274,6 +274,8 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 @media (max-width:767px){
   .top{gap:0}
   .kv{aspect-ratio:366/260;border-radius:var(--r) var(--r) 0 0}
+  .kv{position:relative}
+  .kv::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,244,244,0) 80%,var(--g1));pointer-events:none}
   .info{margin:-30px 20px 0;position:relative;box-shadow:0 8px 24px rgba(0,0,0,.08);padding:24px 20px 20px}
   .info-row{flex-direction:column;align-items:flex-start}
   .info h1{font-size:24px}
