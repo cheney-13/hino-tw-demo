@@ -67,7 +67,7 @@ body.hdr-hidden .tabs{top:8px}
 
 .bento-ctl{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .bento-ctl .t1,.bento-ctl .t2{height:460px}
-.bento-ctl .t3,.bento-ctl .t4{height:456px}
+.bento-ctl .t3,.bento-ctl .t4{height:526px}
 .bento-eco{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .bento-eco .tile{height:400px}
 
