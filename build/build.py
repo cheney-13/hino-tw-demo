@@ -307,12 +307,17 @@ def car():
     cmp_ = f"""<div class="cmp-bar"><div><span class="pill" id="cmpPill"></span><button class="edit" data-close data-goto="#select">修改選擇</button></div>
 <div class="seg" id="cmpSeg"><button data-diff="1">只看差異</button><button class="on" data-diff="0">全部展開</button></div></div>
 <div class="modal-bd" id="cmpBody"></div>"""
-    full = f'<div class="modal-bd"><div class="tbl-wrap">{spec_table()}</div></div>'
+    from spec65 import SECTIONS
+    m_opts2 = "".join(f'<option value="{i}">{m["id"]}</option>' for i, m in enumerate(MODELS))
+    full = f'''<div class="full-top"><div class="full-sel"><label class="cmp-dd"><small>噸數</small><b>6.5 噸</b>{ic("down","s16")}<select aria-label="噸數" disabled><option>6.5 噸</option></select></label><label class="cmp-dd wide"><small>型號</small><b id="fullModel">{MODELS[0]["id"]}</b>{ic("down","s16")}<select id="fullSel" aria-label="型號">{m_opts2}</select></label></div></div>
+<div class="modal-bd"><div class="tbl-wrap full-d">{spec_table()}</div><div class="full-m" id="fullM"></div></div>
+<div class="full-act"><a class="btn btn-dark" href="#" data-noop>型錄下載</a><button class="btn btn-red" data-modal="m-drive">預約試乘</button><button class="btn btn-red" data-modal="m-contact">聯絡專員</button></div>'''
     extra = (modal("m-pcs", "標配 PCS＋LDWS 主動安全", pcs, cls="w960")
              + modal("m-cmp", "車型比較", cmp_, cls="w1080")
-             + modal("m-full", "完整規格表（6.5 噸）", full, cls="w1080"))
+             + modal("m-full", "完整規格表", full, cls="w1080"))
     import json
-    data = "<script>window.MODELS=" + json.dumps(MODELS, ensure_ascii=False) + ";window.GROUPS=" + json.dumps(GROUPS, ensure_ascii=False) + ";</script>"
+    from spec65 import SECTIONS
+    data = "<script>window.SPEC65=" + json.dumps(SECTIONS, ensure_ascii=False) + ";window.MODELS=" + json.dumps(MODELS, ensure_ascii=False) + ";window.GROUPS=" + json.dumps(GROUPS, ensure_ascii=False) + ";</script>"
     html = page("HINO 300 系 中小型貨車｜HINO 台灣（DEMO）", "HINO 300 系 中小型貨車 5–8 噸，標準座艙/寬座艙、手排/自排。", ["home.css", "car.css"], body, ["car.js"])
     assert '<script src="assets/js/main.js' in html
     return html.replace('<script src="assets/js/main.js', extra + data + '<script src="assets/js/main.js', 1)

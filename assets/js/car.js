@@ -122,3 +122,18 @@
   const fill = () => { const m = M[+sel.value]; dl.innerHTML = KEYS.map(([k, f]) => `<div><dt>${k}</dt><dd>${f(m)}</dd></div>`).join(''); };
   sel.addEventListener('change', fill); fill();
 })();
+
+/* full spec drawer (mobile): one model at a time, sections collapsible */
+(() => {
+  const S = window.SPEC65, box = document.getElementById('fullM'), sel = document.getElementById('fullSel');
+  if (!S || !box) return;
+  const draw = () => {
+    const i = +sel.value;
+    document.getElementById('fullModel').textContent = sel.options[sel.selectedIndex].text;
+    box.innerHTML = S.map(([g, rows], k) => `<section class="fs${k === 0 ? ' open' : ''}"><h4><span>${g}</span><em>${rows.length} 項</em><svg class="ico s20"><use href="#i-${k === 0 ? 'minus' : 'plus'}"/></svg></h4><dl class="rows">${rows.map(([key, vals]) => `<div class="r"><dt>${key}</dt><dd>${vals[i]}</dd></div>`).join('')}</dl></section>`).join('');
+    box.querySelectorAll('.fs h4').forEach(h => h.addEventListener('click', () => {
+      const on = h.parentNode.classList.toggle('open'); h.querySelector('use').setAttribute('href', on ? '#i-minus' : '#i-plus');
+    }));
+  };
+  sel.addEventListener('change', draw); draw();
+})();
