@@ -89,6 +89,7 @@ ul{list-style:none}
 .mm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px}
 .mm-grid .mm-link{padding:16px 0;border-bottom:1px solid var(--g1);font-size:17px}
 /* mega (non-car): Figma 320 high, 428 visual */
+.mega-in{max-width:none;border-radius:0}
 .mega-in.sm{grid-template-columns:428px 1fr;min-height:320px;height:320px}
 .mega-in.sm .mega-l::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(35,35,35,0) 35%,rgba(35,35,35,.85))}
 .mega-in.sm .mega-l .en{z-index:1;left:48px;bottom:48px;font-size:50px;font-weight:800;line-height:36px}

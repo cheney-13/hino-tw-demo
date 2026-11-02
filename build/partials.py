@@ -27,7 +27,7 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></symbol>
 <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></symbol>
 <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 21v-8h3l.5-3.5H14V7.6c0-1 .3-1.6 1.7-1.6H18V3a23 23 0 0 0-2.7-.1C12.6 2.9 11 4.5 11 7.3v2.2H8V13h3v8"/></symbol>
-<symbol id="i-line" viewBox="0 0 24 24"><path d="M3 4h18v13H10l-4 3v-3H3z"/><path d="M7 8v5h2M11 8v5M14 13V8l3 5V8"/></symbol>
+<symbol id="i-line" viewBox="0 -0.5 24 25"><path d="M1 2H23V17H13L8 22V17H1V2Z"/><path d="M18.5671 8.92728C18.8844 8.92728 19.1399 9.18637 19.1399 9.50091C19.1399 9.81455 18.8844 10.0736 18.5671 10.0736H16.9717V11.0964H18.5671C18.8844 11.0964 19.1399 11.3536 19.1399 11.6691C19.1399 11.9818 18.8844 12.2409 18.5671 12.2409H16.398C16.0844 12.2409 15.828 11.9818 15.828 11.6691V7.33182C15.828 7.01818 16.0844 6.75909 16.4008 6.75909H18.5699C18.8844 6.75909 19.1399 7.01818 19.1399 7.33182C19.1399 7.64909 18.8844 7.90455 18.5671 7.90455H16.9717V8.92728H18.5671ZM15.0626 11.6691C15.0626 11.9145 14.9044 12.1327 14.6699 12.2109C14.6117 12.23 14.549 12.2391 14.489 12.2391C14.2971 12.2391 14.1335 12.1573 14.0253 12.0118L11.8044 8.99637V11.6691C11.8044 11.9818 11.5508 12.2409 11.2308 12.2409C10.9162 12.2409 10.6617 11.9818 10.6617 11.6691V7.33182C10.6617 7.08637 10.819 6.86819 11.0526 6.79091C11.1071 6.77 11.1762 6.76091 11.229 6.76091C11.4062 6.76091 11.5699 6.85546 11.679 6.99182L13.9171 10.0191V7.33182C13.9171 7.01818 14.1735 6.75909 14.4899 6.75909C14.8035 6.75909 15.0626 7.01818 15.0626 7.33182V11.6691ZM9.8435 11.6691C9.8435 11.9818 9.58714 12.2409 9.26986 12.2409C8.95623 12.2409 8.69986 11.9818 8.69986 11.6691V7.33182C8.69986 7.01818 8.95623 6.75909 9.27259 6.75909C9.58714 6.75909 9.8435 7.01818 9.8435 7.33182V11.6691ZM7.60168 12.2409H5.43259C5.11895 12.2409 4.85986 11.9818 4.85986 11.6691V7.33182C4.85986 7.01818 5.11895 6.75909 5.43259 6.75909C5.74895 6.75909 6.00532 7.01818 6.00532 7.33182V11.0964H7.60168C7.91805 11.0964 8.1735 11.3536 8.1735 11.6691C8.1735 11.9818 7.91714 12.2409 7.60168 12.2409Z" fill="currentColor" stroke="none"/></symbol>
 <symbol id="i-truck" viewBox="0 0 24 24"><path d="M5 3h14v15H5z"/><path d="M5 8h14M3 9v4M21 9v4M7 18v3M17 18v3M8 14h1M15 14h1"/></symbol>
 <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22L5 13V7L8 3H16L19 7V13L12 22Z"/><path d="M10 8H14V12H10V8Z"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><path d="M4 3H9L11 9L8 11C9.5 14 11 15.5 13 16L15 13L21 15V20H17C10 20 4 14 4 7V3Z"/></symbol>
@@ -56,7 +56,7 @@ MENU = {
     "售後服務": ("menu-svc.jpg", "SERVICE", ["保養維修", "保固服務", "微笑大使", "獎學金計畫", "優良駕駛", "FAQ"]),
     "車主專區": ("menu-own.jpg", "OWNERS", ["車主登入", "車輛操作影片", "車主小幫手", "HINO 好集利", "和泰購", "FAQ"]),
     "最新消息": ("menu-news.jpg", "NEWS", ["品牌新聞", "活動資訊", "中獎公告"]),
-    "品牌介紹": ("menu-brand.jpg", "ABOUT", ["品牌故事", "T 商旅車", "iTRAQ"]),
+    "品牌介紹": ("menu-brand.jpg", "BRAND", ["品牌故事", "T 商旅車", "iTRAQ"]),
 }
 
 def sub_link(t, href="#"):
@@ -73,7 +73,7 @@ def header():
             items += f'<li class="has-mega"><a class="nav-a" href="{CAR}">{n}</a>{car_mega}</li>'
         else:
             img, en, links = MENU[n]
-            items += f'<li class="has-mega"><a class="nav-a" href="#">{n}</a><div class="mega"><div class="mega-in sm"><div class="mega-l"><img src="assets/img/{img}" alt="" loading="lazy"><span class="en">{en}</span></div><div class="mega-r"><h3>{n}</h3><div class="mm-grid">{"".join(sub_link(x) for x in links)}</div></div></div></div></li>'
+            items += f'<li class="has-mega"><a class="nav-a" href="#">{n}</a><div class="mega"><div class="mega-in sm"><div class="mega-l"><img src="assets/img/{img}?v={VER}" alt="" loading="lazy"><span class="en">{en}</span></div><div class="mega-r"><h3>{n}</h3><div class="mm-grid">{"".join(sub_link(x) for x in links)}</div></div></div></div></li>'
     mcars = "".join(
         f'<div class="mcar"><a class="mcar-h" href="{CAR}"><img src="assets/img/{img}" alt=""><div><span class="b">{b}</span><b>{n}</b></div></a>{"".join(sub_link(x, CAR) for x in subs)}</div>'
         for b, n, d, img, big, subs in CARS)
