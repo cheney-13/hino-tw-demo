@@ -58,10 +58,10 @@ def home():
 <div class="hero-stage" id="hero">{slides}</div>
 <div class="hero-bar" id="heroBar">
 <div class="ticker"><div class="ticker-track" id="tickTrack"><span>{tick}</span><span>{tick}</span><span>{tick}</span><span>{tick}</span></div></div>
-<button class="icon-btn" data-hero="-1" aria-label="上一張">{ic("left")}</button>
-<button class="icon-btn" data-hero="1" aria-label="下一張">{ic("right")}</button>
 <div class="hero-count"><div><b data-hero-i>01</b> <span>/ 0<span data-hero-n>5</span></span></div></div>
 <button class="icon-btn" data-hero-pause aria-label="暫停輪播">{ic("pause")}</button>
+<button class="icon-btn" data-hero="-1" aria-label="上一張">{ic("left")}</button>
+<button class="icon-btn" data-hero="1" aria-label="下一張">{ic("right")}</button>
 </div>
 </section>
 
