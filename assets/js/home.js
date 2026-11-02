@@ -33,7 +33,9 @@
     const r = brand.getBoundingClientRect();
     if (r.bottom < 0 || r.top > innerHeight) return;
     // logo sits at the panel top until the panel reaches the upper part of the screen, then drifts down (rises slower than the page)
-    const y = Math.min(200, Math.max(0, (innerHeight * 0.4 - r.top) * 0.35));
+    // 0 when the panel enters from the bottom → max when it leaves at the top (logo travels far slower than the page)
+    const k = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height)));
+    const y = k * (innerWidth < 768 ? 60 : 150);
     plx.style.transform = `translate3d(0,${y.toFixed(1)}px,0)`;
   };
   if (!reduce) { addEventListener('scroll', onScroll, { passive: true }); onScroll(); }
