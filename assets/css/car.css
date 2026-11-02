@@ -344,3 +344,9 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .pg-car .sec-head h2 small{font-size:17px;line-height:30px}
   .pg-car .sec-head.row>div{padding-bottom:0}
 }
+/* car page desktop: 60px between every block */
+@media (min-width:768px){
+  .pg-car .sec{margin-top:60px}
+  .pg-car .pair .sec{margin-top:0}
+  .pg-car .ftr-cta{margin-top:60px}
+}
