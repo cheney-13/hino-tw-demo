@@ -301,9 +301,9 @@ def car():
 """
     pcs = f"""<div class="modal-bd"><div class="pcs-stage" id="pcsStage"><img class="on" src="assets/img/safe-pcs.jpg?v={VER}" alt=""><img src="assets/img/safe-ldws.jpg?v={VER}" alt=""><img src="assets/img/safe-view.jpg?v={VER}" alt=""></div>
 <div class="pcs-tabs" id="pcsTabs">
-<button class="on"><b>PCS 預警式防護系統</b><span>由車前方毫米波雷達及智能攝影機偵測前方行人或車輛，若系統判斷有碰撞危險時，將發出警報及支援煞車控制，降低碰撞車禍的傷害。</span></button>
-<button><b>LDWS 車道偏離警示系統</b><span>透過車輛前方所搭載的攝影機隨時偵測前方車道線，當行駛中車輛偏離車道線時，系統將會發出警示音以提醒駕駛者注意。</span></button>
-<button><b>視野輔助系統</b><span>搭載螢幕內嵌視野輔助系統，以 4 分割畫面同時顯示前、後、左、右鏡頭畫面並儲存紀錄。</span></button>
+<button class="on"><b>PCS 預警式防護系統</b><span>毫米波雷達及攝影機偵測前方行人與車輛，有碰撞危險時發出警報並輔助煞車。</span></button>
+<button><b>LDWS 車道偏離警示系統</b><span>攝影機偵測前方車道線，車輛偏離時發出警示音提醒駕駛。</span></button>
+<button><b>視野輔助系統</b><span>螢幕以 4 分割畫面同時顯示前、後、左、右鏡頭，並儲存紀錄。</span></button>
 </div></div>"""
     cmp_ = f"""<div class="cmp-bar"><div><span class="pill" id="cmpPill"></span><button class="edit" data-close data-goto="#select">修改選擇</button></div>
 <div class="seg" id="cmpSeg"><button class="on" data-diff="1">只看差異</button><button data-diff="0">全部展開</button></div></div>
