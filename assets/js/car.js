@@ -22,20 +22,9 @@
     c.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1)); });
   });
 
-  /* PCS modal gallery: pager + thumbs + swipe */
-  const pg = $('#pcsGal'), pi = $$('.pcs-stage img', pg), pth = $$('.pcs-thumbs button', pg);
-  let pk = 0;
-  const pgo = n => {
-    pk = (n + pi.length) % pi.length;
-    pi.forEach((x, j) => x.classList.toggle('on', j === pk));
-    pth.forEach((x, j) => x.classList.toggle('on', j === pk));
-    $('[data-pcs-i]', pg).textContent = pk + 1;
-  };
-  $$('[data-pcs]', pg).forEach(b => b.addEventListener('click', () => pgo(pk + +b.dataset.pcs)));
-  pth.forEach((b, j) => b.addEventListener('click', () => pgo(j)));
-  let px; $('.pcs-stage', pg).addEventListener('touchstart', e => px = e.touches[0].clientX, { passive: true });
-  $('.pcs-stage', pg).addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - px; if (Math.abs(dx) > 40) pgo(pk + (dx < 0 ? 1 : -1)); });
-  $('#m-pcs').addEventListener('modal:open', () => pgo(0));
+  /* PCS modal tabs */
+  const pt = $$('#pcsTabs button'), pi = $$('#pcsStage img');
+  pt.forEach((b, k) => b.addEventListener('click', () => { pt.forEach((x, j) => x.classList.toggle('on', j === k)); pi.forEach((x, j) => x.classList.toggle('on', j === k)); }));
 
   /* ---------- selector ---------- */
   const st = { ton: '6.5 噸', cab: '寬座艙', trans: '不限' };
