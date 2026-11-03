@@ -195,8 +195,8 @@ def car():
 <div class="bento-ctl">
 {tile("ctl-console.jpg", "寬敞中控台空間", "", "dark", "t1 rv")}
 {tile("ctl-shift.jpg", "自排/手排變速箱", "除了傳統手排變速箱外，亦提供自排車型可供選擇。易於操控的自排變速箱，起步、加速更平穩，不熟練手排的駕駛者也可輕易上手，大幅降低工作負擔。", "dark", "t2 rv")}
-{tile("ctl-meter.jpg", "儀錶板多功能資訊顯示幕", "大型彩色螢幕，油耗、里程、保養週期等資訊一目瞭然。", "light", "t3 rv")}
-{tile("ctl-wheel.jpg", "方向盤", "配置多功能資訊顯示幕操作開關，操作更加便利。", "light", "t4 rv")}
+{tile("ctl-meter.jpg", "儀錶板多功能資訊顯示幕", "大型彩色螢幕，油耗、里程、保養週期等資訊一目瞭然。", "dark", "t3 rv")}
+{tile("ctl-wheel.jpg", "方向盤", "配置多功能資訊顯示幕操作開關，操作更加便利。", "dark", "t4 rv")}
 </div></section>
 
 <section class="wrap sec anchor" id="eco">
