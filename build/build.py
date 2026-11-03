@@ -306,7 +306,7 @@ def car():
 <button><b>視野輔助系統</b><span>搭載螢幕內嵌視野輔助系統，以 4 分割畫面同時顯示前、後、左、右鏡頭畫面並儲存紀錄。</span></button>
 </div></div>"""
     cmp_ = f"""<div class="cmp-bar"><div><span class="pill" id="cmpPill"></span><button class="edit" data-close data-goto="#select">修改選擇</button></div>
-<div class="seg" id="cmpSeg"><button data-diff="1">只看差異</button><button class="on" data-diff="0">全部展開</button></div></div>
+<div class="seg" id="cmpSeg"><button class="on" data-diff="1">只看差異</button><button data-diff="0">全部展開</button></div></div>
 <div class="modal-bd" id="cmpBody"></div>"""
     from spec65 import SECTIONS
     m_opts2 = "".join(f'<option value="{i}">{m["id"]}</option>' for i, m in enumerate(MODELS))
