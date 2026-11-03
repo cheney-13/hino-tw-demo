@@ -112,7 +112,7 @@
 
 /* ---------- local (gradient sweeps left → right inside the block) ---------- */
 .local{background:#fff;border-radius:var(--r);padding:40px;display:grid;grid-template-columns:488px 1fr 1fr;gap:12px;align-items:center;position:relative;overflow:hidden;isolation:isolate}
-.local::before{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;z-index:-1;background:linear-gradient(90deg,#FFFFFF 48%,#F7B2B8 82%,#FFFAFB 86%);animation:sweep 9s linear infinite}
+.local::before{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;z-index:-1;background:linear-gradient(90deg,#FFFFFF 48%,#F7B2B8 82%,#FFFAFB 86%,#FFFFFF 100%);animation:sweep 9s linear infinite}
 @keyframes sweep{from{transform:translateX(-100%)}to{transform:translateX(170%)}}
 .local h2{font-size:26px;font-weight:700;margin-bottom:16px}
 .local p{color:var(--g3);font-size:17px;line-height:1.8;padding-right:24px}
