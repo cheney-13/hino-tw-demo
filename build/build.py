@@ -138,7 +138,7 @@ def tile(img, title, desc, cls="light", extra="", open_=False, pos="", short="")
     d = f'<div class="tile-d"><div><p>{body}</p></div></div>' if desc else ""
     oc = " open" if open_ else ""
     attr = " data-tile" if desc else ""
-    return f'<div class="tile {cls}{oc} {extra}"{attr}><img src="assets/img/{img}" alt="" loading="lazy"{st}><div class="tile-b"><button class="tile-h" {"aria-expanded=" + chr(34) + ("true" if open_ else "false") + chr(34) if desc else "tabindex=-1"}>{title}{btn}</button>{d}</div></div>'
+    return f'<div class="tile {cls}{oc} {extra}"{attr}><img src="assets/img/{img}?v={VER}" alt="" loading="lazy"{st}><div class="tile-b"><button class="tile-h" {"aria-expanded=" + chr(34) + ("true" if open_ else "false") + chr(34) if desc else "tabindex=-1"}>{title}{btn}</button>{d}</div></div>'
 
 def spec_table():
     head = "".join(f'<th>{m["name"]}<small>{m["id"]}</small></th>' for m in MODELS)
@@ -202,7 +202,7 @@ def car():
 <section class="wrap sec anchor" id="eco">
 {sec_head("ECO", "節能環保", "節能", "DPR 柴油碳微粒主動濾清系統搭配 SCR 選擇性觸媒還原系統，降低排放汙染。")}
 <div class="bento-eco">
-{tile("eco-dpr.jpg", "DPR 柴油碳微粒主動濾清系統", "廢氣通過 DPF 濾清器時吸附黑煙粒狀物，堆積量過高時自動再生或提醒手動再生，降低 PM 汙染物排放。", "dark", "rv", pos="50% 20%")}
+{tile("eco-dpr.jpg", "DPR 柴油碳微粒主動濾清系統", "廢氣通過 DPF 濾清器時吸附黑煙粒狀物，堆積量過高時自動再生或提醒手動再生，降低 PM 汙染物排放。", "dark", "rv")}
 {tile("eco-scr.jpg", "選擇性觸媒還原系統（SCR）", "ECU 偵測引擎排出的廢氣，搭配 AdBlue 適時噴出尿素水，進行化學變化後，達到排氣淨化效果。", "dark", "rv")}
 </div></section>
 
@@ -216,34 +216,34 @@ def car():
 </div>
 <h3>煞車與車身穩定控制</h3>
 <div class="grid3 sm">
-{tile("safe-abs.jpg", "ABS 防鎖定煞車系統", "主動防止車輪在緊急煞車時鎖死，避免車輛失控。", pos="50% 0", short="緊急煞車時防止車輪鎖死，避免失控。")}
-{tile("safe-trc.jpg", "TRC 循跡防滑控制系統", "有效抑制車輛於濕滑路面起步或加速時，可能發生的輪胎打滑。", pos="50% 0", short="抑制濕滑路面起步或加速時的輪胎打滑。")}
-{tile("safe-vsc.jpg", "VSC 車輛穩定控制系統", "車輛偏離路面、轉向過度或不足時，調整動力輸出，主動掌握行車安全。", pos="50% 0", short="轉向過度或不足時調整動力，維持行車穩定。")}
-{tile("safe-ebd.jpg", "EBD 電子煞車力道分配系統", "因應不同行駛狀況，將前後煞車制動力做適當分配，保障駕駛者、乘客與貨物的最大安全。", pos="50% 0", short="依行駛狀況分配前後煞車力，提升安全。")}
-{tile("safe-bas.jpg", "BAS 煞車輔助系統", "根據踩煞車踏板力道及速度主動判斷情況緊急與否，提供最強大的制動力。", pos="50% 0", short="判斷緊急煞車時，提供最強制動力。")}
-{tile("safe-bos.jpg", "BOS 煞車優先系統", "油門作動時只要踩下煞車踏板，行車電腦會啟動煞車優先系統，自動降低動力輸出，使車輛減速。", pos="50% 0", short="油門與煞車同時踩下時，優先降低動力減速。")}
+{tile("safe-abs.jpg", "ABS 防鎖定煞車系統", "主動防止車輪在緊急煞車時鎖死，避免車輛失控。", short="緊急煞車時防止車輪鎖死，避免失控。")}
+{tile("safe-trc.jpg", "TRC 循跡防滑控制系統", "有效抑制車輛於濕滑路面起步或加速時，可能發生的輪胎打滑。", short="抑制濕滑路面起步或加速時的輪胎打滑。")}
+{tile("safe-vsc.jpg", "VSC 車輛穩定控制系統", "車輛偏離路面、轉向過度或不足時，調整動力輸出，主動掌握行車安全。", short="轉向過度或不足時調整動力，維持行車穩定。")}
+{tile("safe-ebd.jpg", "EBD 電子煞車力道分配系統", "因應不同行駛狀況，將前後煞車制動力做適當分配，保障駕駛者、乘客與貨物的最大安全。", short="依行駛狀況分配前後煞車力，提升安全。")}
+{tile("safe-bas.jpg", "BAS 煞車輔助系統", "根據踩煞車踏板力道及速度主動判斷情況緊急與否，提供最強大的制動力。", short="判斷緊急煞車時，提供最強制動力。")}
+{tile("safe-bos.jpg", "BOS 煞車優先系統", "油門作動時只要踩下煞車踏板，行車電腦會啟動煞車優先系統，自動降低動力輸出，使車輛減速。", short="油門與煞車同時踩下時，優先降低動力減速。")}
 </div></div></section>
 
 <div class="wrap sec"><div class="pair">
 <section class="sec anchor" id="power">
 {sec_head("POWER", "大馬力引擎", "性能", "寬座艙手排車型搭載馬力 180PS 引擎，以大馬力支援您的行車需求。")}
-<div class="feature rv" data-tile><img src="assets/img/engine.webp" alt="N04C 引擎" loading="lazy"><div class="tile-b"><button class="tile-h" aria-expanded="false">N04C 直列4缸柴油引擎{ic("plus")}</button><div class="tile-d"><div><p>電腦控制柴油直噴引擎、渦輪增壓附中間冷卻器，總排氣量 4,009 c.c.，最大淨扭力達 47.9 kg‧m。</p></div></div></div></div>
+<div class="feature rv" data-tile><img src="assets/img/engine.jpg?v={VER}" alt="N04C 引擎" loading="lazy"><div class="tile-b"><button class="tile-h" aria-expanded="false">N04C 直列4缸柴油引擎{ic("plus")}</button><div class="tile-d"><div><p>電腦控制柴油直噴引擎、渦輪增壓附中間冷卻器，總排氣量 4,009 c.c.，最大淨扭力達 47.9 kg‧m。</p></div></div></div></div>
 </section>
 <section class="sec anchor" id="strength">
 {sec_head("STRENGTH", "大樑結構", "載重", "全車採用高強度大樑，底盤耐用度高，載貨更平穩、更安全。")}
-<div class="feature rv"><img src="assets/img/frame.webp" alt="高強度大樑" loading="lazy"><div class="tile-b"><div class="tile-h">高強度大樑</div></div></div>
+<div class="feature rv"><img src="assets/img/frame.jpg?v={VER}" alt="高強度大樑" loading="lazy"><div class="tile-b"><div class="tile-h">高強度大樑</div></div></div>
 </section>
 </div></div>
 
 <section class="wrap sec anchor" id="interior">
 {sec_head("INTERIOR", "車內空間", "內裝", "貼心多元的收納功能與車內照明，實用性大幅提升。")}
 <div class="bento-int">
-<div class="carousel rv" data-carousel><div class="car-stage"><div class="car-track"><img src="assets/img/int-1.jpg" alt="車內照明" loading="lazy"><img src="assets/img/int-2.jpg" alt="收納空間" loading="lazy"><img src="assets/img/int-3.jpg" alt="收納空間" loading="lazy"></div>
+<div class="carousel rv" data-carousel><div class="car-stage"><div class="car-track"><img src="assets/img/int-1.jpg?v={VER}" alt="車內照明" loading="lazy"><img src="assets/img/int-2.jpg?v={VER}" alt="收納空間" loading="lazy"><img src="assets/img/int-3.jpg?v={VER}" alt="收納空間" loading="lazy"></div>
 <span class="car-cnt"><b data-c-i>1</b> / 3</span><div class="car-nav"><button data-c="-1" aria-label="上一張">{ic("left","s20")}</button><button data-c="1" aria-label="下一張">{ic("right","s20")}</button></div></div>
 <div class="car-dots"><button class="on" aria-label="第 1 張"></button><button aria-label="第 2 張"></button><button aria-label="第 3 張"></button></div>
 <div class="tx"><h3>多元收納與車內照明</h3><p>貼心多元的收納功能與車內照明，實用性大幅提升。＊LED 室內燈為標準座艙車型配備</p></div></div>
-{tile("cab-std.webp", "標準座艙", "操控靈活，進出市區巷道不受限。", "light", "rv")}
-{tile("cab-wide.webp", "寬座艙", "座艙寬廣、乘駕更舒適；貨台空間大，載貨更多元。", "light", "rv")}
+{tile("cab-std.jpg", "標準座艙", "操控靈活，進出市區巷道不受限。", "light", "rv")}
+{tile("cab-wide.jpg", "寬座艙", "座艙寬廣、乘駕更舒適；貨台空間大，載貨更多元。", "light", "rv")}
 </div></section>
 
 <section class="wrap sec anchor" id="select">
@@ -299,7 +299,7 @@ def car():
 <details><summary>舊車可以折抵嗎？{ic("plus")}</summary><p>可以。據點可協助舊車估價與折抵，評估結果依車況與年份而定。</p></details>
 </div></div></section>
 """
-    pcs = f"""<div class="modal-bd"><div class="pcs-stage" id="pcsStage"><img class="on" src="assets/img/safe-pcs.jpg" alt=""><img src="assets/img/safe-ldws.jpg" alt=""><img src="assets/img/safe-view.jpg" alt=""></div>
+    pcs = f"""<div class="modal-bd"><div class="pcs-stage" id="pcsStage"><img class="on" src="assets/img/safe-pcs.jpg?v={VER}" alt=""><img src="assets/img/safe-ldws.jpg?v={VER}" alt=""><img src="assets/img/safe-view.jpg?v={VER}" alt=""></div>
 <div class="pcs-tabs" id="pcsTabs">
 <button class="on"><b>PCS 預警式防護系統</b><span>由車前方毫米波雷達及智能攝影機偵測前方行人或車輛，若系統判斷有碰撞危險時，將發出警報及支援煞車控制，降低碰撞車禍的傷害。</span></button>
 <button><b>LDWS 車道偏離警示系統</b><span>透過車輛前方所搭載的攝影機隨時偵測前方車道線，當行駛中車輛偏離車道線時，系統將會發出警示音以提醒駕駛者注意。</span></button>
