@@ -225,13 +225,14 @@ table.st{width:100%;border-collapse:collapse;min-width:1000px;table-layout:fixed
 .only-diff .cmp-row.same{display:none}
 
 /* pcs modal (Figma popup 8262:41047 / drawer 8262:40989) */
-.pcs-bd{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.pcs-bd{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:max-content;gap:16px;align-items:start}
 .pcs-card{border-radius:var(--r);overflow:hidden;background:var(--g1);display:flex;flex-direction:column;gap:8px}
 .pcs-card>img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .pcs-card>div{padding:20px}
 .pcs-card h4{font-size:20px;line-height:28px;font-weight:700;margin-bottom:6px}
 .pcs-card p{font-size:17px;line-height:28px;color:var(--g3)}
 #m-pcs .modal-ft{display:none}
+#m-pcs .modal-ft .btn{justify-content:center}
 
 /* calc modal */
 .calc{display:grid;grid-template-columns:1fr 400px;gap:32px}
