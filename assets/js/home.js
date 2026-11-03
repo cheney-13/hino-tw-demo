@@ -24,6 +24,14 @@
     restart();
   });
   restart();
+  // touch swipe: left → next, right → previous
+  let sx, sy;
+  const hero = $('#hero');
+  hero.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  hero.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(i + (dx < 0 ? 1 : -1));
+  });
 
   /* brand: parallax background logo */
   const brand = $('#brand'), plx = $('[data-parallax]');
