@@ -80,7 +80,7 @@
     $('#cmpPill').textContent = `${st.ton} · ${st.cab} · 變速箱${st.trans}`;
     const opts = cur => match().map(m => `<option${m.id === cur ? ' selected' : ''}>${m.id}</option>`).join('');
     const chev = '<svg class="ico s16"><use href="#i-down"/></svg>';
-    const cols = ms.map((m, k) => `<div class="cmp-col"><div class="cmp-dd"><small>車系</small><b>300 系</b>${chev}</div><div class="img"><img src="assets/img/car-300.webp" alt=""></div><label class="cmp-dd"><b>${m.id}</b>${chev}<select data-k="${k}" aria-label="切換型號">${opts(m.id)}</select></label><span class="wb">軸距 ${m.wb}</span><a class="btn btn-red" href="#" data-noop>型錄下載<i><svg class="ico s16"><use href="#i-arrow"/></svg></i></a></div>`).join('');
+    const cols = ms.map((m, k) => `<div class="cmp-col"><div class="cmp-dd"><small>車系</small><b>300 系</b>${chev}</div><div class="img"><img src="assets/img/car-300.webp?v=2" alt=""></div><label class="cmp-dd"><b>${m.id}</b>${chev}<select data-k="${k}" aria-label="切換型號">${opts(m.id)}</select></label><span class="wb">軸距 ${m.wb}</span><a class="btn btn-red" href="#" data-noop>型錄下載<i><svg class="ico s16"><use href="#i-arrow"/></svg></i></a></div>`).join('');
     const sameGrp = fs => fs.every(([, key]) => ms.every(m => m[key] === ms[0][key]));
     const grps = fields.map(([g, fs]) => { const fold = mobile() && sameGrp(fs);
       return `<div class="cmp-grp${fold ? ' closed' : ''}"><h4><span>${g}</span>${fold ? `<em>${n} 款規格相同</em>` : ''}<svg class="ico s20"><use href="#i-${fold ? 'plus' : 'minus'}"/></svg></h4>${fs.map(([k, key]) => {

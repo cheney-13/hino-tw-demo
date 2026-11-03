@@ -75,7 +75,7 @@ def header():
             img, en, links = MENU[n]
             items += f'<li class="has-mega"><a class="nav-a" href="#">{n}</a><div class="mega"><div class="mega-in sm"><div class="mega-l"><img src="assets/img/{img}?v={VER}" alt="" loading="lazy"><span class="en">{en}</span></div><div class="mega-r"><h3>{n}</h3><div class="mm-grid">{"".join(sub_link(x) for x in links)}</div></div></div></div></li>'
     mcars = "".join(
-        f'<div class="mcar"><a class="mcar-h" href="{CAR}"><img src="assets/img/{img}" alt=""><div><span class="b">{b}</span><b>{n}</b></div></a>{"".join(sub_link(x, CAR) for x in subs)}</div>'
+        f'<div class="mcar"><a class="mcar-h" href="{CAR}"><img src="assets/img/{img}?v={VER}" alt=""><div><span class="b">{b}</span><b>{n}</b></div></a>{"".join(sub_link(x, CAR) for x in subs)}</div>'
         for b, n, d, img, big, subs in CARS)
     macc = f'<details><summary>車款介紹{ic("plus","pm")}</summary><div class="mnav-sub">{mcars}</div></details>' + "".join(
         f'<details><summary>{k}{ic("plus","pm")}</summary><div class="mnav-sub plain">{"".join(sub_link(x) for x in v[2])}</div></details>'

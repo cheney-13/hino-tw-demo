@@ -1,5 +1,5 @@
 import os
-from partials import page, ic, CAR, CARS, modal
+from partials import page, ic, CAR, CARS, modal, VER
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -50,7 +50,7 @@ def home():
         if n.startswith("300"):
             feat = (b, n, s, img, subs)
             continue
-        hot_small.append(f'<div class="hot-card" data-hot tabindex="0" role="button" aria-label="{n}，展開車型選項"><div class="img"><img src="assets/img/{img}" alt="" loading="lazy"></div><div class="tx"><span class="b">{b}</span><b>{n}</b></div>{hot_pop(n, subs)}</div>')
+        hot_small.append(f'<div class="hot-card" data-hot tabindex="0" role="button" aria-label="{n}，展開車型選項"><div class="img"><img src="assets/img/{img}?v={VER}" alt="" loading="lazy"></div><div class="tx"><span class="b">{b}</span><b>{n}</b></div>{hot_pop(n, subs)}</div>')
     stories = "".join(
         f'<a class="story" href="#" data-noop><img src="assets/img/{i}" alt="" loading="lazy" style="object-position:{pos}"><span class="tag">{tg}</span><div class="tx"><h3>{t}</h3><p>{q}</p></div></a>'
         for i, tg, t, q, pos in STORIES * 3)
@@ -79,7 +79,7 @@ def home():
 
 <section class="wrap sec" aria-labelledby="hot-t">
 <div class="hot">
-<div class="hot-main" data-hot tabindex="0" role="button" aria-label="300系中小型貨車，展開車型選項"><h2 id="hot-t">熱門車款</h2><div class="img"><img src="assets/img/car-300.webp" alt="HINO 300系"></div><div class="info"><span class="b">日野</span><b>300系中小型貨車</b><span>5/6.5/7.4/7.5/8 噸・5 噸木床貨斗</span></div>{hot_pop(feat[1], feat[4])}</div>
+<div class="hot-main" data-hot tabindex="0" role="button" aria-label="300系中小型貨車，展開車型選項"><h2 id="hot-t">熱門車款</h2><div class="img"><img src="assets/img/car-300.webp?v={VER}" alt="HINO 300系"></div><div class="info"><span class="b">日野</span><b>300系中小型貨車</b><span>5/6.5/7.4/7.5/8 噸・5 噸木床貨斗</span></div>{hot_pop(feat[1], feat[4])}</div>
 {"".join(hot_small)}
 </div>
 </section>
@@ -249,7 +249,7 @@ def car():
 <section class="wrap sec anchor" id="select">
 <div class="select">
 {sec_head("SELECT", "選出你的 300 系", "選車比較", "選噸數、座艙、變速箱，找到對應車型。")}
-<div class="sel-img"><img src="assets/img/car-300.webp" alt="HINO 300系" loading="lazy"></div>
+<div class="sel-img"><img src="assets/img/car-300.webp?v={VER}" alt="HINO 300系" loading="lazy"></div>
 <div>
 <div class="sel-rows" id="selRows">
 <div class="sel-row" data-f="ton" tabindex="0"><span>噸數</span><b><em data-v>6.5 噸</em>{ic("right","s20")}</b><div class="dd">{"".join(f'<button data-o="{t}">{t}</button>' for t in tons)}</div></div>
