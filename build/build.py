@@ -299,12 +299,8 @@ def car():
 <details><summary>舊車可以折抵嗎？{ic("plus")}</summary><p>可以。據點可協助舊車估價與折抵，評估結果依車況與年份而定。</p></details>
 </div></div></section>
 """
-    pcs = f"""<div class="modal-bd"><div class="pcs-stage" id="pcsStage"><img class="on" src="assets/img/safe-pcs.jpg?v={VER}" alt=""><img src="assets/img/safe-ldws.jpg?v={VER}" alt=""><img src="assets/img/safe-view.jpg?v={VER}" alt=""></div>
-<div class="pcs-tabs" id="pcsTabs">
-<button class="on"><b>PCS 預警式防護系統</b><span>毫米波雷達及攝影機偵測前方行人與車輛，有碰撞危險時發出警報並輔助煞車。</span></button>
-<button><b>LDWS 車道偏離警示系統</b><span>攝影機偵測前方車道線，車輛偏離時發出警示音提醒駕駛。</span></button>
-<button><b>視野輔助系統</b><span>螢幕以 4 分割畫面同時顯示前、後、左、右鏡頭，並儲存紀錄。</span></button>
-</div></div>"""
+    pcs_card = lambda im, t, d: f'<div class="pcs-card"><img src="assets/img/{im}?v={VER}" alt="{t}"><div><h4>{t}</h4><p>{d}</p></div></div>'
+    pcs = f"""<div class="modal-bd pcs-bd">{pcs_card("pop-pcs.jpg", "PCS 預警式防護系統", "毫米波雷達及攝影機偵測前方行人與車輛，有碰撞危險時發出警報並輔助煞車。")}{pcs_card("pop-ldws.jpg", "LDWS 車道偏離警示系統", "攝影機偵測前方車道線，車輛偏離時發出警示音提醒駕駛。")}</div>"""
     cmp_ = f"""<div class="cmp-bar"><div><span class="pill" id="cmpPill"></span><button class="edit" data-close data-goto="#select">修改選擇</button></div>
 <div class="seg" id="cmpSeg"><button class="on" data-diff="1">只看差異</button><button data-diff="0">全部展開</button></div></div>
 <div class="modal-bd" id="cmpBody"></div>"""
@@ -313,7 +309,7 @@ def car():
     full = f'''<div class="full-top"><div class="full-sel"><label class="cmp-dd"><small>噸數</small><b>6.5 噸</b>{ic("down","s16")}<select aria-label="噸數" disabled><option>6.5 噸</option></select></label><label class="cmp-dd wide"><small>型號</small><b id="fullModel">{MODELS[0]["id"]}</b>{ic("down","s16")}<select id="fullSel" aria-label="型號">{m_opts2}</select></label></div></div>
 <div class="modal-bd"><div class="tbl-wrap full-d">{spec_table()}</div><div class="full-m" id="fullM"></div></div>
 <div class="full-act"><a class="btn btn-red" href="#" data-noop>型錄下載{ic("arrow")}</a></div>'''
-    extra = (modal("m-pcs", "標配 PCS＋LDWS 主動安全", pcs, cls="w960")
+    extra = (modal("m-pcs", "標配 PCS＋LDWS 主動安全", pcs, f'<button class="btn btn-dark btn-block" data-close>關閉</button>', cls="w960")
              + modal("m-cmp", "車型比較", cmp_, cls="w1080")
              + modal("m-full", "完整規格表", full, cls="w1080"))
     import json
