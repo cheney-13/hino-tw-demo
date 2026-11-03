@@ -299,12 +299,18 @@ def car():
 <details><summary>舊車可以折抵嗎？{ic("plus")}</summary><p>可以。據點可協助舊車估價與折抵，評估結果依車況與年份而定。</p></details>
 </div></div></section>
 """
-    pcs = f"""<div class="modal-bd"><div class="pcs-stage" id="pcsStage"><img class="on" src="assets/img/safe-pcs.jpg?v={VER}" alt=""><img src="assets/img/safe-ldws.jpg?v={VER}" alt=""><img src="assets/img/safe-view.jpg?v={VER}" alt=""></div>
-<div class="pcs-tabs" id="pcsTabs">
-<button class="on"><b>PCS 預警式防護系統</b><span>由車前方毫米波雷達及智能攝影機偵測前方行人或車輛，若系統判斷有碰撞危險時，將發出警報及支援煞車控制，降低碰撞車禍的傷害。</span></button>
-<button><b>LDWS 車道偏離警示系統</b><span>透過車輛前方所搭載的攝影機隨時偵測前方車道線，當行駛中車輛偏離車道線時，系統將會發出警示音以提醒駕駛者注意。</span></button>
-<button><b>視野輔助系統</b><span>搭載螢幕內嵌視野輔助系統，以 4 分割畫面同時顯示前、後、左、右鏡頭畫面並儲存紀錄。</span></button>
-</div></div>"""
+    pcs_items = [("safe-pcs.jpg", "PCS 預警式防護系統", "由車前方毫米波雷達及智能攝影機偵測前方行人或車輛，若系統判斷有碰撞危險時，將發出警報及支援煞車控制，降低碰撞車禍的傷害。"),
+                 ("safe-ldws.jpg", "LDWS 車道偏離警示系統", "透過車輛前方所搭載的攝影機隨時偵測前方車道線，當行駛中車輛偏離車道線時，系統將會發出警示音以提醒駕駛者注意。"),
+                 ("safe-view.jpg", "視野輔助系統", "搭載螢幕內嵌視野輔助系統，以 4 分割畫面同時顯示前、後、左、右鏡頭畫面並儲存紀錄。")]
+    on = lambda k: ' class="on"' if k == 0 else ""
+    pcs_imgs = "".join(f'<img{on(k)} src="assets/img/{im}?v={VER}" alt="{t}">' for k, (im, t, _) in enumerate(pcs_items))
+    pcs_thumbs = "".join(f'<button type="button"{on(k)} aria-label="{t}"><img src="assets/img/{im}?v={VER}" alt=""></button>' for k, (im, t, _) in enumerate(pcs_items))
+    pcs_desc = "".join(f'<div><h4>{t}</h4><p>{d}</p></div>' for _, t, d in pcs_items)
+    pcs = f"""<div class="modal-bd pcs-bd"><div class="pcs-gal" id="pcsGal">
+<div class="pcs-stage">{pcs_imgs}</div>
+<div class="pcs-pager"><button type="button" class="pcs-nav" data-pcs="-1" aria-label="上一張">{ic("left","s20")}</button><span><b data-pcs-i>1</b> / {len(pcs_items)}</span><button type="button" class="pcs-nav" data-pcs="1" aria-label="下一張">{ic("right","s20")}</button></div>
+<div class="pcs-thumbs">{pcs_thumbs}</div>
+</div><div class="pcs-desc">{pcs_desc}</div></div>"""
     cmp_ = f"""<div class="cmp-bar"><div><span class="pill" id="cmpPill"></span><button class="edit" data-close data-goto="#select">修改選擇</button></div>
 <div class="seg" id="cmpSeg"><button data-diff="1">只看差異</button><button class="on" data-diff="0">全部展開</button></div></div>
 <div class="modal-bd" id="cmpBody"></div>"""
