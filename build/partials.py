@@ -32,6 +32,8 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22L5 13V7L8 3H16L19 7V13L12 22Z"/><path d="M10 8H14V12H10V8Z"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><path d="M4 3H9L11 9L8 11C9.5 14 11 15.5 13 16L15 13L21 15V20H17C10 20 4 14 4 7V3Z"/></symbol>
 <symbol id="i-cal" viewBox="0 0 24 24"><path d="M3 5H21V21H3V5Z"/><path d="M3 10H21M8 3V7M16 3V7"/></symbol>
+<symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></symbol>
+<symbol id="i-yt" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9v6l5-3z"/></symbol>
 <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3V15M7 10L12 15L17 10M4 20H20"/></symbol>
 <symbol id="i-calc" viewBox="0 0 24 24"><path d="M5 2h14v20H5z"/><path d="M8 5h8v4H8zM8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01M16 17h.01"/></symbol>
 <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 0 1-10 0z"/><path d="M7 5H3v2a4 4 0 0 0 4 4M17 5h4v2a4 4 0 0 1-4 4M12 14v4M7 21h10M9 18h6"/></symbol>
@@ -51,13 +53,12 @@ CARS = [
     ("豐田", "中型巴士", "COASTER", "car-bus-m.webp", "COASTER", ["COASTER"]),
     ("日野", "油電複合動力系列", "6.5/8 噸", "car-hybrid.webp", "HYBRID", ["6.5/8噸"]),
 ]
-NAV = ["車款介紹", "據點查詢", "售後服務", "車主專區", "最新消息", "品牌介紹"]
+NAV = ["車款介紹", "售後服務", "車主專區", "最新消息", "品牌與活動"]
 MENU = {
-    "據點查詢": ("menu-loc.jpg", "LOCATIONS", ["北部地區", "中部地區", "南部地區", "東部地區"]),
-    "售後服務": ("menu-svc.jpg", "SERVICE", ["保養維修", "保固服務", "微笑大使", "獎學金計畫", "優良駕駛", "FAQ"]),
-    "車主專區": ("menu-own.jpg", "OWNERS", ["車主登入", "車輛操作影片", "車主小幫手", "HINO 好集利", "和泰購", "FAQ"]),
-    "最新消息": ("menu-news.jpg", "NEWS", ["品牌新聞", "活動資訊", "中獎公告"]),
-    "品牌介紹": ("menu-brand.jpg", "BRAND", ["品牌故事", "T 商旅車", "iTRAQ"]),
+    "售後服務": ("menu-svc.jpg", "SERVICE", ["保養維修", "正廠零配件", "原廠嚴選輪胎", "道路救援服務", "保固條件", "FAQ"]),
+    "車主專區": ("menu-own.jpg", "OWNERS", ["車主登入", "HINO 好集利", "HINO 精品", "HOTAI 購", "HINO 車主小幫手", "車輛操作影片", "FAQ"]),
+    "最新消息": ("menu-news.jpg", "NEWS", ["購車優惠", "品牌新聞", "活動資訊", "中獎公告"]),
+    "品牌與活動": ("menu-brand.jpg", "BRAND", ["HINO TRUST", "微笑大使", "獎學金計畫", "優良駕駛", "大車友善地圖", "車隊管理 iTRAQ", "TOYOTA 商旅車"]),
 }
 
 def sub_link(t, href="#"):
@@ -85,15 +86,14 @@ def header():
 <div class="wrap hdr-in">
 <a class="hdr-logo" href="index.html" aria-label="HINO 首頁">{LOGO}</a>
 <nav class="hdr-nav" aria-label="主選單"><ul>{items}</ul>
-<div class="hdr-icons"><a href="#" aria-label="聯絡我們">{ic("mail")}</a><a href="#" aria-label="Facebook">{ic("fb")}</a><a href="#" aria-label="LINE">{ic("line")}</a></div></nav>
+<div class="hdr-icons"><a href="#" aria-label="聯絡我們">{ic("mail")}</a><a href="#" aria-label="LINE">{ic("line")}</a><a href="#" aria-label="Facebook">{ic("fb")}</a><a href="#" aria-label="Instagram">{ic("ig")}</a><a href="#" aria-label="YouTube">{ic("yt")}</a></div></nav>
 <button class="hdr-burger" data-open-menu aria-label="開啟選單"><img src="assets/img/icon-menu.svg" alt="" width="60" height="60"></button>
 </div></header>
 <div class="page-dim" aria-hidden="true"></div>
 <div class="mnav" id="mnav" aria-hidden="true">
 <div class="mnav-top"><a href="index.html">{LOGO}</a><button class="mnav-x" data-close-menu aria-label="關閉選單"><img src="assets/img/icon-menu-close.svg" alt="" width="60" height="60"></button></div>
 <div class="mnav-body">{macc}
-<button class="btn btn-red btn-block mnav-cta" data-modal="m-drive" style="justify-content:center">預約試乘</button>
-<div class="mnav-links"><a href="#" data-modal="m-contact">聯絡我們</a><a href="#">Facebook</a><a href="#">LINE 加入好友</a></div>
+<div class="mnav-links"><a href="#" data-modal="m-contact">聯絡我們</a><a href="#">LINE</a><a href="#">Facebook</a><a href="#">Instagram</a><a href="#">YouTube</a></div>
 <p class="mnav-tel">客服專線<a href="tel:0800522567">0800-522-567</a></p></div>
 </div>"""
 
@@ -101,13 +101,7 @@ def footer(car=False):
     car_li = "".join(
         f'<li class="ser"><button type="button" class="ser-h" data-ftr-car aria-expanded="false"><span>{n}</span>{ic("plus","s16")}</button><div class="ser-links">{"".join(f"<a href={chr(34)}#{chr(34)} data-noop>{x}</a>" for x in subs)}</div></li>'
         for b, n, d, img, big, subs in CARS)
-    cols = {
-        "據點查詢": ["北部地區", "中部地區", "南部地區", "東部地區"],
-        "售後服務": ["保養維修", "保固服務", "微笑大使", "獎學金計畫", "優良駕駛", "FAQ"],
-        "車主專區": ["車主登入", "車輛操作影片", "車主小幫手", "HINO 好集利", "和泰購", "FAQ"],
-        "最新消息": ["品牌新聞", "活動資訊", "中獎公告"],
-        "品牌介紹": ["品牌故事", "T 商旅車", "iTRAQ"],
-    }
+    cols = {k: v[2] for k, v in MENU.items()}
     other = "".join(f'<div class="col"><h3>{k}</h3><ul>{lilinks(v, True)}</ul></div>' for k, v in cols.items())
     rel = lambda xs: "".join(f'<a href="#" data-noop>{x}</a>' for x in xs)
     rel1 = rel(["大車友善地圖", "TOYOTA商旅車", "iTRAQ"])
