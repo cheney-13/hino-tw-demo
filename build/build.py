@@ -144,7 +144,7 @@ def spec_table():
     head = "".join(f'<th>{m["name"]}<small>{m["id"]}</small></th>' for m in MODELS)
     rows = f'<tr><td class="k">駕駛艙形式</td>{"".join("<td>%s</td>" % m["cabf"] for m in MODELS)}</tr>'
     for g, items in GROUPS:
-        rows += f'<tr class="grp" data-grp="{g}"><td colspan="{len(MODELS)+1}">{g}{ic("up","s20")}</td></tr>'
+        rows += f'<tr class="grp" data-grp="{g}"><td colspan="{len(MODELS)+1}">{g}{ic("up","s16")}</td></tr>'
         for k, u, key in items:
             rows += f'<tr data-in="{g}"><td class="k">{k}<u>{u}</u></td>{"".join("<td>%s</td>" % m[key] for m in MODELS)}</tr>'
     # 官網 hino.com.tw/car.aspx?23（6.5 噸）規格內容
@@ -156,7 +156,7 @@ def spec_table():
     ]
     n = len(MODELS)
     for g, items in extra:
-        rows += f'<tr class="grp closed" data-grp="{g}"><td colspan="{n+1}">{g}{ic("up","s20")}</td></tr>'
+        rows += f'<tr class="grp closed" data-grp="{g}"><td colspan="{n+1}">{g}{ic("up","s16")}</td></tr>'
         for k, u, vals in items:
             cells = f'<td colspan="{n}" class="wide">{vals[0]}</td>' if len(set(vals)) == 1 and len(vals[0]) > 20 else "".join(f"<td>{v}</td>" for v in vals)
             rows += f'<tr class="hide" data-in="{g}"><td class="k">{k}<u>{u}</u></td>{cells}</tr>'
