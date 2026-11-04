@@ -214,7 +214,7 @@ table.st{width:100%;border-collapse:collapse;min-width:1000px;table-layout:fixed
 .cmp-col .wb{font-size:14px;line-height:20px;color:var(--g3)}
 .cmp-col .btn{height:48px;padding:0 7px 0 18px;font-size:16px;width:100%}
 .cmp-col .btn i{width:32px;height:32px;display:grid;place-items:center}
-.cmp-grp{border:1px solid var(--g2);border-radius:8px;overflow:hidden;background:#fff}
+.cmp-grp{border:1px solid var(--g2);border-radius:var(--r);overflow:hidden;background:#fff}
 .cmp-grp h4{display:flex;justify-content:space-between;align-items:center;padding:14px 14px 14px 16px;cursor:pointer;user-select:none}
 .cmp-grp h4 span{display:flex;align-items:center;gap:10px;font-size:18px;line-height:26px;font-weight:700}
 .cmp-grp h4 span::before{content:"";width:3px;height:18px;background:var(--red)}
@@ -350,7 +350,7 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .cmp-cols .cmp-note{display:none}
   .cmp-col{gap:8px}
   .cmp-dd b{font-size:15px}
-  .cmp-col .img{height:110px;border-radius:8px}
+  .cmp-col .img{height:110px;border-radius:var(--r)}
   .cmp-col .img img{width:130px;height:130px;margin-left:-65px;top:-10px}
   .cmp-col .zoom{top:auto;bottom:6px;right:6px}
   .cmp-col .btn{padding:0 7px 0 18px}
