@@ -104,7 +104,6 @@ def footer(car=False):
     cols = {k: v[2] for k, v in MENU.items()}
     other = "".join(f'<div class="col"><h3>{k}</h3><ul>{lilinks(v, True)}</ul></div>' for k, v in cols.items())
     rel = lambda xs: "".join(f'<a href="#" data-noop>{x}</a>' for x in xs)
-    rel1 = rel(["大車友善地圖", "TOYOTA商旅車", "iTRAQ"])
     rel2 = rel(["和泰汽車新聞室", "長源汽車", "HINO Global", "日野自動車（日本）", "和泰產險", "和運租車", "和安保險", "和泰 GO"])
     cbtn = lambda href, icon, label, extra="": f'<a class="cbtn" href="#" data-noop>{ic(icon,"s28")}<span>{label}</span>{ic("arrow","s20 arr")}</a>'
     dl_b = f'<a href="#" data-noop>{ic("dl")}<span>下載型錄</span></a>' if car else ""
@@ -115,7 +114,7 @@ def footer(car=False):
 </div></section>
 <div class="ftr-map"><div class="fw">{LOGO}
 <div class="ftr-cols"><div class="col"><h3>車款介紹</h3><ul>{car_li}</ul></div>{other}</div></div></div>
-<div class="ftr-rel"><div class="fw"><dl><dt>相關服務</dt><dd>{rel1}</dd></dl><dl><dt>相關網站</dt><dd>{rel2}</dd></dl></div></div>
+<div class="ftr-rel"><div class="fw"><dl><dt>相關網站</dt><dd>{rel2}</dd></dl></div></div>
 <div class="ftr-bot"><div class="fw"><div class="l"><span class="corp">總代理：和泰汽車股份有限公司</span><span class="links"><a href="#" data-noop>契約書下載</a><a href="#" data-noop>隱私權聲明</a><a href="#" data-noop>客服專線 0800-522-567</a></span></div><div class="r">Copyright © Hotai Motor Co., Ltd. All rights reserved.</div></div></div>
 </footer>
 <nav class="bnav" aria-label="快速服務">
