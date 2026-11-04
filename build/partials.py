@@ -32,6 +32,7 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22L5 13V7L8 3H16L19 7V13L12 22Z"/><path d="M10 8H14V12H10V8Z"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24"><path d="M4 3H9L11 9L8 11C9.5 14 11 15.5 13 16L15 13L21 15V20H17C10 20 4 14 4 7V3Z"/></symbol>
 <symbol id="i-cal" viewBox="0 0 24 24"><path d="M3 5H21V21H3V5Z"/><path d="M3 10H21M8 3V7M16 3V7"/></symbol>
+<symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3V15M7 10L12 15L17 10M4 20H20"/></symbol>
 <symbol id="i-calc" viewBox="0 0 24 24"><path d="M5 2h14v20H5z"/><path d="M8 5h8v4H8zM8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01M16 17h.01"/></symbol>
 <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 0 1-10 0z"/><path d="M7 5H3v2a4 4 0 0 0 4 4M17 5h4v2a4 4 0 0 1-4 4M12 14v4M7 21h10M9 18h6"/></symbol>
 <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 15V8"/><path d="M12 10C12 6.5 9.5 4.5 5.5 4.5C5.5 8 8 10 12 10Z"/><path d="M12 8C12 5 14.2 3 17.8 3C17.8 6 15.6 8 12 8Z"/><path d="M3 15H21"/><path d="M12 15V18M12 18L9 21M12 18L15 21M9.5 15.5L7 18M14.5 15.5L17 18"/></symbol>
@@ -96,7 +97,7 @@ def header():
 <p class="mnav-tel">客服專線<a href="tel:0800522567">0800-522-567</a></p></div>
 </div>"""
 
-def footer():
+def footer(car=False):
     car_li = "".join(
         f'<li class="ser"><button type="button" class="ser-h" data-ftr-car aria-expanded="false"><span>{n}</span>{ic("plus","s16")}</button><div class="ser-links">{"".join(f"<a href={chr(34)}#{chr(34)} data-noop>{x}</a>" for x in subs)}</div></li>'
         for b, n, d, img, big, subs in CARS)
@@ -112,6 +113,7 @@ def footer():
     rel1 = rel(["大車友善地圖", "TOYOTA商旅車", "iTRAQ"])
     rel2 = rel(["和泰汽車新聞室", "長源汽車", "HINO Global", "日野自動車（日本）", "和泰產險", "和運租車", "和安保險", "和泰 GO"])
     cbtn = lambda href, icon, label, extra="": f'<a class="cbtn" href="#" data-noop>{ic(icon,"s28")}<span>{label}</span>{ic("arrow","s20 arr")}</a>'
+    dl_b = f'<a href="#" data-noop>{ic("dl")}<span>下載型錄</span></a>' if car else ""
     return f"""<footer class="ftr">
 <section class="ftr-cta"><div class="fw">
 <div class="t"><h2>CONTACT</h2><p>需要協助嗎？歡迎與我們聯繫</p></div>
@@ -125,16 +127,17 @@ def footer():
 <nav class="bnav" aria-label="快速服務">
 <a href="#">{ic("pin")}<span>尋找據點</span></a>
 <button type="button" data-modal="m-contact">{ic("phone")}<span>專人聯繫</span></button>
-<button type="button" data-modal="m-drive">{ic("cal")}<span>預約試乘</span></button>
+<button type="button" data-modal="m-drive">{ic("cal")}<span>預約試乘</span></button>{dl_b}
 </nav>
 <div class="demo-flag">DEMO・示意網頁</div>"""
 
-def sidenav():
+def sidenav(car=False):
+    dl = f'<a class="sn-act" href="#" data-noop>{ic("dl","s28")}下載型錄</a>' if car else ""
     return f"""<aside class="sidenav" id="sidenav" aria-label="快速服務">
 <div class="sn-panel" id="snPanel">
 <a class="sn-act" href="#">{ic("pin","s28")}尋找據點</a>
 <button class="sn-act" data-modal="m-contact">{ic("phone","s28")}專人聯繫</button>
-<button class="sn-act" data-modal="m-drive">{ic("cal","s28")}預約試乘</button>
+<button class="sn-act" data-modal="m-drive">{ic("cal","s28")}預約試乘</button>{dl}
 <button class="sn-close" data-sidenav aria-controls="snPanel">{ic("close","s28")}收合</button>
 </div>
 <div class="sn-fab-wrap"><button class="sn-fab" data-sidenav aria-controls="snPanel" aria-expanded="false">{ic("grid","s28")}快速服務</button></div>
@@ -229,6 +232,7 @@ def modals():
             + modal("m-calc", "購車試算", calc, calc_ft, "w960"))
 
 def page(title, desc, css, body, js):
+    car = bool(js) and js[0] == "car.js"
     links = "".join(f'<link rel="stylesheet" href="assets/css/{c}?v={VER}">' for c in css)
     scripts = "".join(f'<script src="assets/js/{j}?v={VER}" defer></script>' for j in js)
     return f"""<!doctype html>
@@ -250,8 +254,8 @@ def page(title, desc, css, body, js):
 <main>
 {body}
 </main>
-{footer()}
-{sidenav()}
+{footer(car)}
+{sidenav(car)}
 {modals()}
 <script src="assets/js/main.js?v={VER}" defer></script>{scripts}
 </body>
