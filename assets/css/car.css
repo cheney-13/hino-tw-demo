@@ -20,7 +20,7 @@
 @media (prefers-reduced-motion:reduce){.promo-t{animation:none}}
 .specs{background:var(--black);border-radius:var(--r);padding:20px;color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column}
 .specs .wm{position:absolute;left:20px;top:10px;font-family:var(--f-en);font-weight:900;font-size:96px;line-height:1;color:#fff;opacity:.08}
-.specs h2{position:relative;font-size:26px;font-weight:700;margin:60px 0 8px}
+.specs h2{position:relative;font-size:26px;line-height:38px;font-weight:700;margin:60px 0 8px}
 .feat{background:#fff;color:var(--black);border-radius:var(--r-s);padding:18px;display:flex;justify-content:space-between;gap:12px;margin-bottom:12px;text-align:left;width:100%;transition:transform .2s}
 .feat:hover{transform:translateY(-2px)}
 .feat b{display:block;font-size:20px;font-weight:700;margin-bottom:6px}
@@ -61,7 +61,7 @@ body.hdr-hidden .tabs{top:8px}
 .tile.dark{background:#111;color:#fff}
 .tile.dark>img{height:100%}
 .tile.dark .tile-b{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.75) 40%);padding:28px 20px 10px}
-.tile.dark .tile-h{font-size:21px;font-weight:700}
+.tile.dark .tile-h{font-size:20px;line-height:28px;font-weight:700}
 .tile.dark .tile-d>div{color:rgba(255,255,255,.88)}
 .tile.dark.open .tile-b{background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.85) 25%)}
 
@@ -75,7 +75,7 @@ body.hdr-hidden .tabs{top:8px}
 .safety .sec-head{margin-bottom:24px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .grid3 .tile{height:357px}
-.safety h3{color:#fff;font-size:21px;font-weight:700;margin:40px 0 16px}
+.safety h3{color:#fff;font-size:20px;line-height:28px;font-weight:700;margin:40px 0 16px}
 .grid3.sm .tile{height:357px}
 
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -181,7 +181,7 @@ table.st{width:100%;border-collapse:collapse;min-width:1000px;table-layout:fixed
 .faq{background:#fff;border-radius:var(--r);padding:28px 16px}
 .faq .sec-head{margin-bottom:16px}
 .faq details{border-bottom:1px solid var(--g1)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:18px 18px 18px 20px;font-weight:700;font-size:17px;line-height:26px}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:18px 18px 18px 20px;font-weight:700;font-size:17px;line-height:28px}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary .ico{transition:transform .25s}
 .faq details[open] summary .ico{transform:rotate(45deg)}
@@ -283,8 +283,8 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .promo{height:56px}
   .specs{margin-top:20px;padding:20px}
   .specs .wm{font-size:56px}
-  .specs h2{margin-top:24px}
-  .feat b{font-size:19px}
+  .specs h2{margin-top:24px;font-size:24px;line-height:36px}
+  .feat b{font-size:18px;line-height:26px}
   .num{min-height:100px;align-items:flex-start;padding:0 16px}
   .num b{font-size:32px}
   .tabs{top:68px;margin:12px auto 0;justify-content:flex-start;padding:6px}
@@ -353,7 +353,7 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .cmp-col .img img{width:130px;height:130px;margin-left:-65px;top:-10px}
   .cmp-col .zoom{top:auto;bottom:6px;right:6px}
   .cmp-col .btn{padding:0 7px 0 18px}
-  .cmp-grp h4 span{font-size:17px;line-height:24px}
+  .cmp-grp h4 span{font-size:17px;line-height:26px}
   .cmp-grp h4 em{flex:1;margin-left:10px;font-style:normal;font-size:14px;font-weight:500;color:var(--g3)}
   .cmp-row{grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:4px 12px;padding:10px 16px 12px}
   .cmp-row .k{grid-column:1/-1;font-size:14px;line-height:20px}
@@ -422,8 +422,8 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 /* lead card: icon box fills the height of the title block */
 .lead-h{align-items:stretch}
 .lead-h>div{display:flex;flex-direction:column;justify-content:center;gap:2px}
-.lead-h b{font-size:19px;line-height:28px}
-.lead-h span{font-size:15px;line-height:23px}
+.lead-h b{font-size:20px;line-height:28px}
+.lead-h span{font-size:15px;line-height:24px}
 .lead-h i{width:auto;height:auto;aspect-ratio:1/1;min-width:53px}
 @media (max-width:767px){.tile.light .tile-h{align-items:flex-start;padding:12px 0}.tile.light .tile-h .ico{margin-top:-1px}}
 @media (max-width:767px){#safety .grid3:not(.sm) .tile:first-child .tile-h{min-height:56px;align-items:center;padding:0}}
