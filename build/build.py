@@ -79,7 +79,7 @@ def home():
 
 <section class="wrap sec" aria-labelledby="hot-t">
 <div class="hot">
-<div class="hot-main" data-hot tabindex="0" role="button" aria-label="300系中小型貨車，展開車型選項"><h2 id="hot-t">熱門車款</h2><div class="img"><img src="assets/img/car-300.webp?v={VER}" alt="HINO 300系"></div><div class="info"><span class="b">日野</span><b>300系中小型貨車</b><span>5/6.5/7.4/7.5/8 噸・5 噸木床貨斗</span></div>{hot_pop(feat[1], feat[4])}</div>
+<div class="hot-main" data-hot tabindex="0" role="button" aria-label="{feat[1]}，展開車型選項"><h2 id="hot-t">熱門車款</h2><div class="img"><img src="assets/img/car-300.webp?v={VER}" alt="HINO 300系"></div><div class="info"><span class="b">日野</span><b>{feat[1]}</b><span>5/6.5/7.4/7.5/8 噸・5 噸木床貨斗</span></div>{hot_pop(feat[1], feat[4])}</div>
 {"".join(hot_small)}
 </div>
 </section>
