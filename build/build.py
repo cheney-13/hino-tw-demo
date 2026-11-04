@@ -179,7 +179,7 @@ def car():
 <a class="promo" href="#" data-modal="m-calc"><span class="promo-m"><span class="promo-t">{"".join("<span>至年底，最高 30 萬購車金</span>" for _ in range(6))}</span></span>{ic("arrow","s20")}</a></div>
 </div>
 <div class="specs"><span class="wm" aria-hidden="true">SPECS</span><h2>亮點配備與數據</h2>
-<button class="feat" data-modal="m-pcs"><div><b>標配 PCS＋LDWS主動安全</b><span>預警式防護＋車道偏離警示，全車型標準配備</span></div><i>{ic("arrow")}</i></button>
+<button class="feat" data-modal="m-pcs"><div><b>標配 PCS＋LDWS<br class="mb-br">主動安全</b><span>預警式防護＋車道偏離警示，全車型標準配備</span></div><i>{ic("arrow")}</i></button>
 <div class="nums">
 <div class="num"><b><span data-n="5">5</span>–<span data-n="8">8</span><small>噸</small></b><span>車輛總重</span></div>
 <div class="num"><b><span data-n="18">18</span><small>款</small></b><span>可選車型</span></div>
