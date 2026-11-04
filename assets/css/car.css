@@ -27,7 +27,7 @@
 .feat span{color:var(--g3);font-size:15px;line-height:24px}
 .feat i{width:40px;height:40px;flex:none;border-radius:var(--r-s);background:var(--red);color:#fff;display:grid;place-items:center}
 .nums{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.num{border:1px solid rgba(255,255,255,.3);border-radius:var(--r-s);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:120px;padding:18px 16px}
+.num{border:2px solid rgba(255,255,255,.3);border-radius:var(--r-s);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:120px;padding:18px 16px}
 .num b{font-family:var(--f-en);font-weight:700;font-size:40px;line-height:38px;color:var(--red)}
 .num b small{font-size:16px;line-height:20px;font-weight:500;color:var(--g1);margin-left:4px;font-family:var(--f-en)}
 .num>span{font-size:20px;line-height:22px;color:var(--g1)}
@@ -286,7 +286,7 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .specs .wm{font-size:56px}
   .specs h2{margin-top:24px;font-size:24px;line-height:36px}
   .feat b{font-size:20px;line-height:30px}
-  .num{min-height:102px;align-items:flex-start;padding:18px 16px}
+  .num{min-height:102px;align-items:center;text-align:center;padding:18px 16px}
   .num>span{font-size:16px}
   .tabs{top:68px;margin:12px auto 0;justify-content:flex-start;padding:6px}
   .anchor{scroll-margin-top:140px}
