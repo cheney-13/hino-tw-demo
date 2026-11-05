@@ -34,6 +34,7 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 <symbol id="i-cal" viewBox="0 0 24 24"><path d="M3 5H21V21H3V5Z"/><path d="M3 10H21M8 3V7M16 3V7"/></symbol>
 <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></symbol>
 <symbol id="i-yt" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9v6l5-3z"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 3H12L21 12L12 21L3 12V3Z"/><path d="M7.5 7.5h.01"/></symbol>
 <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3V15M7 10L12 15L17 10M4 20H20"/></symbol>
 <symbol id="i-calc" viewBox="0 0 24 24"><path d="M5 2h14v20H5z"/><path d="M8 5h8v4H8zM8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01M16 17h.01"/></symbol>
 <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 0 1-10 0z"/><path d="M7 5H3v2a4 4 0 0 0 4 4M17 5h4v2a4 4 0 0 1-4 4M12 14v4M7 21h10M9 18h6"/></symbol>
@@ -118,6 +119,7 @@ def footer(car=False):
 <div class="ftr-bot"><div class="fw"><div class="l"><span class="corp">總代理：和泰汽車股份有限公司</span><span class="links"><a href="#" data-noop>契約書下載</a><a href="#" data-noop>隱私權聲明</a><a href="#" data-noop>客服專線 0800-522-567</a></span></div><div class="r">Copyright © Hotai Motor Co., Ltd. All rights reserved.</div></div></div>
 </footer>
 <nav class="bnav" aria-label="快速服務">
+<a href="#" data-noop>{ic("tag")}<span>優惠資訊</span></a>
 <a href="#">{ic("pin")}<span>尋找據點</span></a>
 <button type="button" data-modal="m-contact">{ic("phone")}<span>專人聯繫</span></button>
 <button type="button" data-modal="m-drive">{ic("cal")}<span>預約試乘</span></button>{dl_b}
@@ -128,6 +130,7 @@ def sidenav(car=False):
     dl = f'<a class="sn-act" href="#" data-noop>{ic("dl","s28")}下載型錄</a>' if car else ""
     return f"""<aside class="sidenav" id="sidenav" aria-label="快速服務">
 <div class="sn-panel" id="snPanel">
+<a class="sn-act" href="#" data-noop>{ic("tag","s28")}優惠資訊</a>
 <a class="sn-act" href="#">{ic("pin","s28")}尋找據點</a>
 <button class="sn-act" data-modal="m-contact">{ic("phone","s28")}專人聯繫</button>
 <button class="sn-act" data-modal="m-drive">{ic("cal","s28")}預約試乘</button>{dl}

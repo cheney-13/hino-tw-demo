@@ -305,7 +305,7 @@ select.inp{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns=
   .ftr-bot .r{font-size:12px;line-height:18px}
   body{padding-bottom:60px}
   .bnav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;gap:4px;padding:6px 8px calc(6px + env(safe-area-inset-bottom));border-radius:var(--r) var(--r) 0 0;box-shadow:0 -6px 24px rgba(0,0,0,.1)}
-  .bnav>*{flex:1;height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:var(--r);font-size:14px;line-height:20px;font-weight:700;color:var(--black);transition:background .2s}
+  .bnav>*{flex:1 1 0;min-width:0;white-space:nowrap;height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:var(--r);font-size:14px;line-height:20px;font-weight:700;color:var(--black);transition:background .2s}
   .bnav>*:active{background:var(--g1)}
   .bnav .ico{color:var(--red)}
 }@media (max-width:767px){
