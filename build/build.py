@@ -105,7 +105,7 @@ def home():
 
 <section class="wrap sec">
 <div class="local rv"><span class="ls ls1" aria-hidden="true"></span><span class="ls ls2" aria-hidden="true"></span><span class="ls ls3 rev" aria-hidden="true"></span>
-<div>{sec_head("LOCAL", "在地行動，和台灣一起向前行") if False else ""}<h2>在地行動，和台灣一起向前行</h2><p>秉持 HINO TRUST 精神，從優良駕駛表揚、車主照護到學子獎助，走進全台各地，與台灣一起守護每一段安全回家的路。</p></div>
+<div>{sec_head("LOCAL", "在地行動，和台灣一起向前行") if False else ""}<h2>在地行動，<br>和台灣一起向前行</h2><p>秉持 HINO TRUST 精神，從優良駕駛表揚、車主照護到學子獎助，走進全台各地，與台灣一起守護每一段安全回家的路。</p></div>
 <a class="act" href="#" data-noop><img src="assets/img/action-1.jpg" alt="" loading="lazy"><b>優良駕駛招募計畫</b></a>
 <a class="act" href="#" data-noop><img src="assets/img/action-2.jpg" alt="" loading="lazy" style="object-position:50% 30%"><b>在學生獎學金計畫</b></a>
 </div>
