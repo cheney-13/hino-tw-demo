@@ -189,7 +189,7 @@
   .local{grid-template-columns:1fr;padding:20px 16px}
   .ls{display:none}
   .local>div:first-of-type{margin-bottom:8px}
-  .local h2{font-size:26px;line-height:38px;margin-bottom:4px}
+  .local h2{font-size:26px;line-height:38px;margin-bottom:4px;text-wrap:balance}
   .local p{padding:0;font-size:17px;line-height:30px}
   .act{height:171px}
 }
