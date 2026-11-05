@@ -110,10 +110,18 @@
 .story h3{font-size:20px;line-height:28px;font-weight:700}
 .story p{font-size:14px;line-height:22px;margin-top:8px}
 
-/* ---------- local (gradient sweeps left → right inside the block) ---------- */
-.local{background:#fff;border-radius:var(--r);padding:40px;display:grid;grid-template-columns:488px 1fr 1fr;gap:12px;align-items:center;position:relative;overflow:hidden;isolation:isolate}
-.local::before{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;z-index:-1;background:linear-gradient(90deg,#FFFFFF 48%,#F7B2B8 82%,#FFFAFB 86%,#FFFFFF 100%);animation:sweep 9s linear infinite}
-@keyframes sweep{from{transform:translateX(-100%)}to{transform:translateX(170%)}}
+/* ---------- local（Figma 光速線條：錯落橫移） ---------- */
+.local{background:#fff;border-radius:var(--r);padding:40px;display:grid;grid-template-columns:488px 1fr 1fr;gap:12px;align-items:center;position:relative;overflow:hidden;isolation:isolate;container-type:inline-size}
+.ls{position:absolute;left:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(244,244,244,.1) 0,rgba(235,150,153,.1) 58%,rgba(224,38,45,.1) 90%);animation:lsR var(--d) linear var(--dl) infinite}
+.ls::after{content:"";position:absolute;top:0;right:0;height:100%;aspect-ratio:1;background:rgba(230,0,18,.1)}
+.ls.rev{background:linear-gradient(270deg,rgba(244,244,244,.1) 0,rgba(235,150,153,.1) 58%,rgba(224,38,45,.1) 90%);animation-name:lsL}
+.ls.rev::after{right:auto;left:0}
+.ls1{top:21px;width:418px;height:28px;--d:9s;--dl:-1.5s;--x:85px}
+.ls2{top:226px;width:180px;height:12px;--d:6s;--dl:-4s;--x:143px}
+.ls3{top:239px;width:180px;height:12px;--d:7.5s;--dl:-2.5s;--x:840px}
+@keyframes lsR{from{transform:translateX(-100%)}to{transform:translateX(100cqw)}}
+@keyframes lsL{from{transform:translateX(100cqw)}to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.ls{animation:none;transform:translateX(var(--x))}}
 .local h2{font-size:26px;font-weight:700;margin-bottom:16px}
 .local p{color:var(--g3);font-size:17px;line-height:28px;padding-right:24px}
 .act{position:relative;height:197px;border-radius:var(--r);overflow:hidden;color:#fff;display:block}
@@ -129,7 +137,7 @@
   .hot-card{height:254px}
   .news{grid-template-columns:repeat(2,1fr)}
   .local{grid-template-columns:1fr 1fr}
-  .local>div:first-child{grid-column:1/-1}
+  .local>div:first-of-type{grid-column:1/-1}
 }
 @media (max-width:767px){
   .hero-stage{aspect-ratio:1/1}
@@ -178,12 +186,12 @@
   .news-head-btn,.pager{display:none}
   .news-more-m{display:flex;margin-top:12px}
   .story{flex-basis:300px}
-  .local{grid-template-columns:1fr;background:none;padding:0}
-  .local::before{display:none}
-  .local{grid-template-columns:1fr}
-  .local h2{font-size:26px}
-  .local p{padding:0;font-size:16px;line-height:26px}
-  .act{height:172px}
+  .local{grid-template-columns:1fr;padding:20px 16px}
+  .ls{display:none}
+  .local>div:first-of-type{margin-bottom:8px}
+  .local h2{font-size:26px;line-height:38px;margin-bottom:4px}
+  .local p{padding:0;font-size:17px;line-height:30px}
+  .act{height:171px}
 }
 .brand-hd h2 br{display:none}@media (max-width:767px){.brand-hd h2 br{display:inline}}
 .hot{margin-bottom:4px}
