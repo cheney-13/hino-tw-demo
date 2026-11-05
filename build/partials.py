@@ -34,7 +34,7 @@ SPRITE = """<svg width="0" height="0" style="position:absolute" aria-hidden="tru
 <symbol id="i-cal" viewBox="0 0 24 24"><path d="M3 5H21V21H3V5Z"/><path d="M3 10H21M8 3V7M16 3V7"/></symbol>
 <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></symbol>
 <symbol id="i-yt" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9v6l5-3z"/></symbol>
-<symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 3H12L21 12L12 21L3 12V3Z"/><path d="M7.5 7.5h.01"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 3H12L21 12L12 21L3 12V3Z"/><path d="M7.5 7.5H9V9H7.5V7.5Z"/></symbol>
 <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3V15M7 10L12 15L17 10M4 20H20"/></symbol>
 <symbol id="i-calc" viewBox="0 0 24 24"><path d="M5 2h14v20H5z"/><path d="M8 5h8v4H8zM8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01M16 17h.01"/></symbol>
 <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 0 1-10 0z"/><path d="M7 5H3v2a4 4 0 0 0 4 4M17 5h4v2a4 4 0 0 1-4 4M12 14v4M7 21h10M9 18h6"/></symbol>
