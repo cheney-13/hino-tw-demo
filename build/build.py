@@ -140,27 +140,41 @@ def tile(img, title, desc, cls="light", extra="", open_=False, pos="", short="")
     attr = " data-tile" if desc else ""
     return f'<div class="tile {cls}{oc} {extra}"{attr}><img src="assets/img/{img}?v={VER}" alt="" loading="lazy"{st}><div class="tile-b"><button class="tile-h" {"aria-expanded=" + chr(34) + ("true" if open_ else "false") + chr(34) if desc else "tabindex=-1"}>{title}{btn}</button>{d}</div></div>'
 
-def spec_table():
-    head = "".join(f'<th>{m["name"]}<small>{m["id"]}</small></th>' for m in MODELS)
-    rows = f'<tr><td class="k">駕駛艙形式</td>{"".join("<td>%s</td>" % m["cabf"] for m in MODELS)}</tr>'
-    for g, items in GROUPS:
-        rows += f'<tr class="grp" data-grp="{g}"><td colspan="{len(MODELS)+1}">{g}{ic("up","s16")}</td></tr>'
-        for k, u, key in items:
-            rows += f'<tr data-in="{g}"><td class="k">{k}<u>{u}</u></td>{"".join("<td>%s</td>" % m[key] for m in MODELS)}</tr>'
-    # 官網 hino.com.tw/car.aspx?23（6.5 噸）規格內容
-    safety = "PCS 預警式防護系統（AEBS 緊急煞車輔助系統）、LDWS 車道偏離警示系統、VSC 車輛穩定控制系統、原廠晶片防盜鑰匙（Immobilizer）、數位行車紀錄器"
-    extra = [
-        ("電氣", [("電瓶", "V/Ah", ["12 / 65 × 2"] * 6), ("發電機", "V/A", ["24 / 80"] * 6)]),
-        ("選擇配備", [("PTO 動力輸出", "", ["選擇配備"] * 6)]),
-        ("造型/配備", [("安全配備", "", [safety] * 6)]),
+def spec_table(ton="6.5 噸", hidden=False):
+    from spec300 import SPEC
+    d = SPEC[ton]; ms = d["models"]; n = len(ms)
+    sec = {g: dict(rows) for g, rows in d["sections"]}
+    def kv(label):
+        if "（" in label:
+            k, u = label.split("（", 1); return k, u.rstrip("）")
+        return label, ""
+    head = "".join(f'<th>{m["name"]}<small>{m["id"]}</small></th>' for m in ms)
+    rows = f'<tr><td class="k">駕駛艙形式</td>{"".join("<td>%s</td>" % v for v in sec["基本資料"]["駕駛艙形式"])}</tr>'
+    main = [
+        ("重量", [("重量", "車輛總重（kg）", None), ("重量", "完成車/底盤空重（kg）", None)]),
+        ("底盤尺寸", [("底盤尺寸", "軸距（mm）", None), ("底盤尺寸", "全長（mm）", None), ("底盤尺寸", "全寬（mm）", None), ("底盤尺寸", "全高（mm）", None)]),
+        ("引擎", [("引擎", "型號", "引擎型號"), ("引擎", "最大淨馬力（ps/rpm）", None), ("引擎", "最大淨扭力（kg•m/rpm）", None)]),
+        ("性能", [("性能", "最小迴轉半徑（mm）", None)]),
+        ("底盤", [("底盤", "變速箱型式", None)]),
     ]
-    n = len(MODELS)
-    for g, items in extra:
-        rows += f'<tr class="grp closed" data-grp="{g}"><td colspan="{n+1}">{g}{ic("up","s16")}</td></tr>'
-        for k, u, vals in items:
-            cells = f'<td colspan="{n}" class="wide">{vals[0]}</td>' if len(set(vals)) == 1 and len(vals[0]) > 20 else "".join(f"<td>{v}</td>" for v in vals)
-            rows += f'<tr class="hide" data-in="{g}"><td class="k">{k}<u>{u}</u></td>{cells}</tr>'
-    return f'<table class="st"><colgroup><col class="k"></colgroup><thead><tr><th>車型</th>{head}</tr></thead><tbody>{rows}</tbody></table>'
+    extra = [
+        ("電氣", [("電氣", "電瓶（V/Ah）", None), ("電氣", "發電機（V/A）", None)]),
+        ("選擇配備", [("底盤", "PTO", "PTO 動力輸出")]),
+        ("造型/配備", [("安全配備", "安全配備", None)]),
+    ]
+    for closed, groups in ((False, main), (True, extra)):
+        for g, items in groups:
+            rows += f'<tr class="grp{" closed" if closed else ""}" data-grp="{g}"><td colspan="{n+1}">{g}{ic("up","s16")}</td></tr>'
+            for sg, label, alias in items:
+                vals = sec[sg][label]; k, u = kv(label)
+                if alias: k = alias
+                cells = f'<td colspan="{n}" class="wide">{vals[0]}</td>' if n > 1 and len(set(vals)) == 1 and len(vals[0]) > 20 else "".join(f"<td>{v}</td>" for v in vals)
+                rows += f'<tr{" class=" + chr(34) + "hide" + chr(34) if closed else ""} data-in="{g}"><td class="k">{k}<u>{u}</u></td>{cells}</tr>'
+    return f'<table class="st" data-ton="{ton}"{" hidden" if hidden else ""}><colgroup><col class="k"></colgroup><thead><tr><th>車型</th>{head}</tr></thead><tbody>{rows}</tbody></table>'
+
+def spec_tables():
+    from spec300 import TONS
+    return "".join(spec_table(t, t != "6.5 噸") for t in TONS)
 
 def car():
     tons = ["5 噸", "6.5 噸", "7.4 噸", "7.5 噸", "8 噸"]
@@ -267,10 +281,9 @@ def car():
 <div class="spec-card">
 <p class="lb">噸數</p><div class="ton" id="ton">{ton_btns}</div>
 <div id="specBody">
-<div class="tbl-wrap">{spec_table()}</div>
+<div class="tbl-wrap">{spec_tables()}</div>
 <div class="spec-m"><p class="lb" style="color:var(--g3);margin-bottom:8px">型號</p><select class="inp" id="specSel">{m_opts}</select><dl id="specDl"></dl></div>
 </div>
-<div class="spec-note" id="specNote" hidden>此噸數規格資料待客戶提供（DEMO 目前僅建置 6.5 噸）</div>
 <a class="btn btn-dark btn-block spec-m" href="#" data-modal="m-full" style="margin-top:16px;justify-content:space-between">查看完整規格表{ic("arrow")}</a>
 <a class="btn btn-red btn-block" href="#" data-noop>型錄下載{ic("arrow")}</a>
 </div></div></section>
@@ -306,15 +319,16 @@ def car():
 <div class="modal-bd" id="cmpBody"></div>"""
     from spec65 import SECTIONS
     m_opts2 = "".join(f'<option value="{i}">{m["id"]}</option>' for i, m in enumerate(MODELS))
-    full = f'''<div class="full-top"><div class="full-sel"><label class="cmp-dd"><small>噸數</small><b>6.5 噸</b>{ic("down","s16")}<select aria-label="噸數" disabled><option>6.5 噸</option></select></label><label class="cmp-dd wide"><small>型號</small><b id="fullModel">{MODELS[0]["id"]}</b>{ic("down","s16")}<select id="fullSel" aria-label="型號">{m_opts2}</select></label></div></div>
-<div class="modal-bd"><div class="tbl-wrap full-d">{spec_table()}</div><div class="full-m" id="fullM"></div></div>
+    full = f'''<div class="full-top"><div class="full-sel"><label class="cmp-dd"><small>噸數</small><b id="fullTon">6.5 噸</b>{ic("down","s16")}<select id="fullTonSel" aria-label="噸數">{"".join(f'<option{" selected" if t=="6.5 噸" else ""}>{t}</option>' for t in tons)}</select></label><label class="cmp-dd wide"><small>型號</small><b id="fullModel">{MODELS[0]["id"]}</b>{ic("down","s16")}<select id="fullSel" aria-label="型號">{m_opts2}</select></label></div></div>
+<div class="modal-bd"><div class="tbl-wrap full-d">{spec_tables()}</div><div class="full-m" id="fullM"></div></div>
 <div class="full-act"><a class="btn btn-red" href="#" data-noop>型錄下載{ic("arrow")}</a></div>'''
     extra = (modal("m-pcs", "標配 PCS＋LDWS 主動安全", pcs, f'<button class="btn btn-dark btn-block" data-close>關閉</button>', cls="w960")
              + modal("m-cmp", "車型比較", cmp_, cls="w1080")
              + modal("m-full", "完整規格表", full, cls="w1080"))
     import json
     from spec65 import SECTIONS
-    data = "<script>window.SPEC65=" + json.dumps(SECTIONS, ensure_ascii=False) + ";window.MODELS=" + json.dumps(MODELS, ensure_ascii=False) + ";window.GROUPS=" + json.dumps(GROUPS, ensure_ascii=False) + ";</script>"
+    from spec300 import SPEC
+    data = "<script>window.SPEC=" + json.dumps(SPEC, ensure_ascii=False) + ";window.MODELS=" + json.dumps(MODELS, ensure_ascii=False) + ";window.GROUPS=" + json.dumps(GROUPS, ensure_ascii=False) + ";</script>"
     html = page("HINO 300 系 中小型貨車｜HINO 台灣（DEMO）", "HINO 300 系 中小型貨車 5–8 噸，標準座艙/寬座艙、手排/自排。", ["home.css", "car.css"], body, ["car.js"])
     assert '<script src="assets/js/main.js' in html
     return html.replace('<script src="assets/js/main.js', extra + data + '<script src="assets/js/main.js', 1)

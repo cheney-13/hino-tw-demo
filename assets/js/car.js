@@ -104,34 +104,49 @@
   }));
 
   /* ---------- spec ---------- */
-  $$('#ton button').forEach(b => b.addEventListener('click', () => {
-    $$('#ton button').forEach(x => x.classList.toggle('on', x === b));
-    const has = b.dataset.ton === '6.5 噸';
-    $('#specBody').hidden = !has; $('#specNote').hidden = has;
-  }));
+  const SP = window.SPEC, val = (t, g, k, i) => { const r = SP[t].sections.find(x => x[0] === g)[1].find(x => x[0] === k); return r ? r[1][i] : ''; };
+  const sel = $('#specSel'), dl = $('#specDl');
+  let ton = '6.5 噸';
+  const KEYS = [['車輛總重', i => val(ton, '重量', '車輛總重（kg）', i) + ' kg'], ['全長 × 全寬', i => `${val(ton, '底盤尺寸', '全長（mm）', i)} × ${val(ton, '底盤尺寸', '全寬（mm）', i)} mm`], ['軸距', i => val(ton, '底盤尺寸', '軸距（mm）', i) + ' mm'], ['引擎型式', i => val(ton, '引擎', '型號', i)], ['最大淨馬力', i => val(ton, '引擎', '最大淨馬力（ps/rpm）', i).replace(' / ', ' ps / ') + ' rpm'], ['最大淨扭力', i => val(ton, '引擎', '最大淨扭力（kg•m/rpm）', i).replace(' / ', ' kg・m / ') + ' rpm']];
+  const fill = () => { const i = +sel.value; dl.innerHTML = KEYS.map(([k, f]) => { let v = f(i); if (v.startsWith('—')) v = '—'; return `<div><dt>${k}</dt><dd>${v}</dd></div>`; }).join(''); };
+  const setTon = t => {
+    ton = t;
+    $$('#ton button').forEach(x => x.classList.toggle('on', x.dataset.ton === t));
+    $$('#specBody table.st').forEach(tb => { tb.hidden = tb.dataset.ton !== t; });
+    sel.innerHTML = SP[t].models.map((m, i) => `<option value="${i}">${m.name} ${m.id}</option>`).join('');
+    fill();
+    window.dispatchEvent(new CustomEvent('spec-ton', { detail: t }));
+  };
+  $$('#ton button').forEach(b => b.addEventListener('click', () => setTon(b.dataset.ton)));
   $$('table.st').forEach(tb => $$('tr.grp', tb).forEach(r => r.addEventListener('click', () => {
     const c = r.classList.toggle('closed');
     $$(`tr[data-in="${r.dataset.grp}"]`, tb).forEach(x => x.classList.toggle('hide', c));
   })));
-  const sel = $('#specSel'), dl = $('#specDl');
-  const KEYS = [['車輛總重', m => m.gw + ' kg'], ['全長 × 全寬', m => `${m.l} × ${m.wd} mm`], ['軸距', m => m.wb + ' mm'], ['引擎型式', m => m.eng], ['最大淨馬力', m => m.hp.replace(' / ', ' ps / ') + ' rpm'], ['最大淨扭力', m => m.tq.replace(' / ', ' kg・m / ') + ' rpm']];
-  const fill = () => { const m = M[+sel.value]; dl.innerHTML = KEYS.map(([k, f]) => `<div><dt>${k}</dt><dd>${f(m)}</dd></div>`).join(''); };
-  sel.addEventListener('change', fill); fill();
+  sel.addEventListener('change', fill); setTon(ton);
 })();
 
 /* full spec drawer (mobile): one model at a time, sections collapsible */
 (() => {
-  const S = window.SPEC65, box = document.getElementById('fullM'), sel = document.getElementById('fullSel');
-  if (!S || !box) return;
+  const SP = window.SPEC, box = document.getElementById('fullM'), sel = document.getElementById('fullSel'), tsel = document.getElementById('fullTonSel');
+  if (!SP || !box) return;
+  let ton = '6.5 噸';
   const draw = () => {
-    const i = +sel.value;
+    const i = +sel.value, S = SP[ton].sections;
     document.getElementById('fullModel').textContent = sel.options[sel.selectedIndex].text;
     box.innerHTML = S.map(([g, rows], k) => `<section class="fs${k === 0 ? ' open' : ''}"><h4><span>${g}</span><em>${rows.length} 項</em><svg class="ico s20"><use href="#i-${k === 0 ? 'minus' : 'plus'}"/></svg></h4><dl class="rows">${rows.map(([key, vals]) => `<div class="r"><dt>${key}</dt><dd>${vals[i]}</dd></div>`).join('')}</dl></section>`).join('');
     box.querySelectorAll('.fs h4').forEach(h => h.addEventListener('click', () => {
       const on = h.parentNode.classList.toggle('open'); h.querySelector('use').setAttribute('href', on ? '#i-minus' : '#i-plus');
     }));
   };
-  sel.addEventListener('change', draw); draw();
+  const setTon = t => {
+    ton = t; tsel.value = t; document.getElementById('fullTon').textContent = t;
+    document.querySelectorAll('.full-d table.st').forEach(tb => { tb.hidden = tb.dataset.ton !== t; });
+    sel.innerHTML = SP[t].models.map((m, i) => `<option value="${i}">${m.id}</option>`).join('');
+    draw();
+  };
+  tsel.addEventListener('change', () => setTon(tsel.value));
+  window.addEventListener('spec-ton', e => setTon(e.detail));
+  sel.addEventListener('change', draw); setTon(ton);
 })();
 
 /* tiles in the same row: equalise title-bar height so titles line up at the top (no fixed 2-line height) */

@@ -437,3 +437,5 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 .carousel p{color:rgba(255,255,255,.8)}
 .car-dots button{background:#555}
 .car-dots button.on{background:var(--red)}
+
+.st[hidden]{display:none}
