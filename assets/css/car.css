@@ -476,5 +476,5 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 /* 浮水印英文：依左欄寬度縮放，避免縮窄時疊到右欄 */
 @media (min-width:768px){
   .lead-faq .lf-l{container-type:inline-size}
-  .lead-faq .sec-head .wm{font-size:min(150px, calc((100cqw + 24px) / 3.2))}
+  .lead-faq .sec-head .wm{font-size:min(100px, calc(100cqw / 4.35));bottom:-14px}
 }
