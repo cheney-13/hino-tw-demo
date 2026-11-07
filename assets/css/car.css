@@ -471,5 +471,6 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .lead .sec-head h2 .mb{display:inline}
   .lead .sec-head .eyebrow{display:flex}
   .lead ul{display:block}
+  .lead li{font-size:16px}
   .faq-note{padding:0 4px}
 }
