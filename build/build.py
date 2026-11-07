@@ -301,7 +301,7 @@ def car():
 
 <section class="wrap sec">
 <div class="lead-faq">
-<div class="lead on-dark rv"><div class="lf-l">{sec_head("CONSULT", "想瞭解更多？", "專人聯繫", "留下聯絡方式，由專人聯繫您")}</div>
+<div class="lead on-dark rv"><div class="lf-l">{sec_head("CONSULT", "<span class=" + chr(34) + "pc" + chr(34) + ">專人聯繫</span><span class=" + chr(34) + "mb" + chr(34) + ">想瞭解更多？</span>", "專人聯繫", "留下聯絡方式，由專人聯繫您")}</div>
 <div class="lf-r"><ul><li>{ic("check")}不用跑據點，專人主動與您聯繫</li><li>{ic("check")}依載運需求，推薦合適車型與配置</li><li>{ic("check")}報價、分期與購車優惠一次說明</li></ul>
 <button class="btn btn-red btn-block" data-modal="m-contact">留下聯絡資料{ic("arrow")}</button>
 <small>需簡訊驗證手機，約 1 分鐘完成；資料僅用於本次購車諮詢。</small></div></div>
@@ -313,7 +313,10 @@ def car():
 <details><summary>可以先試乘再決定嗎？{ic("plus")}</summary><p>可以。點選「預約試乘」，或直接聯繫鄰近據點安排試乘。</p></details>
 <details><summary>舊車可以折抵嗎？{ic("plus")}</summary><p>可以。據點可協助舊車估價與折抵，評估結果依車況與年份而定。</p></details>
 </div>
-{"".join(f'<div class="faq-p" data-faq-p="{t}" hidden><p class="faq-empty">此分類問答待客戶提供</p></div>' for t in ["試乘", "保養維修", "保固"])}
+<div class="faq-p" data-faq-p="試乘" hidden><details><summary>如何預約試乘？{ic("plus")}</summary><p>可點選「預約試乘」填寫資料，或直接聯繫鄰近據點，由專人與您確認試乘時間與地點。</p></details><details><summary>試乘需要準備什麼？{ic("plus")}</summary><p>請攜帶有效之相應駕照，實際所需文件請依據點說明為準。</p></details><details><summary>可以指定試乘車型嗎？{ic("plus")}</summary><p>可於預約時註明想試乘的車型與噸數，實際可試乘車輛依據點安排為準。</p></details></div>
+<div class="faq-p" data-faq-p="保養維修" hidden><details><summary>多久需要定期保養？{ic("plus")}</summary><p>建議依車主手冊所載之保養週期進廠，實際保養項目可洽服務據點確認。</p></details><details><summary>如何預約保養進廠？{ic("plus")}</summary><p>可聯繫鄰近服務據點預約進廠時間，減少現場等候。</p></details><details><summary>保養使用正廠零配件嗎？{ic("plus")}</summary><p>HINO 服務據點提供正廠零配件，詳細品項與價格請洽服務據點。</p></details><details><summary>行駛途中故障怎麼辦？{ic("plus")}</summary><p>HINO 提供道路救援服務，可撥打客服專線洽詢協助。</p></details></div>
+<div class="faq-p" data-faq-p="保固" hidden><details><summary>新車保固期間多久？{ic("plus")}</summary><p>保固期間與範圍依車型及保固條件而定，詳情請參閱「保固條件」或洽詢據點。</p></details><details><summary>哪些項目不在保固範圍內？{ic("plus")}</summary><p>消耗性零件、人為因素或未依規定保養所造成之損壞等，依保固條件規定為準。</p></details><details><summary>保固期間一定要回原廠保養嗎？{ic("plus")}</summary><p>建議依規定週期於 HINO 服務據點保養，以確保保固權益；詳細規定以保固條件為準。</p></details></div>
+<p class="faq-note">※ 以上問答為提案示意內容，正式題目與回覆將依客戶提供資料調整。</p>
 </div></div></div></div></section>
 """
     pcs_card = lambda im, t, d: f'<div class="pcs-card"><img src="assets/img/{im}?v={VER}" alt="{t}"><div><h4>{t}</h4><p>{d}</p></div></div>'
