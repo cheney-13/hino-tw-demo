@@ -175,3 +175,12 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { $$('[data-n]', e.target).forEach(run); io.unobserve(e.target); } }), { threshold: .6 });
   document.querySelectorAll('.nums .num').forEach(n => io.observe(n));
 })();
+
+/* faq category tabs */
+(() => {
+  const tabs = [...document.querySelectorAll('[data-faq]')];
+  tabs.forEach(b => b.addEventListener('click', () => {
+    tabs.forEach(x => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-selected', on); });
+    document.querySelectorAll('[data-faq-p]').forEach(p => { p.hidden = p.dataset.faqP !== b.dataset.faq; });
+  }));
+})();

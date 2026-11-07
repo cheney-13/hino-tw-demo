@@ -301,16 +301,20 @@ def car():
 
 <section class="wrap sec">
 <div class="lead-faq">
-<div class="lead rv"><div class="lead-h"><i>{ic("phone")}</i><div><b>想瞭解更多？</b><span>留下聯絡方式，由專人聯繫您</span></div></div>
-<ul><li>{ic("check")}不用跑據點，專人主動與您聯繫</li><li>{ic("check")}依載運需求，推薦合適車型與配置</li><li>{ic("check")}報價、分期與購車優惠一次說明</li></ul>
+<div class="lead on-dark rv"><div class="lf-l">{sec_head("CONSULT", "想瞭解更多？", "專人聯繫", "留下聯絡方式，由專人聯繫您")}</div>
+<div class="lf-r"><ul><li>{ic("check")}不用跑據點，專人主動與您聯繫</li><li>{ic("check")}依載運需求，推薦合適車型與配置</li><li>{ic("check")}報價、分期與購車優惠一次說明</li></ul>
 <button class="btn btn-red btn-block" data-modal="m-contact">留下聯絡資料{ic("arrow")}</button>
-<small>需簡訊驗證手機，約 1 分鐘完成；資料僅用於本次購車諮詢。</small></div>
-<div class="faq rv">{sec_head("FAQ", "常見問答")}
+<small>需簡訊驗證手機，約 1 分鐘完成；資料僅用於本次購車諮詢。</small></div></div>
+<div class="faq rv"><div class="lf-l">{sec_head("FAQ", "常見問答")}</div>
+<div class="lf-r"><div class="faq-tabs" role="tablist">{"".join(f'<button type="button" role="tab" class="chip{" on" if k == 0 else ""}" aria-selected="{"true" if k == 0 else "false"}" data-faq="{t}">{t}</button>' for k, t in enumerate(["購車", "試乘", "保養維修", "保固"]))}</div>
+<div class="faq-p" data-faq-p="購車">
 <details><summary>可以分期購車嗎？{ic("plus")}</summary><p>可以。和泰提供多種車貸與分期方案，可依預算與營運需求規劃，詳情請洽各地據點業務。</p></details>
 <details><summary>交車要等多久？{ic("plus")}</summary><p>依車型、配備與上裝需求不同，一般約需數週，實際交期請以據點報價為準。</p></details>
 <details><summary>可以先試乘再決定嗎？{ic("plus")}</summary><p>可以。點選「預約試乘」，或直接聯繫鄰近據點安排試乘。</p></details>
 <details><summary>舊車可以折抵嗎？{ic("plus")}</summary><p>可以。據點可協助舊車估價與折抵，評估結果依車況與年份而定。</p></details>
-</div></div></section>
+</div>
+{"".join(f'<div class="faq-p" data-faq-p="{t}" hidden><p class="faq-empty">此分類問答待客戶提供</p></div>' for t in ["試乘", "保養維修", "保固"])}
+</div></div></div></div></section>
 """
     pcs_card = lambda im, t, d: f'<div class="pcs-card"><img src="assets/img/{im}?v={VER}" alt="{t}"><div><h4>{t}</h4><p>{d}</p></div></div>'
     pcs = f"""<div class="modal-bd pcs-bd">{pcs_card("pop-pcs.jpg", "PCS 預警式防護系統", "毫米波雷達及攝影機偵測前方行人與車輛，有碰撞危險時發出警報並輔助煞車。")}{pcs_card("pop-ldws.jpg", "LDWS 車道偏離警示系統", "攝影機偵測前方車道線，車輛偏離時發出警示音提醒駕駛。")}</div>"""
