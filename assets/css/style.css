@@ -315,3 +315,13 @@ select.inp{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns=
   .sec-head.row>div{padding-bottom:0}
 }
 @media (max-width:767px){body.lock .bnav{display:none}}
+
+/* 全站桌機：Figma bento/SectionHeader（英文 100px 在上、小標壓在其下緣、中文標題在下） */
+@media (min-width:768px){
+  .sec-head,.sec-head.row{padding:56px 0 0;margin-bottom:24px}
+  .sec-head .wm,.sec-head.row .wm{top:-56px;bottom:auto;left:0;font-size:100px;line-height:71px;letter-spacing:-2px}
+  .sec-head .eyebrow{margin-bottom:0}
+  .sec-head h2{font-size:26px;line-height:38px;margin-top:8px}
+  .sec-head h2 small{font-size:17px;line-height:30px}
+  .sec-head.row>div{padding-bottom:0}
+}
