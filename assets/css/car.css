@@ -463,8 +463,8 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 /* lead title: 桌機「專人聯繫」無小標；手機 小標＋「想瞭解更多？」（同 Figma） */
 .lead .sec-head h2 .mb{display:none}
 .lead .sec-head .eyebrow{display:none}
-.lead ul{display:flex;flex-wrap:wrap;gap:8px 28px}
-.lead li{padding:2px 0}
+.lead ul{display:flex;flex-wrap:wrap;gap:8px 24px}
+.lead li{padding:2px 0;font-size:15px;gap:10px}
 .faq-note{margin-top:16px;padding:0 20px;color:var(--g3);font-size:13px;line-height:20px}
 @media (max-width:767px){
   .lead .sec-head h2 .pc{display:none}
