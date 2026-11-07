@@ -454,5 +454,8 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 @media (max-width:767px){
   .lead,.faq{grid-template-columns:1fr;gap:16px}
   .lead{padding:24px 22px 22px}
+  .lead ul{padding:16px}
+  .lead li{gap:10px}
+  .lead li .ico{width:20px;height:20px;flex:none}
   .faq{padding:28px 16px}
 }
