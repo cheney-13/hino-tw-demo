@@ -291,7 +291,7 @@ def car():
 <section class="wrap sec anchor" id="stories">
 <div class="story1 rv">
 <div class="tx">{sec_head("STORIES", "車主故事")}<div class="body"><span class="tag">生鮮配送 · 5 噸</span><h3>清晨四點出車，貨準時到店</h3><p>{story_body}</p><a class="btn btn-red" href="#">看完整故事{ic("arrow")}</a></div></div>
-<div class="ph"><img src="assets/img/story-300.jpg" alt="HINO 300 系列車主與冷藏車" loading="lazy"></div>
+<div class="ph"><img src="assets/img/story-300-fx.jpg" alt="HINO 300 系列車主與冷藏車" loading="lazy"></div>
 </div></section>
 
 <section class="wrap sec">
