@@ -481,3 +481,12 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 @media (min-width:768px){
   .safety,.select,.spec,.lead,.faq,.story1 .tx{padding:40px}
 }
+
+/* 車主故事照片 4:3 */
+.story1{align-items:center}
+.story1 .ph{min-height:0;height:auto;aspect-ratio:4/3;align-self:stretch}
+@media (min-width:768px){.story1 .ph{align-self:center}}
+@media (max-width:767px){.story1 .ph{height:auto;min-height:0;aspect-ratio:4/3}}
+/* 專人聯繫 權益框／打勾：Figma #E0FD01 */
+.lead ul{border:1px solid #E0FD01;border-radius:var(--r)}
+.lead li .ico{color:#E0FD01;width:20px;height:20px;stroke-width:2.6}
