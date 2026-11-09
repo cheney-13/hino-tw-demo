@@ -447,9 +447,9 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
 .lead ul{margin-bottom:16px}
 .lead small{margin-top:10px}
 .faq-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.faq-tabs .chip{height:42px;padding:0 16px;background:#fff;font-size:15px}
-.faq-tabs .chip:hover{background:var(--g1)}
-.faq-tabs .chip.on{background:var(--red);color:#fff}
+.faq-tabs .chip{height:42px;padding:0 16px;background:var(--g1);box-shadow:inset 0 0 0 1px var(--g2);color:var(--black);font-size:15px;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+.faq-tabs .chip:hover{background:#fff;box-shadow:inset 0 0 0 1px var(--red);color:var(--red)}
+.faq-tabs .chip.on,.faq-tabs .chip.on:hover{background:var(--red);box-shadow:inset 0 0 0 1px var(--red);color:#fff}
 .faq-empty{padding:18px 20px;color:var(--g3);border-bottom:1px solid var(--g1)}
 @media (max-width:767px){
   .lead,.faq{grid-template-columns:1fr;gap:16px}
