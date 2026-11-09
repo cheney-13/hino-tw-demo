@@ -476,3 +476,8 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .lead-faq .lf-l{container-type:inline-size}
   .lead-faq .sec-head .wm{font-size:min(100px, calc(100cqw / 4.35));bottom:-14px}
 }
+
+/* 桌機卡片內距統一 40（安全／選車／規格／車主故事／專人聯繫／常見問答） */
+@media (min-width:768px){
+  .safety,.select,.spec,.lead,.faq,.story1 .tx{padding:40px}
+}
