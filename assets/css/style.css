@@ -325,3 +325,6 @@ select.inp{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns=
   .sec-head h2 small{font-size:17px;line-height:30px}
   .sec-head.row>div{padding-bottom:0}
 }
+
+/* mega 非車款：四個選單同高，左側英文位置一致 */
+.mega-in.sm{height:auto;min-height:344px}
