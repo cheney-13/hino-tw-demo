@@ -229,7 +229,7 @@ table.st{width:100%;border-collapse:collapse;min-width:1000px;table-layout:fixed
 /* pcs modal (Figma popup 8262:41047 / drawer 8262:40989) */
 .pcs-bd{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:max-content;gap:16px;align-items:start}
 .pcs-card{border-radius:var(--r);overflow:hidden;background:var(--g1);display:flex;flex-direction:column;gap:8px}
-.pcs-card>img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.pcs-card>img{width:100%;aspect-ratio:694/477;object-fit:cover}
 .pcs-card>div{padding:20px}
 .pcs-card h4{font-size:20px;line-height:28px;font-weight:700;margin-bottom:6px}
 .pcs-card p{font-size:17px;line-height:28px;color:var(--g3)}
@@ -482,11 +482,11 @@ input[type=range]{width:100%;accent-color:var(--red);height:28px}
   .safety,.select,.spec,.lead,.faq,.story1 .tx{padding:40px}
 }
 
-/* 車主故事照片 4:3 */
+/* 車主故事照片：依 Figma 694×477 */
 .story1{align-items:center}
-.story1 .ph{min-height:0;height:auto;aspect-ratio:4/3;align-self:stretch}
+.story1 .ph{min-height:0;height:auto;aspect-ratio:694/477;align-self:stretch}
 @media (min-width:768px){.story1 .ph{align-self:center}}
-@media (max-width:767px){.story1 .ph{height:auto;min-height:0;aspect-ratio:4/3}}
+@media (max-width:767px){.story1 .ph{height:auto;min-height:0;aspect-ratio:694/477}}
 /* 專人聯繫 權益框／打勾：Figma #E0FD01 */
 .lead ul{border:1px solid #E0FD01;border-radius:var(--r)}
 .lead li .ico{color:#E0FD01;width:20px;height:20px;stroke-width:2.6}
