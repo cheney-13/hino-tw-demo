@@ -142,7 +142,7 @@
 @media (max-width:767px){
   .hero-stage{aspect-ratio:1/1}
   .hero-bar{flex-wrap:wrap}
-  .ticker{flex:0 0 100%;height:48px;font-size:16px}
+  .ticker{flex:0 0 100%;height:60px;font-size:16px}
   .hero-bar .icon-btn{width:60px}
   .hero-count{flex:1}
   /* Figma panel/02 mobile: logo 1261px, loops right → left */
