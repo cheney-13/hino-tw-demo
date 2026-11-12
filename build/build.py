@@ -69,7 +69,7 @@ def home():
 <section class="brand" id="brand">
 <div class="brand-bg" aria-hidden="true"><div class="brand-track"><img src="assets/img/brand-logo.svg" alt="" data-parallax><img class="dup" src="assets/img/brand-logo.svg" alt=""></div></div>
 <div class="wrap">
-<div class="brand-hd rv"><p>HINO TRUST 驅動未來</p><h2>業界領導品牌<br class="m">您的最佳事業夥伴</h2></div>
+<div class="brand-hd rv"><p>HINO TRUST 驅動未來</p><h2>業界領導品牌 <br class="m">您的最佳事業夥伴</h2></div>
 <div class="stats">
 <div class="stat rv">{ic("truck")}<h3>延長保固<small>里程 20 萬公里內</small></h3><p class="num">最長<b data-count="6">6</b>年</p></div>
 <div class="stat rv">{ic("trophy")}<h3>銷售冠軍<small>3.49 噸以上</small></h3><p class="num"><b data-count="5">5</b>連霸</p></div>
