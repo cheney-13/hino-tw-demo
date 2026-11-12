@@ -187,7 +187,9 @@
   .news-more-m{display:flex;margin-top:12px}
   .story{flex-basis:300px}
   .local{grid-template-columns:1fr;padding:20px 16px}
-  .ls{display:none}
+  .ls1{top:12px;width:240px;height:20px}
+  .ls2{top:150px;width:120px;height:10px}
+  .ls3{top:161px;width:120px;height:10px}
   .local>div:first-of-type{margin-bottom:8px}
   .local h2{font-size:26px;line-height:38px;margin-bottom:4px}
   .local h2 br{display:inline}
